@@ -138,3 +138,69 @@ O arquivo `README.md` foi gerado e inclui todo o histórico do projeto, a stack 
 - Documentação completa da stack (Django, PostgreSQL, Docker Compose, WSL, JS SPA).
 - Estrutura de arquivos e fluxo de migração de dados fictícios para a API REST.
 - Roteiro detalhado em etapas para quando você retomar o desenvolvimento (Orçamentos, Ordens de Serviço, Fornecedores e Documentos).
+
+-------------------------------------------------------------
+
+# Levantamento: O que implementar na Ficha de Cadastro de Clientes (Serralheria App)
+
+
+
+Este documento reúne os pontos essenciais levantados para a evolução do módulo de Clientes, visando preparar o sistema para as próximas etapas (orçamentos, ordens de serviço, obras e mídias).
+
+
+
+---
+
+
+
+## 📋 Itens Essenciais para a Ficha de Cadastro
+
+
+
+1. **Dados de Endereço Completos e Geolocalização:**
+
+   - Logradouro (Rua/Avenida), Número, Complemento, Bairro, Cidade, Estado e CEP.
+
+   - Referência de localização (fundamental para a equipe externa e módulo de agendamento de visitas/rotas).
+
+
+
+2. **Múltiplos Contatos e Pessoas de Contato:**
+
+   - Telefone principal com suporte a WhatsApp.
+
+   - E-mail para envio automático de orçamentos e faturas.
+
+   - Nome do responsável ou síndico (no caso de condomínios e clientes PJ).
+
+
+
+3. **Histórico Comercial (Abas Relacionadas):**
+
+   - **Orçamentos:** Histórico de propostas comerciais enviadas.
+
+   - **Ordens de Serviço / Pedidos:** O que foi fabricado, vendido ou instalado.
+
+   - **Obras:** Acompanhamento do andamento das instalações na propriedade do cliente.
+
+
+
+4. **Gestão de Mídias e Documentos (Persistência Híbrida / JSONB ou Tabelas Relacionadas):**
+
+   - Upload e armazenamento de fotos de vistorias iniciais do local.
+
+   - Plantas baixas, desenhos técnicos e projetos em PDF.
+
+   - Contratos assinados digitalmente ou escaneados.
+
+
+
+5. **Anotações e Preferências Operacionais:**
+
+   - Campo de observações livres (ex: "Cliente prefere contato via WhatsApp", "Acesso ao local possui restrição de altura", etc.).
+
+
+
+---
+
+*Documento gerado como apoio para a continuação do desenvolvimento do Serralheria App (v0.2+).*
