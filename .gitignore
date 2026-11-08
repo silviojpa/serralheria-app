@@ -1,0 +1,42 @@
+gitignore_content = """# Environments (venv / virtualenv)
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Django dynamic files
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Environment variables
+.env
+.env.local
+
+# Docker / IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# Operating System files
+.DS_Store
+Thumbs.db
+Zone.Identifier
+"""
+
+with open(".gitignore", "w", encoding="utf-8") as f:
+    f.write(gitignore_content.strip() + "\n")
+
+print("File generated successfully: .gitignore")
+print("[file-tag: code-generated-file-gitignore_default]")
