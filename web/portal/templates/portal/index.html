@@ -67,33 +67,19 @@
     .chip-laranja { background: #fff1dc; color: #966318; }
     .chip-vermelho { background: #fae9e7; color: #a6423d; }
     .notinha { font-size: 11px; color: var(--suave); margin-top: 17px; }
+    
     /* HOME */
-    .alerta { padding: 16px 20px; margin-bottom: 18px; border: 1px solid #c8dfcc; border-left: 5px solid var(--verde); border-radius: 12px; background: #f0f8f2; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .alerta strong { font-size: 16px; display: block; }
-    .home-grid { display: grid; grid-template-columns: 1.22fr 1fr; gap: 20px; align-items: start; }
-    .atalhos { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 11px; }
+    .home-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
+    .atalhos { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; }
     .atalho { display: flex; gap: 10px; align-items: center; border-radius: 10px; border: 1px solid var(--borda); background: #fff; padding: 12px 10px; min-height: 66px; text-align: left; font-size: 12px; font-weight: 700; }
     .atalho:hover { border-color: #95c9a0; background: #f5faf6; transform: translateY(-1px); }
     .atalho .sinal { display: grid; place-items: center; background: var(--verde-claro); color: var(--verde-escuro); font-size: 21px; width: 39px; height: 39px; flex-shrink: 0; border-radius: 9px; }
     .atalho .seta { margin-left: auto; color: #9ba9a0; }
-    .financeiro-topo { background: #f0f7f2; padding: 17px 20px; border-radius: 13px 13px 0 0; border-bottom: 1px solid var(--borda); }
-    .periodo { padding: 15px 0; border-bottom: 1px solid var(--borda); }
-    .periodo:last-of-type { border-bottom: none; }
-    .periodo strong.titulo { display: block; color: var(--verde-escuro); margin-bottom: 11px; }
-    .linha { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; gap: 12px; }
-    .linha span { color: var(--suave); }
-    .linha b { text-align: right; }
-    .linha.lucro { background: var(--verde-claro); border-radius: 8px; padding: 10px; margin-top: 6px; }
-    .linha.lucro b { color: var(--verde-escuro); }
-    .meta { padding: 15px; border: 1px solid #d5e8d8; background: #eff7f1; border-radius: 10px; margin-top: 10px; }
-    .progresso { height: 11px; background: #d8e9db; border-radius: 20px; margin: 10px 0 4px; overflow: hidden; }
-    .progresso > div { background: var(--verde); height: 100%; }
     .mini-indicadores { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 0 0 20px; }
     .mini-indicador { padding: 16px; }
     .mini-indicador small { display: block; color: var(--suave); margin-bottom: 5px; }
     .mini-indicador b { font-size: 25px; }
-    .mini-indicador.alerta-cor b { color: var(--laranja); }
-    .mini-indicador.urgente b { color: var(--vermelho); }
+
     /* TABELAS E FORMULÁRIOS */
     .tabela-wrap { overflow-x: auto; }
     table { border-collapse: collapse; width: 100%; font-size: 12px; }
@@ -104,29 +90,20 @@
     .filtro { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
     .campo-input, select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cfdbd3; background: #fff; color: var(--texto); }
     .filtro .campo-input { width: min(400px,100%); }
-    .filtro select { width: auto; }
-    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-    .form-grid label { font-size: 12px; font-weight: 700; color: #52665a; }
-    .form-grid input, .form-grid select { margin-top: 5px; }
-    .form-grid .linha-inteira { grid-column: 1/-1; }
     .sem-resultado { color: var(--suave); text-align: center; padding: 25px !important; }
+
     /* FICHA CLIENTE */
     .cliente-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 21px; margin-bottom: 18px; }
     .cliente-pessoa { display: flex; align-items: center; gap: 14px; }
     .cliente-circulo { width: 57px; height: 57px; flex-shrink: 0; background: #d8ebdd; border-radius: 50%; display: grid; place-items: center; font-size: 19px; font-weight: 800; color: var(--verde-escuro); }
-    .abas { display: flex; gap: 7px; border-bottom: 1px solid var(--borda); margin-bottom: 20px; }
-    .aba { background: none; border: 0; border-bottom: 3px solid transparent; color: var(--suave); font-weight: 700; padding: 13px 20px; }
-    .aba.ativa { border-bottom-color: var(--verde); color: var(--verde-escuro); }
     .duas-colunas { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
     .info { display: flex; justify-content: space-between; gap: 15px; border-bottom: 1px solid #edf2ee; padding: 12px 0; }
     .info:last-child { border: none; }
     .info span { color: var(--suave); }
     .info strong { text-align: right; }
     .nota { background: #f6f9f7; border: 1px solid var(--borda); border-radius: 8px; padding: 14px; }
-    @media(max-width:1200px) { .home-grid { grid-template-columns: 1fr; } .atalhos { grid-template-columns: repeat(4,minmax(0,1fr)); } }
-    @media(max-width:900px) { .lateral { width: 72px; padding: 20px 8px; } .marca { justify-content: center; padding: 0 0 20px; } .marca-simbolo { font-size: 24px; } .marca .texto, .nav-btn .nome, .nav-titulo, .menu-rodape { display: none; } .nav-btn { justify-content: center; } .conteudo { padding: 22px; } .atalhos { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-    @media(max-width:680px) { .topo { padding: 12px; } .busca-global { width: 56%; } .conteudo { padding: 17px 12px; } .atalhos, .mini-indicadores, .duas-colunas, .form-grid { grid-template-columns: 1fr; } .alerta, .cabecalho, .cliente-topo { align-items: flex-start; flex-direction: column; } .aba { padding: 10px 8px; } .form-grid .linha-inteira { grid-column: auto; } }
-    /* ================= AGENDA SEMANAL E ROTAS ================= */
+
+    /* AGENDA SEMANAL E ROTAS */
     .agenda-toolbar { display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:0 0 18px; }
     .agenda-controles { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
     .agenda-controles button { min-width:38px; }
@@ -185,132 +162,21 @@
     .ag-rota-avisos {font-size:12px;background:#fff4e3;color:#8a5a19;border:1px solid #f3ddbd;border-radius:8px;padding:11px;margin:15px 0;}
     .ag-cinza {color:var(--suave);font-size:12px;}
     .ag-inline {display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-    .ag-data {font-size:13px;font-weight:800;color:var(--verde-escuro);}
-    @media(max-width:1400px){.ag-sugestoes {grid-template-columns:repeat(2,minmax(0,1fr));}.ag-form {grid-template-columns:repeat(2,minmax(0,1fr));}}
-    @media(max-width:900px){.ag-layout-rota {grid-template-columns:1fr;}}
-    @media(max-width:680px){.ag-form,.ag-sugestoes,.manual-form,.ag-resumo-rota {grid-template-columns:1fr;}.agenda-periodo{min-width:0;}.agenda-toolbar{align-items:flex-start;}.ag-submit{justify-content:stretch;}.ag-submit button{flex:1;}}
 
-
-    /* FORNECEDORES — buscas independentes, cadastro e ficha */
-    .for-toolbar {display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:5px 0 17px;}
-    .for-filtros {display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1fr) auto;gap:13px;align-items:end;margin:0 0 18px;}
-    .for-filtros label,.for-form label {display:block;font-size:12px;font-weight:700;color:#52665a;}
-    .for-filtros input,.for-form input,.for-form textarea {margin-top:6px;}
-    .for-form {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;}
-    .for-form .full {grid-column:1/-1;}
-    .for-form textarea {width:100%;min-height:96px;padding:11px 12px;border:1px solid #cfdbd3;border-radius:9px;resize:vertical;background:#fff;color:var(--texto);font:inherit;}
-    .for-form textarea:focus-visible {outline:2px solid var(--verde);outline-offset:2px;}
-    .for-form-acoes {grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;margin-top:4px;}
-    .for-name-link {font-weight:750;color:var(--texto);}
-    .for-cnpj {display:block;font-size:11px;color:var(--suave);margin-top:3px;}
-    .for-aberto {color:#9a6a23;font-weight:800;}
-    .for-ficha-head {display:flex;align-items:center;gap:14px;min-width:0;}
-    .for-ficha-avatar {display:grid;place-items:center;width:60px;height:60px;border-radius:13px;background:var(--verde-claro);color:var(--verde-escuro);font-size:26px;flex-shrink:0;}
-    .for-ficha-head h2 {font-size:20px;margin-bottom:4px;}
-    .for-ficha-head p {font-size:12px;color:var(--suave);}
-    .for-ficha-topo {display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px;margin:16px 0 20px;}
-    .for-observacao {color:#4f6356;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;}
-    .for-vazio {text-align:center;color:var(--suave);padding:38px 14px;border:1px dashed #d5e2d9;border-radius:11px;background:#fbfcfb;}
-    .for-meta-texto {color:var(--suave);font-size:12px;margin-top:7px;}
-    .for-pedido-caption {color:var(--suave);font-size:11px;display:block;margin-top:3px;}
-    @media(max-width:1100px){.for-filtros {grid-template-columns:1fr 1fr;}.for-filtros .botao{grid-column:1/-1;justify-self:start;}}
-    @media(max-width:680px){.for-filtros,.for-form {grid-template-columns:1fr;}.for-form .full,.for-form-acoes{grid-column:1;}.for-ficha-topo{align-items:flex-start;flex-direction:column;}.for-form-acoes{flex-wrap:wrap;}}
-
-    /* ORÇAMENTOS — pesquisa por código, cliente e intervalo inclusivo */
-    .orc-filtros {display:grid;grid-template-columns:minmax(170px,1.1fr) minmax(190px,1.1fr) minmax(140px,.75fr) minmax(140px,.75fr) auto;gap:13px;align-items:end;margin-bottom:15px;}
-    .orc-filtros label {font-size:12px;color:#52665a;font-weight:700;}
-    .orc-filtros input {margin-top:6px;min-height:42px;}
-    .orc-filtros .botao {min-height:42px;white-space:nowrap;}
-    .orc-head-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-    .orc-tabela-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 13px;}
-    .orc-link{border-radius:3px;text-align:left;}
-    .orc-erro{color:var(--vermelho);font-size:12px;margin:8px 0;}
-    .orc-ficha-topo{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px;margin-bottom:20px;}
-    .orc-ficha-cabecalho{display:flex;align-items:center;gap:16px;}
-    .orc-ficha-cabecalho h2{font-size:23px;}
-    .orc-ficha-icone{width:59px;height:59px;display:grid;place-items:center;background:var(--verde-claro);border-radius:14px;color:var(--verde-escuro);font-size:26px;}
-    .orc-status-box{margin-top:20px;padding:15px;background:#f7faf8;border:1px solid var(--borda);border-radius:10px;display:grid;gap:9px;}
-    .orc-status-box label{font-size:12px;color:#52665a;font-weight:750;}
-    .orc-status-box select{max-width:350px;}
-    .orc-urgente{padding:13px;background:#fff3e2;color:#925c1f;border:1px solid #f2ddb8;border-radius:9px;font-size:12px;margin-top:13px;}
-    @media(max-width:1400px){.orc-filtros{grid-template-columns:repeat(2,minmax(0,1fr));}.orc-filtros .botao{justify-self:start;}}
-    @media(max-width:680px){.orc-filtros{grid-template-columns:1fr;}.orc-ficha-topo{flex-direction:column;align-items:flex-start;}.abas{overflow-x:auto;}}
-
-    /* OBRAS - painel operacional */
-    .ob-filtros{display:grid;grid-template-columns:1fr 1.2fr minmax(138px,.75fr) minmax(138px,.75fr) auto;align-items:end;gap:13px;margin:0 0 17px;}
-    .ob-filtros label,.ob-form label,.doc-form label{font-size:12px;font-weight:700;color:#52665a;display:block;}
-    .ob-filtros input,.ob-form input,.ob-form select,.doc-form input,.doc-form select,.doc-form textarea{margin-top:6px;}
-    .ob-filtros .botao{white-space:nowrap;}
-    .ob-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:17px;}
-    .ob-progresso{width:110px;height:8px;background:#e0e8e2;border-radius:30px;overflow:hidden;margin-top:6px;}
-    .ob-progresso>div{height:100%;background:var(--verde);border-radius:30px;}
-    .ob-status{font-size:11px;color:#8c5f18;display:block;margin-top:4px;}
-    .ob-atrasada{color:var(--vermelho)!important;}
-    .ob-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
-    .ob-ficha-resumo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px;}
-    .ob-ficha-resumo .card{padding:17px;}
-    .ob-ficha-resumo small{display:block;color:var(--suave);}
-    .ob-ficha-resumo strong{font-size:18px;}
-    .ob-aviso{font-size:12px;padding:11px 13px;border-radius:8px;background:#fff5e9;color:#835a22;margin:12px 0;}
-    /* CLIENTES - histórico visual e documentos */
-    .cl-hist-filtros{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:22px;}
-    .cl-hist-filtros select{width:auto;min-width:180px;}
-    .cl-hist-lista{position:relative;margin:0;padding:0 0 0 49px;list-style:none;}
-    .cl-hist-lista:before{content:'';position:absolute;top:16px;bottom:20px;left:18px;width:2px;background:#c8e0cf;}
-    .cl-hist-item{position:relative;margin-bottom:15px;}
-    .cl-hist-bolha{position:absolute;left:-48px;top:15px;width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#e5f2e8;border:2px solid #fff;box-shadow:0 0 0 1px #bcd6c2;color:var(--verde-escuro);font-size:16px;z-index:1;}
-    .cl-hist-evento{width:100%;display:flex;align-items:start;justify-content:space-between;gap:15px;text-align:left;border:1px solid var(--borda);background:white;padding:17px 18px;border-radius:11px;color:inherit;transition:background .15s,border .15s,transform .15s;}
-    .cl-hist-evento:hover{background:#f6fbf7;border-color:#a2cbaa;transform:translateX(2px);}
-    .cl-hist-evento b{display:block;font-size:14px;margin:5px 0;}
-    .cl-hist-evento p{color:#65786b;font-size:12px;}
-    .cl-hist-data{font-size:11px;color:var(--suave);font-weight:700;}
-    .cl-hist-tipo{font-size:10px;border-radius:99px;padding:4px 8px;background:#eff5f0;color:#427050;font-weight:750;display:inline-block;}
-    .cl-hist-detalhe{color:var(--verde-escuro);font-weight:800;font-size:12px;white-space:nowrap;align-self:center;}
-    .cl-hist-vazio{padding:40px;text-align:center;color:var(--suave);background:#f8faf8;border-radius:10px;}
-    .cl-doc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;}
-    .cl-doc-card{border:1px solid var(--borda);background:white;border-radius:12px;padding:17px;display:flex;flex-direction:column;gap:9px;min-height:225px;text-align:left;}
-    .cl-doc-card:hover{background:#f8fcf9;border-color:#a4cbb0;}
-    .cl-doc-icon{width:49px;height:49px;border-radius:12px;display:grid;place-items:center;background:var(--verde-claro);font-size:25px;color:var(--verde-escuro);}
-    .cl-doc-card strong{font-size:13px;overflow-wrap:anywhere;}
-    .cl-doc-card small{color:var(--suave);font-size:11px;}
-    .cl-doc-rodape{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:5px;font-size:11px;}
-    .cl-doc-aviso{padding:11px 14px;background:#f5f8f6;border:1px solid #dce7df;border-radius:9px;color:#576c5d;font-size:12px;margin-bottom:17px;}
-    .doc-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;}
-    .doc-form textarea{width:100%;min-height:68px;padding:10px;border:1px solid #cfdcd3;border-radius:8px;resize:vertical;font:inherit;}
-    .doc-form .full{grid-column:1/-1;}
-    .cl-overlay{position:fixed;inset:0;z-index:1000;background:#18231cb8;display:flex;justify-content:flex-end;align-items:stretch;}
-    .cl-drawer{background:white;width:min(520px,100%);height:100%;overflow-y:auto;box-shadow:-10px 0 35px #0002;padding:27px;position:relative;}
-    .cl-drawer h2{font-size:22px;margin:8px 0 10px;}
-    .cl-drawer header{border-bottom:1px solid var(--borda);padding-bottom:18px;margin-bottom:18px;}
-    .cl-drawer .cl-x{position:absolute;top:20px;right:20px;border:1px solid var(--borda);border-radius:8px;background:white;padding:5px 11px;font-size:20px;}
-    .cl-drawer .cl-descricao{font-size:13px;line-height:1.8;margin-bottom:19px;color:#51665a;}
-    .cl-doc-preview{width:100%;max-height:330px;object-fit:contain;border:1px solid var(--borda);border-radius:9px;background:#f7f9f8;margin:10px 0 16px;}
-    .cl-drawer .cl-acoes{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px;}
-    @media(max-width:1400px){.cl-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.ob-filtros{grid-template-columns:repeat(2,minmax(0,1fr));}.ob-filtros .botao{justify-self:start;}}
-    @media(max-width:700px){.cl-doc-grid,.ob-filtros,.ob-form,.ob-ficha-resumo,.doc-form{grid-template-columns:1fr;}.doc-form .full{grid-column:1;}.cl-hist-lista{padding-left:45px;}.cl-hist-detalhe{display:none;}.cl-drawer{padding:18px;}}
-
-    /* Fluxo Orçamento → OS → Obra/Serviço */
-    .fluxo-card {border:1px solid #dae9de;background:#f8fcf9;border-radius:12px;padding:17px;}
-    .fluxo-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
-    .fluxo-passo {background:#fff;border:1px solid #d9e6dd;border-radius:10px;padding:13px;display:flex;align-items:flex-start;gap:10px;min-width:0;}
-    .fluxo-num {width:28px;height:28px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--verde-claro);color:var(--verde-escuro);font-weight:800;}
-    .fluxo-passo small {display:block;color:var(--suave);font-weight:650;}
-    .fluxo-link {display:block;text-align:left;overflow-wrap:anywhere;font-size:13px;}
-    .fluxo-pendente {display:block;font-size:12px;color:#799085;font-weight:600;}
-    .os-acoes {margin-top:17px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;}
-    .os-filtros {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-bottom:15px;}
-    .os-filtros label {font-size:12px;font-weight:700;color:#52665a;}
-    .os-filtros input {margin-top:5px;}
-    .os-origem {background:#f4f8f5;border:1px solid #e2ebe5;padding:13px;border-radius:9px;}
-    .os-origem small {display:block;color:var(--suave);}
-    .os-origem b {overflow-wrap:anywhere;}
-    @media(max-width:750px){.fluxo-grid,.os-filtros{grid-template-columns:1fr;}}
+    @media(max-width:900px) { .lateral { width: 72px; padding: 20px 8px; } .marca { justify-content: center; padding: 0 0 20px; } .marca-simbolo { font-size: 24px; } .marca .texto, .nav-btn .nome, .nav-titulo, .menu-rodape { display: none; } .nav-btn { justify-content: center; } .conteudo { padding: 22px; } }
+    @media(max-width:680px) { .topo { padding: 12px; } .busca-global { width: 56%; } .conteudo { padding: 17px 12px; } .mini-indicadores, .duas-colunas { grid-template-columns: 1fr; } .cabecalho, .cliente-topo { align-items: flex-start; flex-direction: column; } .ag-form,.ag-sugestoes,.manual-form,.ag-resumo-rota {grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
   <div class="app">
     <aside class="lateral">
-      <div class="marca"><div class="marca-simbolo">⌂</div><div class="texto"><strong>Serralheria<span>Casa das Artes</span></strong><small>Sistema de gestão</small></div></div>
+      <div class="marca">
+        <div class="marca-simbolo">⌂</div>
+        <div class="texto">
+          <strong>Serralheria<span>Casa das Artes</span></strong>
+          <small>Sistema de gestão</small>
+        </div>
+      </div>
       <div class="nav-titulo">MENU PRINCIPAL</div>
       <nav id="menu" class="navegacao" aria-label="Navegação principal"></nav>
       <div class="menu-rodape">● Perfil: proprietário<br>Visão administrativa</div>
@@ -318,1244 +184,320 @@
     <div class="principal">
       <header class="topo">
         <div class="busca-global">⌕ &nbsp; Sistema de Gestão • Casa das Artes</div>
-        <div class="perfil"><div class="avatar">AD</div><div><strong>Administrador</strong><small>Proprietário</small></div></div>
+        <div class="perfil">
+          <div class="avatar">AD</div>
+          <div><strong>Administrador</strong><small>Proprietário</small></div>
+        </div>
       </header>
       <main class="conteudo" id="pagina"></main>
     </div>
   </div>
+
 <script>
-  // Altere os módulos aqui: cada item aparece no menu lateral e na Home.
+  // Módulos focados no escopo atual
   const modulos = [
     {id:'inicio', nome:'Início', icone:'⌂'},
     {id:'clientes', nome:'Clientes', icone:'♧'},
-    {id:'agendamento', nome:'Agendamento', icone:'▦'},
-    {id:'financeiro', nome:'Financeiro', icone:'▤'},
-    {id:'estoque', nome:'Estoque', icone:'▣'},
-    {id:'frotas', nome:'Frotas', icone:'▱'},
-    {id:'almoxarifado', nome:'Almoxarifado', icone:'⌑'},
-    {id:'compras', nome:'Compras', icone:'🛒'},
-    {id:'vendas', nome:'Vendas', icone:'▥'},
-    {id:'ordens', nome:'Ordens de Serviço', icone:'▤'},
-    {id:'orcamentos', nome:'Orçamentos', icone:'▧'},
-    {id:'conciliacao', nome:'Conciliação Financeira', icone:'↻'},
-    {id:'nota-fiscal', nome:'Nota Fiscal', icone:'▧'},
-    {id:'fornecedores', nome:'Fornecedores', icone:'▤'},
-    {id:'followup', nome:'Follow-up de Vendas', icone:'◷'},
-    {id:'contratos', nome:'Contratos', icone:'✎'},
-    {id:'obras', nome:'Obras', icone:'▥'}
+    {id:'agendamento', nome:'Agendamento', icone:'▦'}
   ];
 
-  // DADOS ILUSTRATIVOS — substitua por dados do seu backend no produto real.
-  // Migrado para Postgree 
+  // DADOS DE CLIENTES — Consumidos do PostgreSQL via Django API REST
   let clientes = [];
 
   async function carregarClientesDoBackend() {
     try {
-        const response = await fetch('/api/clientes/');
-        const result = await response.json();
-        if (result.status === 'success') {
-            clientes = result.data.map(c => ({
-                id: String(c.id).padStart(6, '0'),
-                dbId: c.id,
-                nome: c.nome,
-                cpf: c.cpf_cnpj,
-                contato: c.telefone,
-                status: c.status.charAt(0).toUpperCase() + c.status.slice(1)
-            }));
-            if (typeof atualizarListaClientes === 'function') {
-                atualizarListaClientes();
-            }
+      const response = await fetch('/api/clientes/');
+      const result = await response.json();
+      if (result.status === 'success') {
+        clientes = result.data.map(c => ({
+          id: String(c.id).padStart(6, '0'),
+          dbId: c.id,
+          nome: c.nome,
+          cpf: c.cpf_cnpj,
+          contato: c.telefone,
+          status: c.status ? (c.status.charAt(0).toUpperCase() + c.status.slice(1)) : 'Ativo'
+        }));
+        if (typeof atualizarListaClientes === 'function') {
+          atualizarListaClientes();
         }
+      }
     } catch (err) {
-        console.error("Erro ao carregar clientes do banco:", err);
+      console.error("Erro ao carregar clientes do banco:", err);
     }
   }
 
-  // Executa a busca ao carregar a página
+  // Busca inicial dos clientes do banco
   carregarClientesDoBackend();
 
-  const financeiro = {semana:{vendas:48750, custos:32180}, mes:{vendas:184900, custos:126430}, meta:200000};
-  const FORNECEDORES_STORAGE = 'casa-das-artes-fornecedores-demo-v1';
-  const fornecedoresIniciais = [
-    {id:'FOR-001',nome:'Distribuidora de Telhas Exemplo',cnpj:'00.000.000/0001-91',endereco:'Av. do Comércio, 250 - Centro, Rio de Janeiro / RJ',telefone:'(21) 3333-1000',categoria:'Telhas e coberturas',servico:'Telhas termoacústicas, telhas metálicas e acessórios para cobertura',observacoes:'Solicitar prazo de entrega e disponibilidade antes de confirmar a obra.'},
-    {id:'FOR-002',nome:'Aços Modelo',cnpj:'00.000.000/0002-72',endereco:'Rua das Indústrias, 410 - Bonsucesso, Rio de Janeiro / RJ',telefone:'(21) 3333-2000',categoria:'Perfis e chapas',servico:'Perfis de aço, tubos metalon, chapas e corte sob medida',observacoes:'Atendimento comercial em dias úteis.'},
-    {id:'FOR-003',nome:'Ferragens Alfa',cnpj:'00.000.000/0003-53',endereco:'Rua do Ferro, 80 - São Cristóvão, Rio de Janeiro / RJ',telefone:'(21) 3333-3000',categoria:'Ferragens e acessórios',servico:'Fechaduras, dobradiças, roldanas e kits para portões',observacoes:'Confirmar estoque para produtos especiais.'},
-    {id:'FOR-004',nome:'Pintura Industrial Atlântico',cnpj:'00.000.000/0004-34',endereco:'Rua das Oficinas, 120 - Penha, Rio de Janeiro / RJ',telefone:'(21) 3333-4000',categoria:'Pintura e acabamento',servico:'Pintura eletrostática e galvanização de estruturas',observacoes:'Enviar especificações e dimensões para cotação.'}
-  ];
-  let fornecedores;
-  try {const salvos = JSON.parse(localStorage.getItem(FORNECEDORES_STORAGE)); fornecedores = Array.isArray(salvos) ? salvos : fornecedoresIniciais;}
-  catch {fornecedores = fornecedoresIniciais;}
-  const pedidosFornecedor = [
-    {id:'PC-2026-041',fornecedorId:'FOR-001',data:'2026-11-04',descricao:'Telhas termoacústicas',quantidade:'85 m²',valor:11800,status:'Aguardando entrega',previsao:'2026-11-14'},
-    {id:'PC-2026-029',fornecedorId:'FOR-001',data:'2026-10-17',descricao:'Parafusos autoperfurantes',quantidade:'400 un.',valor:760,status:'Recebido',previsao:'2026-10-23'},
-    {id:'PC-2026-035',fornecedorId:'FOR-002',data:'2026-11-01',descricao:'Tubos metalon',quantidade:'130 m',valor:6900,status:'Solicitado',previsao:'2026-11-16'},
-    {id:'PC-2026-020',fornecedorId:'FOR-002',data:'2026-10-10',descricao:'Chapas galvanizadas',quantidade:'30 un.',valor:4950,status:'Recebido',previsao:'2026-10-18'},
-    {id:'PC-2026-039',fornecedorId:'FOR-003',data:'2026-11-03',descricao:'Fechaduras e dobradiças',quantidade:'20 kits',valor:1820,status:'Confirmado',previsao:'2026-11-12'},
-    {id:'PC-2026-017',fornecedorId:'FOR-003',data:'2026-09-29',descricao:'Roldanas para portão',quantidade:'16 un.',valor:1280,status:'Recebido',previsao:'2026-10-03'},
-    {id:'PC-2026-022',fornecedorId:'FOR-004',data:'2026-10-14',descricao:'Pintura de grades',quantidade:'1 serviço',valor:3150,status:'Finalizado',previsao:'2026-10-25'}
-  ];
-  const contratos = [
-    {numero:'CT-2026-015', cliente:'João da Silva', objeto:'Instalação de portão', situacao:'Em execução'},
-    {numero:'CT-2026-014', cliente:'Maria Oliveira', objeto:'Cobertura metálica', situacao:'Assinado'},
-    {numero:'CT-2026-013', cliente:'Carlos Pereira', objeto:'Reforma de grade', situacao:'Finalizado'}
-  ];
-  const pedidos = [
-    {codigo:'PED-0142', clienteId:'000142', data:'2026-11-04', descricao:'Portão sob medida', valor:2450, status:'Concluído'},
-    {codigo:'PED-0131', clienteId:'000141', data:'2026-10-29', descricao:'Manutenção de grade', valor:480, status:'Em andamento'},
-    {codigo:'PED-0120', clienteId:'000140', data:'2026-10-20', descricao:'Janela de alumínio', valor:1380, status:'Concluído'}
-  ];
-  function somarDias(n) { let d = new Date(); d.setHours(12,0,0,0); d.setDate(d.getDate()+n); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
-  const orcamentosIniciais = [
-    {id:'ORC-1001',cliente:'João da Silva',servico:'Portão automático',valor:5200,envio:somarDias(-9),proximoContato:somarDias(-3),status:'Aguardando retorno'},
-    {id:'ORC-1002',cliente:'Maria Oliveira',servico:'Cobertura de telhas',valor:12300,envio:somarDias(-6),proximoContato:somarDias(-1),status:'Aguardando retorno'},
-    {id:'ORC-1003',cliente:'Carlos Pereira',servico:'Guarda-corpo',valor:2400,envio:somarDias(-2),proximoContato:somarDias(2),status:'Aguardando retorno'},
-    {id:'ORC-1004',cliente:'Fernanda Costa',servico:'Portão de garagem',valor:6900,envio:somarDias(-1),proximoContato:somarDias(3),status:'Aguardando retorno'},
-    {id:'ORC-1005',cliente:'João da Silva',servico:'Reparo de grade',valor:700,envio:somarDias(-15),proximoContato:somarDias(-8),status:'Em negociação'},
-    {id:'ORC-1006',cliente:'Maria Oliveira',servico:'Janela de alumínio',valor:4200,envio:somarDias(-21),proximoContato:somarDias(-14),status:'Aprovado'}
-  ];
-  const CHAVE = 'casa-das-artes-orcamentos-demo-v1';
-  let orcamentos;
-  try { const salvos=JSON.parse(localStorage.getItem(CHAVE)); orcamentos=Array.isArray(salvos)?salvos:orcamentosIniciais; }
-  catch { orcamentos=orcamentosIniciais; }
-  // Os orçamentos usam a mesma base nas três interfaces: lista geral,
-  // follow-up de vendas e ficha individual do cliente.
-  for (const orc of orcamentos) {
-    if (!orc.clienteId) {
-      const cli=clientes.find(c=>c.nome.toLocaleLowerCase('pt-BR')===String(orc.cliente||'').toLocaleLowerCase('pt-BR'));
-      if(cli) orc.clienteId=cli.id; // compatibilidade com registros de versões anteriores
-    }
+  let paginaAtual = 'inicio', clienteAtual = null, pesquisaCliente = '';
+  const elPagina = document.getElementById('pagina');
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const statusChip = s => `<span class="chip ${s === 'Inativo' ? 'chip-vermelho' : 'chip-verde'}">${esc(s)}</span>`;
+
+  function ir(p) {
+    paginaAtual = p;
+    clienteAtual = null;
+    render();
+    window.scrollTo(0,0);
   }
 
-  /* ================================================================
-     FLUXO COMERCIAL E EXECUÇÃO
-     ORÇAMENTO (aprovado) -> ORDEM DE SERVIÇO -> OBRA OU SERVIÇO.
-     Os pedidos da versão anterior viram registros LEGADOS navegáveis,
-     sem inventar origem orçamentária nem vincular obras incorretas.
-     No produto real, geração e vínculos exigem transação no backend.
-     ================================================================ */
-  const CHAVE_OS='casa-das-artes-ordens-servico-demo-v1';
-  const ordensLegadas=pedidos.map(p=>({
-    id:p.codigo, clienteId:p.clienteId, orcamentoId:'', obraId:'',
-    servico:p.descricao, valor:p.valor, data:p.data,
-    status:p.status==='Concluído'?'Concluída':p.status==='Em andamento'?'Em execução':p.status,
-    legado:true
-  }));
-  let ordensServico;
-  try{
-    const gravadas=JSON.parse(localStorage.getItem(CHAVE_OS));
-    ordensServico=Array.isArray(gravadas)?gravadas:ordensLegadas;
-  }catch(e){ordensServico=ordensLegadas;}
-  let osAtual=null, filtroOS='', filtroOSCliente='', osParaNovaObraId=null, origemOSOrcamento=null;
-  function salvarOS(){try{localStorage.setItem(CHAVE_OS,JSON.stringify(ordensServico));}catch(e){console.warn('Persistência OS indisponível',e);}}
-  function osDoOrcamento(id){return ordensServico.find(x=>x.orcamentoId===id)||null;}
-  function obraDaOS(id){return obras.find(x=>x.osId===id)||null;}
-  function gerarCodigoOS(){
-    const ano=new Date().getFullYear();
-    let n=1, id;
-    do{id=`OS-${ano}-${String(n++).padStart(4,'0')}`;}while(ordensServico.some(o=>o.id===id));
-    return id;
-  }
-  function garantirOSDoOrcamento(o){
-    if(!o||o.status!=='Aprovado')return null;
-    const existente=osDoOrcamento(o.id);
-    if(existente)return existente;
-    const cliente=clienteDoOrcamento(o);
-    if(!cliente)return null;
-    const nova={id:gerarCodigoOS(),clienteId:cliente.id,orcamentoId:o.id,obraId:'',
-      servico:o.servico,valor:Number(o.valor)||0,data:somarDias(0),status:'Aguardando planejamento',legado:false};
-    ordensServico.unshift(nova);salvarOS();return nova;
-  }
-  function fluxoRelacionamento(orc,os,obra){
-    const passo=(indice,titulo,id,acao,sub)=>`<div class="fluxo-passo"><span class="fluxo-num">${indice}</span><div><small>${esc(titulo)}</small>${id?`<button class="link fluxo-link" onclick="${acao}">${esc(id)} ↗</button>`:`<b class="fluxo-pendente">${esc(sub||'Aguardando etapa anterior')}</b>`}</div></div>`;
-    return `<div class="fluxo-card"><div class="card-titulo"><span class="sinal">↔</span><h2>Rastreabilidade comercial e operacional</h2></div><div class="fluxo-grid">
-      ${passo(1,'Orçamento',orc?.id,orc?`abrirOrcamento('${esc(orc.id)}','ordens')`:null,os?.legado?'Pedido legado sem orçamento':'Orçamento não vinculado')}
-      ${passo(2,'Ordem de serviço',os?.id,os?`abrirOS('${esc(os.id)}')`:null,orc?.status==='Aprovado'?'Preparando OS':'Aprovação necessária')}
-      ${passo(3,'Obra / Serviço',obra?.id,obra?`abrirObra('${esc(obra.id)}')`:null,os?'Aguardando início':'Aguardando OS')}
-    </div></div>`;
+  function abrirCliente(id) {
+    clienteAtual = clientes.find(c => c.id === id) || null;
+    if (!clienteAtual) { alert('Cliente não localizado.'); return; }
+    paginaAtual = 'clientes';
+    render();
+    window.scrollTo(0,0);
   }
 
-  let paginaAtual='inicio', clienteAtual=null, abaAtual='dados', pesquisaCliente='', filtroOrcamento='Todos';
-  let orcamentoAtual=null, origemFichaOrcamento='orcamentos', origemClienteOrcamento=null;
-  let pesquisaOrcamentoCodigo='', pesquisaOrcamentoCliente='', dataOrcamentoInicial='', dataOrcamentoFinal='';
-  let fornecedorAtual=null, fornecedorAba='dados', formularioFornecedorVisivel=false, fornecedorEdicaoId=null, buscaFornecedorNome='', buscaFornecedorCategoria='';
-  let obraAtual=null, obrasFiltroId='', obrasFiltroCliente='', obrasFiltroInicio='', obrasFiltroFim='', obrasFiltroStatus='Em andamento', formularioNovaObra=false;
-  let historicoFiltro='Todos', formularioDocumentoAberto=false;
-  const elPagina=document.getElementById('pagina');
-  const brl=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(n)||0);
-  const fmtData=s=>s?new Date(s+'T12:00:00').toLocaleDateString('pt-BR'):'—';
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const pendentes=()=>orcamentos.filter(o=>o.status==='Aguardando retorno');
-  const vencidos=()=>pendentes().filter(o=>o.proximoContato<somarDias(0));
-  const statusChip=s=>`<span class="chip ${['Aguardando retorno','Em negociação','Em execução','Aguardando planejamento'].includes(s)?'chip-laranja':['Recusado','Inativo'].includes(s)?'chip-vermelho':'chip-verde'}">${esc(s)}</span>`;
-  function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(orcamentos));}catch(e){console.warn('Sem armazenamento local',e);}}
-  function ir(p){paginaAtual=p;clienteAtual=null;orcamentoAtual=null;osAtual=null;osParaNovaObraId=null;fornecedorAtual=null;obraAtual=null;formularioNovaObra=false;formularioDocumentoAberto=false;formularioFornecedorVisivel=false;fornecedorEdicaoId=null;render();window.scrollTo(0,0);}
-  function abrirCliente(id,aba='dados'){
-    clienteAtual=clientes.find(c=>c.id===id)||null;
-    if(!clienteAtual){alert('Cliente não localizado no cadastro.');return;}
-    orcamentoAtual=null; fornecedorAtual=null; obraAtual=null; paginaAtual='clientes'; abaAtual=aba; formularioDocumentoAberto=false; historicoFiltro='Todos';
-    render();window.scrollTo(0,0);
+  function cabecalho(titulo, desc, acoes='') {
+    return `<div class="cabecalho"><div><h1>${titulo}</h1><p class="suave">${desc}</p></div>${acoes}</div>`;
   }
-  function mudarAba(a){abaAtual=a;render();}
-  function clienteDoOrcamento(o){
-    return clientes.find(c=>c.id===o.clienteId)||clientes.find(c=>c.nome===o.cliente)||null;
+  function titulo(t, icone='▤') {
+    return `<div class="card-titulo"><span class="sinal">${icone}</span><h2>${t}</h2></div>`;
   }
-  function abrirClienteDoOrcamento(id){
-    const o=orcamentos.find(x=>x.id===id);
-    const c=o?clienteDoOrcamento(o):null;
-    if(!c){alert('Este orçamento ainda não está associado a um cliente cadastrado.');return;}
-    abrirCliente(c.id);
+  function info(a, b) {
+    return `<div class="info"><span>${a}</span><strong>${b}</strong></div>`;
   }
-  function abrirOrcamento(id,origem='orcamentos'){
-    const o=orcamentos.find(x=>x.id===id);
-    if(!o){alert('Orçamento não localizado.');return;}
-    orcamentoAtual=o;origemFichaOrcamento=origem;
-    origemClienteOrcamento=origem==='cliente'&&clienteAtual?clienteAtual.id:null;
-    origemOSOrcamento=origem==='ordens'&&osAtual?osAtual.id:null;
-    paginaAtual='orcamentos';clienteAtual=null;fornecedorAtual=null;
-    render();window.scrollTo(0,0);
+  function kpi(label, num, extra='') {
+    return `<div class="card mini-indicador"><small>${label}</small><b>${num}</b><p class="suave" style="font-size:11px">${extra}</p></div>`;
   }
-  function voltarDaFichaOrcamento(){
-    if(origemFichaOrcamento==='cliente'&&origemClienteOrcamento){abrirCliente(origemClienteOrcamento,'orcamentos');return;}
-    if(origemFichaOrcamento==='obras'){paginaAtual='obras';orcamentoAtual=null;render();return;}
-    if(origemFichaOrcamento==='ordens'&&origemOSOrcamento){abrirOS(origemOSOrcamento);return;}
-    ir(origemFichaOrcamento==='followup'?'followup':'orcamentos');
-  }
-  function cabecalho(titulo,desc,acoes=''){return `<div class="cabecalho"><div><h1>${titulo}</h1><p class="suave">${desc}</p></div>${acoes}</div>`;}
-  function titulo(t,icone='▤'){return `<div class="card-titulo"><span class="sinal">${icone}</span><h2>${t}</h2></div>`;}
-  function info(a,b){return `<div class="info"><span>${a}</span><strong>${b}</strong></div>`;}
-  function kpi(label,num,extra=''){return `<div class="card mini-indicador"><small>${label}</small><b>${num}</b><p class="suave" style="font-size:11px">${extra}</p></div>`;}
-  function renderMenu(){document.getElementById('menu').innerHTML=modulos.map(m=>`<button type="button" class="nav-btn ${m.id===paginaAtual?'ativo':''}" onclick="ir('${m.id}')"><span class="ico">${m.icone}</span><span class="nome">${m.nome}</span></button>`).join('');}
 
-  function home(){
-    const p=pendentes().length, v=vencidos().length, progress=Math.min(100,financeiro.mes.vendas/financeiro.meta*100);
-    const atalhos=modulos.filter(m=>m.id!=='inicio').map(m=>`<button class="atalho" onclick="ir('${m.id}')"><span class="sinal">${m.icone}</span><span>${m.nome}</span><span class="seta">›</span></button>`).join('');
-    const periodo=(nome,d)=>`<div class="periodo"><strong class="titulo">▦ ${nome}</strong><div class="linha"><span>Total de vendas</span><b>${brl(d.vendas)}</b></div><div class="linha"><span>Total de custos</span><b>${brl(d.custos)}</b></div><div class="linha lucro"><span>Lucro</span><b>${brl(d.vendas-d.custos)}</b></div></div>`;
-    return `${cabecalho('Painel Geral','Visão do proprietário • Serralheria Casa das Artes','<span class="chip chip-verde">Administrador</span>')}
-      <section class="alerta"><div><strong>◷ ${p} orçamento(s) aguardando resposta dos clientes</strong><p class="suave">${v} follow-up(s) com data de contato vencida. Acompanhe os orçamentos enviados e registre o retorno.</p></div><button class="botao" onclick="ir('followup')">Ver follow-ups →</button></section>
+  function renderMenu() {
+    document.getElementById('menu').innerHTML = modulos.map(m => 
+      `<button type="button" class="nav-btn ${m.id === paginaAtual ? 'ativo' : ''}" onclick="ir('${m.id}')">
+        <span class="ico">${m.icone}</span>
+        <span class="nome">${m.nome}</span>
+      </button>`
+    ).join('');
+  }
+
+  // HOME FOCADA
+  function home() {
+    const atalhos = modulos.filter(m => m.id !== 'inicio').map(m => 
+      `<button class="atalho" onclick="ir('${m.id}')">
+        <span class="sinal">${m.icone}</span>
+        <span>${m.nome}</span>
+        <span class="seta">›</span>
+      </button>`
+    ).join('');
+
+    return `${cabecalho('Painel Geral', 'Serralheria Casa das Artes', '<span class="chip chip-verde">Administrador</span>')}
       <div class="home-grid">
-        <section class="card card-pad">${titulo('Acesso rápido aos módulos','▦')}<div class="atalhos">${atalhos}</div></section>
-        <section class="card"><div class="financeiro-topo">${titulo('Resumo Financeiro','▥')}</div><div class="card-pad">${periodo('Semanal',financeiro.semana)}${periodo('Mensal',financeiro.mes)}<div class="meta"><h3>◎ Meta mensal de vendas</h3><div style="font-size:23px;font-weight:800;color:var(--verde-escuro)">${brl(financeiro.meta)}</div><p class="suave">Realizado: ${brl(financeiro.mes.vendas)}</p><div class="progresso"><div style="width:${progress}%"></div></div><small>${progress.toFixed(1).replace('.',',')}% da meta atingida</small></div></div></section>
-      </div><p class="notinha">Protótipo com informações fictícias. A Home e seus números financeiros devem ser protegidos por autorização no backend.</p>`;
+        <section class="card card-pad">
+          ${titulo('Acesso rápido aos módulos', '▦')}
+          <div class="atalhos">${atalhos}</div>
+        </section>
+        <section class="card card-pad">
+          ${titulo('Resumo do Sistema', '♧')}
+          <div class="mini-indicadores">
+            ${kpi('Clientes Cadastrados', clientes.length, 'Base PostgreSQL')}
+            ${kpi('Agendamentos', agendamentos.length, 'Visitas cadastradas')}
+          </div>
+        </section>
+      </div>`;
   }
 
-  function listarClientes(){
-    const linhas=clientes.filter(c=>(c.nome+c.id+c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c=>`<tr><td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td><td>${c.cpf}</td><td>${c.contato}</td><td>${statusChip(c.status)}</td><td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td></tr>`).join('');
-    return `${cabecalho('Clientes','Consulta e centralização de dados cadastrais','<button class="botao" onclick="abrirModalNovoCliente()">+ Novo cliente</button>')}
-    <section class="card card-pad">${titulo('Relação de clientes','♧')}<div class="filtro"><input id="buscaCliente" class="campo-input" placeholder="Buscar por nome, código ou telefone" value="${esc(pesquisaCliente)}" oninput="pesquisaCliente=this.value;atualizarListaClientes()"></div><div class="tabela-wrap"><table><thead><tr><th>Cliente</th><th>CPF</th><th>Telefone</th><th>Status</th><th></th></tr></thead><tbody id="linhasClientes">${linhas||'<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>'}</tbody></table></div></section>`;
+  // CLIENTES
+  function listarClientes() {
+    const linhas = clientes.filter(c => (c.nome + c.id + c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c => 
+      `<tr>
+        <td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td>
+        <td>${esc(c.cpf || '—')}</td>
+        <td>${esc(c.contato || '—')}</td>
+        <td>${statusChip(c.status)}</td>
+        <td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td>
+      </tr>`
+    ).join('');
+
+    return `${cabecalho('Clientes', 'Consulta e centralização de dados cadastrais', '<button class="botao" onclick="abrirModalNovoCliente()">+ Novo cliente</button>')}
+    <section class="card card-pad">
+      ${titulo('Relação de clientes', '♧')}
+      <div class="filtro">
+        <input id="buscaCliente" class="campo-input" placeholder="Buscar por nome, código ou telefone" value="${esc(pesquisaCliente)}" oninput="pesquisaCliente=this.value;atualizarListaClientes()">
+      </div>
+      <div class="tabela-wrap">
+        <table>
+          <thead>
+            <tr><th>Cliente</th><th>CPF / CNPJ</th><th>Telefone</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="linhasClientes">${linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>'}</tbody>
+        </table>
+      </div>
+    </section>`;
   }
-  function atualizarListaClientes(){
-    // Atualiza somente a tabela, sem tirar o foco do campo de pesquisa.
-    const linhas=clientes.filter(c=>(c.nome+c.id+c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c=>`<tr><td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td><td>${c.cpf}</td><td>${c.contato}</td><td>${statusChip(c.status)}</td><td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td></tr>`).join('');
-    document.getElementById('linhasClientes').innerHTML=linhas||'<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>';
+
+  function atualizarListaClientes() {
+    const linhas = clientes.filter(c => (c.nome + c.id + c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c => 
+      `<tr>
+        <td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td>
+        <td>${esc(c.cpf || '—')}</td>
+        <td>${esc(c.contato || '—')}</td>
+        <td>${statusChip(c.status)}</td>
+        <td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td>
+      </tr>`
+    ).join('');
+    const el = document.getElementById('linhasClientes');
+    if (el) el.innerHTML = linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>';
   }
 
   async function abrirModalNovoCliente() {
     const nome = prompt("Nome do Cliente:");
     if (!nome) return;
-    
     const cpf_cnpj = prompt("CPF ou CNPJ:");
     if (!cpf_cnpj) return;
-    
     const telefone = prompt("Telefone:");
     if (!telefone) return;
 
     try {
-        const response = await fetch('/api/clientes/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify({ nome, cpf_cnpj, telefone })
-        });
-        
-        const result = await response.json();
-        if (response.ok) {
-            alert('Cliente cadastrado com sucesso no PostgreSQL!');
-            location.reload(); // Recarrega a página para atualizar a tabela com o novo cliente do banco
-        } else {
-            alert('Erro ao cadastrar: ' + (result.message || JSON.stringify(result)));
-        }
+      const response = await fetch('/api/clientes/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ nome, cpf_cnpj, telefone })
+      });
+      
+      const result = await response.json();
+      if (response.ok) {
+        alert('Cliente cadastrado com sucesso no PostgreSQL!');
+        carregarClientesDoBackend();
+      } else {
+        alert('Erro ao cadastrar: ' + (result.message || JSON.stringify(result)));
+      }
     } catch (err) {
-        alert('Erro na requisição: ' + err);
+      alert('Erro na requisição: ' + err);
     }
   }
 
-  // Função auxiliar para capturar o token CSRF do Django
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
         }
+      }
     }
     return cookieValue;
   }
 
-  function fichaCliente(){
-    const c=clienteAtual;
-    const tabs=['dados','orcamentos','pedidos','financeiro','historico','documentos'];
-    const seusOrcamentos=orcamentos.filter(o=>clienteDoOrcamento(o)?.id===c.id);
-    let corpo='';
-    if(abaAtual==='dados') corpo=`<div class="duas-colunas">
-        <section class="card card-pad">${titulo('Informações básicas','♧')}
-            ${info('Nome completo', esc(c.nome))}
-            ${info('CPF / CNPJ', esc(c.cpf || 'Não informado'))}
-            ${info('Telefone', esc(c.contato || 'Não informado'))}
-            ${info('E-mail', esc(c.email || 'Não informado'))}
-        </section>
-        <section class="card card-pad">${titulo('Endereço','⌖')}
-            ${info('Endereço', esc(c.endereco || 'Nenhum endereço cadastrado'))}
-        </section>
-        <section class="card card-pad">${titulo('Comunicações','✉')}
-            ${info('Avisos de pedidos', 'Ativado')}
-            ${info('Campanhas de marketing', 'Desativado')}
-        </section>
-        <section class="card card-pad">${titulo('Observações','✎')}
-            <p class="nota">Nenhuma observação registrada.</p>
-        </section>
-    </div>`;
-    if(abaAtual==='orcamentos'){
-      const total=seusOrcamentos.reduce((s,o)=>s+Number(o.valor||0),0);
-      const rows=seusOrcamentos.slice().sort((a,b)=>b.envio.localeCompare(a.envio)).map(o=>`<tr>
-        <td><button class="link orc-link" onclick="abrirOrcamento('${esc(o.id)}','cliente')">${esc(o.id)} ↗</button></td>
-        <td>${fmtData(o.envio)}</td><td>${esc(o.servico)}</td><td>${brl(o.valor)}</td>
-        <td>${statusChip(o.status)}</td><td>${fmtData(o.proximoContato)}</td>
-        <td>${osDoOrcamento(o.id)?`<button class="link" onclick="abrirOS('${esc(osDoOrcamento(o.id).id)}')">${esc(osDoOrcamento(o.id).id)} ↗</button>`:'—'}</td>
-      </tr>`).join('');
-      corpo=`<div class="mini-indicadores">${kpi('Orçamentos do cliente',seusOrcamentos.length,'Todos os status')}${kpi('Valor total orçado',brl(total),'Soma dos orçamentos')}${kpi('Aguardando retorno',seusOrcamentos.filter(o=>o.status==='Aguardando retorno').length,'Ainda sem resposta')}</div>
-        <section class="card card-pad">${titulo('Orçamentos deste cliente','▧')}<div class="tabela-wrap"><table><thead><tr><th>Orçamento</th><th>Data de envio</th><th>Serviço / material</th><th>Valor</th><th>Situação</th><th>Próximo contato</th><th>OS</th></tr></thead><tbody>${rows||'<tr><td class="sem-resultado" colspan="7">Nenhum orçamento cadastrado para este cliente.</td></tr>'}</tbody></table></div></section>`;
-    }
-    if(abaAtual==='pedidos'){
-      const itens=ordensServico.filter(o=>o.clienteId===c.id);
-      corpo=`<section class="card card-pad">${titulo('Pedidos / Ordens de Serviço','▤')}<p class="suave" style="margin-bottom:14px">Cada ID abre sua ficha com orçamento de origem, situação e execução relacionada.</p><div class="tabela-wrap"><table><thead><tr><th>Pedido / OS</th><th>Orçamento</th><th>Data</th><th>Serviço</th><th>Valor</th><th>Status</th><th>Obra / Serviço</th></tr></thead><tbody>${itens.map(o=>{
-        const obra=obraDaOS(o.id);
-        return `<tr><td><button class="link" onclick="abrirOS('${esc(o.id)}')">${esc(o.id)} ↗</button>${o.legado?'<small class="suave" style="display:block">Registro legado</small>':''}</td><td>${o.orcamentoId?`<button class="link" onclick="abrirOrcamento('${esc(o.orcamentoId)}','cliente')">${esc(o.orcamentoId)} ↗</button>`:'—'}</td><td>${fmtData(o.data)}</td><td>${esc(o.servico)}</td><td>${brl(o.valor)}</td><td>${statusChip(o.status)}</td><td>${obra?`<button class="link" onclick="abrirObra('${esc(obra.id)}')">${esc(obra.id)} ↗</button>`:'—'}</td></tr>`;
-      }).join('')||'<tr><td colspan="7" class="sem-resultado">Nenhuma ordem de serviço para este cliente.</td></tr>'}</tbody></table></div></section>`;
-    }
-    if(abaAtual==='financeiro') corpo=`<div class="mini-indicadores">${kpi('Total faturado','R$ 4.310,00')}${kpi('Em aberto','R$ 480,00')}${kpi('Último pagamento','R$ 2.450,00')}</div><div class="duas-colunas"><section class="card card-pad">${titulo('Cobranças','▤')}<div class="tabela-wrap"><table><thead><tr><th>Fatura</th><th>Valor</th><th>Forma</th><th>Status</th></tr></thead><tbody><tr><td>FAT-1401</td><td>R$ 2.450,00</td><td>Visa •••• 1234</td><td>${statusChip('Pago')}</td></tr><tr><td>FAT-1320</td><td>R$ 480,00</td><td>PIX</td><td>${statusChip('Pendente')}</td></tr></tbody></table></div></section><section class="card card-pad">${titulo('Meios de pagamento','▤')}${info('Visa','•••• 1234')}${info('Mastercard','•••• 8841')}<p class="notinha">Não guardar CVV nem exibir o número completo do cartão.</p></section></div>`;
-    if(abaAtual==='historico') corpo=abaHistoricoInterativo(c);
-    if(abaAtual==='documentos') corpo=abaDocumentosCliente(c);
-    return `<button class="link" onclick="ir('clientes')">← Voltar à listagem</button><div style="height:13px"></div>${cabecalho('Cadastro do Cliente','Ficha centralizada do cliente')}
-      <div class="card cliente-topo"><div class="cliente-pessoa"><div class="cliente-circulo">${esc(c.nome.split(' ').slice(0,2).map(p=>p[0]).join(''))}</div><div><h2>${esc(c.nome)}</h2><p class="suave">Cliente #${c.id} &nbsp; • &nbsp; CPF ${c.cpf}</p></div></div>${statusChip(c.status)}</div>
-      <div class="abas" role="tablist" aria-label="Informações do cliente">${tabs.map(t=>`<button role="tab" aria-selected="${t===abaAtual}" class="aba ${t===abaAtual?'ativa':''}" onclick="mudarAba('${t}')">${t==='historico'?'Histórico':t==='orcamentos'?`Orçamentos (${seusOrcamentos.length})`:t.charAt(0).toUpperCase()+t.slice(1)}</button>`).join('')}</div>${corpo}<p class="notinha">Protótipo com dados fictícios. Orçamentos e obras usam registros vinculados aos clientes; os documentos de exemplo contêm apenas metadados, sem arquivos reais anexados.</p>`;
-  }
-
-  
-
-    /* ==========================================================
-     ORÇAMENTOS — base unificada, filtros e ficha do orçamento
-     ========================================================== */
-  function orcamentosFiltrados(){
-    const codigo=textoNormalizado(pesquisaOrcamentoCodigo);
-    const nome=textoNormalizado(pesquisaOrcamentoCliente);
-    if(dataOrcamentoInicial&&dataOrcamentoFinal&&dataOrcamentoInicial>dataOrcamentoFinal)return [];
-    return orcamentos.filter(o=>(!codigo||textoNormalizado(o.id).includes(codigo))
-      &&(!nome||textoNormalizado(o.cliente).includes(nome))
-      &&(!dataOrcamentoInicial||o.envio>=dataOrcamentoInicial)
-      &&(!dataOrcamentoFinal||o.envio<=dataOrcamentoFinal))
-      .slice().sort((a,b)=>b.envio.localeCompare(a.envio));
-  }
-  function linhasTabelaOrcamentos(lista){
-    return lista.map(o=>`<tr>
-      <td><button class="link orc-link" onclick="abrirOrcamento('${esc(o.id)}')">${esc(o.id)} ↗</button></td>
-      <td><button class="link orc-link" onclick="abrirClienteDoOrcamento('${esc(o.id)}')">${esc(o.cliente)} ↗</button></td>
-      <td>${fmtData(o.envio)}</td><td>${esc(o.servico)}</td><td>${brl(o.valor)}</td>
-      <td>${statusChip(o.status)}</td><td>${fmtData(o.proximoContato)}</td>
-      <td>${osDoOrcamento(o.id)?`<button class="link" onclick="abrirOS('${esc(osDoOrcamento(o.id).id)}')">${esc(osDoOrcamento(o.id).id)} ↗</button>`:'—'}</td>
-    </tr>`).join('')||'<tr><td colspan="8" class="sem-resultado">Nenhum orçamento encontrado com os filtros selecionados.</td></tr>';
-  }
-  function paginaOrcamentos(){
-    const lista=orcamentosFiltrados();
-    const periodoInvalido=dataOrcamentoInicial&&dataOrcamentoFinal&&dataOrcamentoInicial>dataOrcamentoFinal;
-    return `${cabecalho('Orçamentos','Consulte todos os orçamentos enviados e acompanhe seu andamento','<button class="botao" onclick="exibirFormularioOrcamento()">+ Novo orçamento</button>')}
-      <div class="mini-indicadores">${kpi('Orçamentos cadastrados',orcamentos.length,'Todos os clientes')}${kpi('Aguardando retorno',pendentes().length,'Clientes sem resposta')}${kpi('Resultados da pesquisa',`<span id="totalOrcamentosFiltrados">${lista.length}</span>`,'De acordo com os filtros')}</div>
-      <div id="areaFormulario"></div>
-      <section class="card card-pad">${titulo('Pesquisar orçamentos','⌕')}
-        <div class="orc-filtros">
-          <label>Código do orçamento<input id="orcFiltroCodigo" class="campo-input" value="${esc(pesquisaOrcamentoCodigo)}" placeholder="Ex.: ORC-1001" oninput="pesquisaOrcamentoCodigo=this.value;atualizarTabelaOrcamentos()"></label>
-          <label>Nome do cliente<input id="orcFiltroCliente" class="campo-input" value="${esc(pesquisaOrcamentoCliente)}" placeholder="Ex.: João" oninput="pesquisaOrcamentoCliente=this.value;atualizarTabelaOrcamentos()"></label>
-          <label>Data inicial<input id="orcFiltroInicio" class="campo-input" type="date" value="${esc(dataOrcamentoInicial)}" onchange="dataOrcamentoInicial=this.value;atualizarTabelaOrcamentos()"></label>
-          <label>Data final<input id="orcFiltroFim" class="campo-input" type="date" value="${esc(dataOrcamentoFinal)}" onchange="dataOrcamentoFinal=this.value;atualizarTabelaOrcamentos()"></label>
-          <button class="botao botao-outline" onclick="limparFiltrosOrcamentos()">Limpar filtros</button>
+  function fichaCliente() {
+    const c = clienteAtual;
+    return `<button class="link" onclick="ir('clientes')">← Voltar à listagem</button><div style="height:13px"></div>
+      ${cabecalho('Cadastro do Cliente', 'Ficha centralizada do cliente')}
+      <div class="card cliente-topo">
+        <div class="cliente-pessoa">
+          <div class="cliente-circulo">${esc(c.nome.split(' ').slice(0,2).map(p=>p[0]).join(''))}</div>
+          <div><h2>${esc(c.nome)}</h2><p class="suave">Cliente #${c.id} &nbsp; • &nbsp; CPF/CNPJ ${esc(c.cpf || 'Não informado')}</p></div>
         </div>
-        <p class="orc-erro" id="orcAvisoPeriodo" ${periodoInvalido?'':'hidden'}>A data inicial não pode ser posterior à data final.</p>
-        <div class="orc-tabela-header"><h3>Relação de orçamentos</h3><span id="orcResumoResultados" class="suave">${lista.length} resultado(s) encontrados</span></div>
-        <div class="tabela-wrap"><table><thead><tr><th>Orçamento</th><th>Cliente</th><th>Enviado em</th><th>Serviço / material</th><th>Valor</th><th>Status</th><th>Próximo contato</th><th>OS</th></tr></thead><tbody id="linhasTabelaOrcamentos">${linhasTabelaOrcamentos(lista)}</tbody></table></div>
-      </section>
-      <p class="notinha">Os filtros de data consideram a data de envio do orçamento e incluem os dois dias informados. Dados demonstrativos armazenados neste navegador.</p>`;
-  }
-  function atualizarTabelaOrcamentos(){
-    const lista=orcamentosFiltrados();
-    const linhas=document.getElementById('linhasTabelaOrcamentos');
-    if(linhas)linhas.innerHTML=linhasTabelaOrcamentos(lista);
-    const total=document.getElementById('totalOrcamentosFiltrados');if(total)total.textContent=lista.length;
-    const resumo=document.getElementById('orcResumoResultados');if(resumo)resumo.textContent=`${lista.length} resultado(s) encontrados`;
-    const aviso=document.getElementById('orcAvisoPeriodo');if(aviso)aviso.hidden=!(dataOrcamentoInicial&&dataOrcamentoFinal&&dataOrcamentoInicial>dataOrcamentoFinal);
-  }
-  function limparFiltrosOrcamentos(){
-    pesquisaOrcamentoCodigo='';pesquisaOrcamentoCliente='';dataOrcamentoInicial='';dataOrcamentoFinal='';render();
-  }
-  function fichaOrcamento(){
-    const o=orcamentos.find(x=>x.id===orcamentoAtual?.id);
-    if(!o)return paginaOrcamentos();
-    const c=clienteDoOrcamento(o);
-    const atrasado=o.status==='Aguardando retorno'&&o.proximoContato<somarDias(0);
-    const osRelacionada=osDoOrcamento(o.id);const obraRelacionada=osRelacionada?obraDaOS(osRelacionada.id):null;
-    const selecionador=['Aguardando retorno','Em negociação','Aprovado','Recusado'].map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${s}</option>`).join('');
-    return `<button class="link" onclick="voltarDaFichaOrcamento()">← Voltar para ${origemFichaOrcamento==='followup'?'Follow-up de Vendas':origemFichaOrcamento==='cliente'?'Orçamentos do cliente':'Orçamentos'}</button><div style="height:14px"></div>
-      ${cabecalho('Ficha do Orçamento','Detalhes, cliente associado e situação da proposta','<button class="botao botao-outline" onclick="ir(&#39;followup&#39;)">Ver follow-ups →</button>')}
-      <section class="card orc-ficha-topo"><div class="orc-ficha-cabecalho"><div class="orc-ficha-icone">▧</div><div><p class="suave">ORÇAMENTO</p><h2>${esc(o.id)}</h2><p class="suave">Enviado em ${fmtData(o.envio)}</p></div></div>${statusChip(o.status)}</section>
-      <div class="mini-indicadores">${kpi('Valor do orçamento',brl(o.valor),'Proposta comercial')}${kpi('Data de envio',fmtData(o.envio),'Registro do orçamento')}${kpi('Próximo contato',fmtData(o.proximoContato),atrasado?'Follow-up em atraso':'Acompanhamento previsto')}</div>
+        ${statusChip(c.status)}
+      </div>
       <div class="duas-colunas">
-        <section class="card card-pad">${titulo('Dados do orçamento','▧')}
-          ${info('Código',esc(o.id))}${info('Serviço / material',esc(o.servico))}${info('Valor total',brl(o.valor))}${info('Data de envio',fmtData(o.envio))}${info('Próximo contato',fmtData(o.proximoContato))}
+        <section class="card card-pad">
+          ${titulo('Informações básicas', '♧')}
+          ${info('Nome completo', esc(c.nome))}
+          ${info('CPF / CNPJ', esc(c.cpf || 'Não informado'))}
+          ${info('Telefone', esc(c.contato || 'Não informado'))}
         </section>
-        <section class="card card-pad">${titulo('Cliente e acompanhamento','♧')}
-          <div class="info"><span>Cliente</span><strong>${c?`<button class="link orc-link" onclick="abrirClienteDoOrcamento('${esc(o.id)}')">${esc(c.nome)} ↗</button>`:esc(o.cliente)}</strong></div>
-          ${c?info('Cadastro','Cliente #'+esc(c.id)):info('Cadastro','Sem vínculo cadastral')}
-          <div class="orc-status-box"><label for="orcStatusFicha">Registrar retorno / atualizar situação</label><select id="orcStatusFicha" onchange="alterarStatus('${esc(o.id)}',this.value)">${selecionador}</select><small class="suave">A alteração será refletida na lista de Orçamentos, no Follow-up e na ficha do cliente.</small></div>
-          ${atrasado?'<div class="orc-urgente">◷ A data prevista para follow-up já passou e o cliente segue sem resposta.</div>':''}
+        <section class="card card-pad">
+          ${titulo('Endereço', '⌖')}
+          ${info('Endereço', 'Nenhum endereço cadastrado')}
         </section>
-      </div><section class="card card-pad" style="margin-top:18px">${fluxoRelacionamento(o,osRelacionada,obraRelacionada)}<p class="notinha">${osRelacionada?'Ordem de serviço gerada após aprovação; a execução é aberta pela ficha da OS.':'A aprovação cria automaticamente uma ordem de serviço sem duplicação.'}</p></section><p class="notinha">Protótipo: registro comercial simplificado. Uma implementação real poderá incluir itens, anexos, validade, responsáveis e trilha de alterações.</p>`;
-  }
-  function followup(){
-    const lista=orcamentos.filter(o=>filtroOrcamento==='Todos'||o.status===filtroOrcamento);
-    const rows=lista.map(o=>{
-      const atraso=o.status==='Aguardando retorno'&&o.proximoContato<somarDias(0);
-      return `<tr>
-        <td><button class="link orc-link" onclick="abrirOrcamento('${esc(o.id)}','followup')">${esc(o.id)} ↗</button></td>
-        <td><button class="link orc-link" onclick="abrirClienteDoOrcamento('${esc(o.id)}')">${esc(o.cliente)} ↗</button></td>
-        <td>${esc(o.servico)}</td><td>${brl(o.valor)}</td><td>${fmtData(o.envio)}</td>
-        <td><span style="color:${atraso?'var(--vermelho)':'inherit'}">${fmtData(o.proximoContato)} ${atraso?'• vencido':''}</span></td>
-        <td>${statusChip(o.status)}</td>
-        <td><select aria-label="Alterar status de ${esc(o.id)}" onchange="alterarStatus('${esc(o.id)}',this.value)">${['Aguardando retorno','Em negociação','Aprovado','Recusado'].map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}</select></td>
-      </tr>`;
-    }).join('');
-    return `${cabecalho('Follow-up de Vendas','Acompanhe os orçamentos e identifique clientes sem resposta','<div class="orc-head-actions"><button class="botao" onclick="exibirFormularioOrcamento()">+ Novo orçamento</button><button class="botao botao-outline" onclick="ir(&#39;orcamentos&#39;)">Ver todos os orçamentos →</button></div>')}
-      <div class="mini-indicadores">${kpi('Orçamentos aguardando retorno',pendentes().length,'Clientes que ainda não responderam')}${kpi('Contatos em atraso',vencidos().length,'Data prevista de follow-up ultrapassada')}${kpi('Orçamentos cadastrados',orcamentos.length,'Todos os status')}</div>
-      <div id="areaFormulario"></div>
-      <section class="card card-pad">${titulo('Acompanhamento de orçamentos','◷')}<div class="filtro"><label for="filtroStatus">Status:</label><select id="filtroStatus" onchange="filtroOrcamento=this.value;render()">${['Todos','Aguardando retorno','Em negociação','Aprovado','Recusado'].map(s=>`<option ${s===filtroOrcamento?'selected':''}>${s}</option>`).join('')}</select><button class="botao botao-outline botao-pequeno" onclick="filtroOrcamento='Todos';render()">Limpar filtro</button></div><div class="tabela-wrap"><table><thead><tr><th>Orçamento</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Enviado em</th><th>Próximo contato</th><th>Status</th><th>Registrar retorno</th></tr></thead><tbody>${rows||'<tr><td colspan="8" class="sem-resultado">Nenhum orçamento neste status.</td></tr>'}</tbody></table></div></section>
-      <p class="notinha">Clique no número do orçamento para abrir sua ficha ou no nome do cliente para acessar seu cadastro. Alterar o status atualiza todas as telas vinculadas.</p>`;
+      </div>`;
   }
 
-    function exibirFormularioOrcamento(){
-    const html=`<section class="card card-pad" style="margin-bottom:18px"><div class="cabecalho"><h2>Novo orçamento</h2><button class="link" onclick="document.getElementById('areaFormulario').innerHTML=''">Fechar ×</button></div><form onsubmit="cadastrarOrcamento(event)"><div class="form-grid"><label>Cliente<select name="cliente" required>${clientes.map(c=>`<option value="${esc(c.nome)}">${esc(c.nome)}</option>`).join('')}</select></label><label>Serviço ou material<input class="campo-input" name="servico" required maxlength="120" placeholder="Ex.: Cobertura metálica" /></label><label>Valor orçado (R$)<input class="campo-input" name="valor" type="number" min="0.01" step="0.01" required /></label><label>Data de envio<input class="campo-input" name="envio" type="date" value="${somarDias(0)}" required /></label><label>Próximo contato<input class="campo-input" name="proximoContato" type="date" value="${somarDias(3)}" required /></label></div><div style="margin-top:15px"><button class="botao" type="submit">Salvar orçamento</button></div></form></section>`;
-    document.getElementById('areaFormulario').innerHTML=html;
-  }
-  function cadastrarOrcamento(ev){
-    ev.preventDefault();
-    const f=new FormData(ev.target);
-    const novo={id:'ORC-'+Date.now().toString().slice(-8),cliente:String(f.get('cliente')),servico:String(f.get('servico')).trim(),valor:Number(f.get('valor')),envio:String(f.get('envio')),proximoContato:String(f.get('proximoContato')),status:'Aguardando retorno'};
-    novo.clienteId=clientes.find(c=>c.nome===novo.cliente)?.id||null;
-    if(!novo.servico||!Number.isFinite(novo.valor)||novo.valor<=0||!novo.envio||!novo.proximoContato){alert('Preencha os campos corretamente.');return;}
-    if(novo.proximoContato<novo.envio){alert('O próximo contato deve ser na data de envio ou posterior.');return;}
-    orcamentos.unshift(novo); salvar(); filtroOrcamento='Todos'; render();
-  }
-  function alterarStatus(id,status){
-    if(!['Aguardando retorno','Em negociação','Aprovado','Recusado'].includes(status))return;
-    const o=orcamentos.find(x=>x.id===id);if(!o)return;
-    const ordem=osDoOrcamento(id);
-    if(ordem&&status!=='Aprovado'){
-      alert('Este orçamento já originou a ordem de serviço '+ordem.id+'. Para preservar a rastreabilidade, ele não pode ser desfeito diretamente. Gerencie cancelamentos na ordem de serviço.');
-      render();return;
-    }
-    if(status==='Aprovado'&&!clienteDoOrcamento(o)){
-      alert('Associe o orçamento a um cliente cadastrado antes de aprová-lo.');render();return;
-    }
-    o.status=status;
-    salvar();
-    if(status==='Aprovado')garantirOSDoOrcamento(o); // idempotente
-    render();
-  }
-
-  function tabelaSimples(tituloPagina,descricao,tituloTabela,colunas,linhas){
-    return `${cabecalho(tituloPagina,descricao)}<section class="card card-pad">${titulo(tituloTabela)}<div class="tabela-wrap"><table><thead><tr>${colunas.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${linhas}</tbody></table></div></section>`;
-  }
-  /* ==========================================================
-     FORNECEDORES — cadastro + filtros + 3 abas por fornecedor
-     Atenção: demonstração salva localmente apenas o cadastro.
-     Em produção, usar autenticação, API e banco de dados.
-     ========================================================== */
-  function textoNormalizado(t){return String(t??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();}
-  function salvarFornecedores(){try{localStorage.setItem(FORNECEDORES_STORAGE,JSON.stringify(fornecedores));}catch(e){console.warn('Não foi possível salvar fornecedores localmente:',e);}}
-  function normalizarCnpj(v){return String(v??'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
-  function formatarCnpj(v){const c=normalizarCnpj(v);return c.length===14?`${c.slice(0,2)}.${c.slice(2,5)}.${c.slice(5,8)}/${c.slice(8,12)}-${c.slice(12,14)}`:String(v||'');}
-  function pedidosDoFornecedor(id){return pedidosFornecedor.filter(p=>p.fornecedorId===id);}
-  function pedidoAberto(p){return !['Recebido','Finalizado','Cancelado'].includes(p.status);}
-  function filtrarFornecedores(){
-    const nome=textoNormalizado(buscaFornecedorNome), cat=textoNormalizado(buscaFornecedorCategoria);
-    return fornecedores.filter(f=>textoNormalizado(f.nome).includes(nome)&&textoNormalizado(f.categoria).includes(cat));
-  }
-  function listaFornecedoresLinhas(){
-    const lista=filtrarFornecedores();
-    return lista.map(f=>{
-      const abertos=pedidosDoFornecedor(f.id).filter(pedidoAberto).length;
-      return `<tr><td><span class="for-name-link">${esc(f.nome)}</span> <button type="button" class="link" style="margin-left:9px;white-space:nowrap" onclick="abrirFornecedor('${f.id}')">Abrir ficha ↗</button><span class="for-cnpj">CNPJ: ${esc(formatarCnpj(f.cnpj))}</span></td><td>${esc(f.categoria)}</td><td>${esc(f.servico)}</td><td>${esc(f.telefone)}</td><td><span class="${abertos?'for-aberto':''}">${abertos}</span></td></tr>`;
-    }).join('') || '<tr><td class="sem-resultado" colspan="5">Nenhum fornecedor encontrado para os filtros informados.</td></tr>';
-  }
-  function atualizarBuscaFornecedor(campo,valor){
-    if(campo==='nome')buscaFornecedorNome=valor;
-    if(campo==='categoria')buscaFornecedorCategoria=valor;
-    const body=document.getElementById('fornecedoresLinhas');
-    if(body)body.innerHTML=listaFornecedoresLinhas();
-    const contador=document.getElementById('fornecedoresContador');
-    if(contador)contador.textContent=`${filtrarFornecedores().length} empresa(s) encontrada(s)`;
-  }
-  function limparBuscaFornecedor(){buscaFornecedorNome='';buscaFornecedorCategoria='';render();}
-  function abrirFornecedor(id){
-    fornecedorAtual=fornecedores.find(f=>f.id===id)||null;
-    if(!fornecedorAtual)return;
-    paginaAtual='fornecedores';fornecedorAba='dados';formularioFornecedorVisivel=false;fornecedorEdicaoId=null;
-    render();window.scrollTo(0,0);
-  }
-  function abrirFormularioFornecedor(id=null){
-    fornecedorEdicaoId=id;fornecedorAtual=null;formularioFornecedorVisivel=true;paginaAtual='fornecedores';
-    render();window.scrollTo(0,0);
-  }
-  function cancelarFormularioFornecedor(){formularioFornecedorVisivel=false;fornecedorEdicaoId=null;render();}
-  function mudarAbaFornecedor(aba){if(['dados','abertos','historico'].includes(aba)){fornecedorAba=aba;render();}}
-  function paginaFornecedores(){
-    if(formularioFornecedorVisivel)return formularioFornecedor();
-    if(fornecedorAtual)return fichaFornecedor();
-    const categorias=[...new Set(fornecedores.map(f=>f.categoria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
-    const numAbertos=pedidosFornecedor.filter(pedidoAberto).length;
-    return `${cabecalho('Fornecedores','Gestão das empresas que fornecem materiais e serviços para as obras','<button type="button" class="botao" onclick="abrirFormularioFornecedor()">+ Novo fornecedor</button>')}
-      <div class="mini-indicadores">${kpi('Fornecedores cadastrados',fornecedores.length,'Empresas na base')}${kpi('Categorias cadastradas',categorias.length,'Tipos de fornecimento')}${kpi('Pedidos de compra abertos',numAbertos,'Pedidos fictícios do protótipo')}</div>
-      <section class="card card-pad">${titulo('Buscar fornecedores','⌕')}
-        <div class="for-filtros">
-          <label for="buscaNomeFornecedor">Nome do fornecedor<input id="buscaNomeFornecedor" class="campo-input" type="search" placeholder="Ex.: Distribuidora de Telhas" value="${esc(buscaFornecedorNome)}" oninput="atualizarBuscaFornecedor('nome',this.value)"></label>
-          <label for="buscaCategoriaFornecedor">Categoria<input id="buscaCategoriaFornecedor" class="campo-input" type="search" list="categoriasFornecedores" placeholder="Ex.: Telhas e coberturas" value="${esc(buscaFornecedorCategoria)}" oninput="atualizarBuscaFornecedor('categoria',this.value)"></label>
-          <button class="botao botao-outline" type="button" onclick="limparBuscaFornecedor()">Limpar filtros</button>
-        </div>
-        <datalist id="categoriasFornecedores">${categorias.map(c=>`<option value="${esc(c)}"></option>`).join('')}</datalist>
-        <div class="for-toolbar"><p class="suave" id="fornecedoresContador">${filtrarFornecedores().length} empresa(s) encontrada(s)</p><small class="suave">As duas buscas podem ser combinadas.</small></div>
-        <div class="tabela-wrap"><table><thead><tr><th>Empresa / abrir cadastro</th><th>Categoria</th><th>Tipo de serviço fornecido</th><th>Telefone</th><th>Pedidos abertos</th></tr></thead><tbody id="fornecedoresLinhas">${listaFornecedoresLinhas()}</tbody></table></div>
-      </section><p class="notinha">Cadastros e pedidos de exemplo. Novos fornecedores ficam salvos apenas neste navegador neste protótipo.</p>`;
-  }
-  function formularioFornecedor(){
-    const f=fornecedores.find(x=>x.id===fornecedorEdicaoId)||{};
-    const editando=!!f.id;
-    const categorias=[...new Set(fornecedores.map(x=>x.categoria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
-    const campo=(nome,titulo,tipo='text',placeholder='',obrigatorio=true,max=200)=>`<label>${titulo}<input class="campo-input" type="${tipo}" name="${nome}" value="${esc(f[nome]||'')}" placeholder="${esc(placeholder)}" maxlength="${max}" ${obrigatorio?'required':''}></label>`;
-    return `<button class="link" type="button" onclick="cancelarFormularioFornecedor()">← Voltar aos fornecedores</button><div style="height:12px"></div>
-      ${cabecalho(editando?'Editar fornecedor':'Novo fornecedor',editando?'Atualize os dados cadastrais da empresa':'Preencha o cadastro da empresa fornecedora')}
-      <section class="card card-pad" style="max-width:1000px">${titulo('Dados da empresa','▤')}
-      <form onsubmit="salvarCadastroFornecedor(event)" class="for-form" id="formFornecedor">
-        ${campo('nome','Nome da empresa','text','Razão social ou nome fantasia',true,140)}
-        ${campo('cnpj','CNPJ','text','00.000.000/0001-00 (aceita letras)',true,18)}
-        <label class="full">Endereço completo<input class="campo-input" type="text" name="endereco" value="${esc(f.endereco||'')}" placeholder="Logradouro, número, complemento, bairro, cidade, UF e CEP" maxlength="250" required></label>
-        ${campo('telefone','Telefone','tel','(21) 3333-0000',true,30)}
-        <label>Categoria<input class="campo-input" name="categoria" type="text" list="listaCategoriasFornecedor" value="${esc(f.categoria||'')}" placeholder="Ex.: Telhas e coberturas" maxlength="90" required></label>
-        <label class="full">Tipo de serviço fornecido<input class="campo-input" name="servico" type="text" value="${esc(f.servico||'')}" placeholder="Ex.: Fornecimento de telhas, frete e instalação" maxlength="250" required></label>
-        <label class="full">Observações<textarea name="observacoes" maxlength="1600" placeholder="Condições comerciais, prazos de entrega e outras informações relevantes">${esc(f.observacoes||'')}</textarea></label>
-        <datalist id="listaCategoriasFornecedor">${categorias.map(c=>`<option value="${esc(c)}"></option>`).join('')}</datalist>
-        <p class="notinha full" style="margin-top:0">O CNPJ pode ser numérico ou alfanumérico (14 posições). Este formulário verifica o formato, não a situação cadastral na Receita Federal.</p>
-        <div class="for-form-acoes"><button type="button" class="botao botao-outline" onclick="cancelarFormularioFornecedor()">Cancelar</button><button type="submit" class="botao">${editando?'Salvar alterações':'Cadastrar fornecedor'}</button></div>
-      </form></section>`;
-  }
-  function salvarCadastroFornecedor(ev){
-    ev.preventDefault();
-    const f=new FormData(ev.currentTarget);
-    const dados={nome:String(f.get('nome')||'').trim(),endereco:String(f.get('endereco')||'').trim(),cnpj:normalizarCnpj(f.get('cnpj')),telefone:String(f.get('telefone')||'').trim(),categoria:String(f.get('categoria')||'').trim(),servico:String(f.get('servico')||'').trim(),observacoes:String(f.get('observacoes')||'').trim()};
-    if(['nome','endereco','cnpj','telefone','categoria','servico'].some(c=>!dados[c])){alert('Preencha todos os campos obrigatórios.');return;}
-    if(!/^[A-Z0-9]{12}[0-9]{2}$/.test(dados.cnpj)){alert('O CNPJ deve ter 14 posições: as 12 primeiras podem conter letras ou números, e as 2 últimas devem ser dígitos.');return;}
-    const duplicado=fornecedores.some(x=>normalizarCnpj(x.cnpj)===dados.cnpj&&x.id!==fornecedorEdicaoId);
-    if(duplicado){alert('Já existe um fornecedor cadastrado com este CNPJ.');return;}
-    let id=fornecedorEdicaoId;
-    if(id){const idx=fornecedores.findIndex(x=>x.id===id);if(idx<0)return;fornecedores[idx]={...fornecedores[idx],...dados,cnpj:formatarCnpj(dados.cnpj)};}
-    else {id='FOR-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();fornecedores.unshift({id,...dados,cnpj:formatarCnpj(dados.cnpj)});}
-    salvarFornecedores();
-    fornecedorEdicaoId=null;formularioFornecedorVisivel=false;buscaFornecedorNome='';buscaFornecedorCategoria='';
-    abrirFornecedor(id);
-  }
-  function tabelaPedidosFornecedor(lista,historico=false){
-    if(!lista.length)return `<div class="for-vazio">${historico?'Este fornecedor ainda não possui pedidos finalizados no histórico.':'Não existem pedidos de compra em aberto para este fornecedor.'}</div>`;
-    return `<div class="tabela-wrap"><table><thead><tr><th>Pedido</th><th>Data da compra</th><th>Material / serviço</th><th>Quantidade</th><th>Valor</th><th>${historico?'Conclusão prevista':'Entrega prevista'}</th><th>Situação</th></tr></thead><tbody>${lista.slice().sort((a,b)=>b.data.localeCompare(a.data)).map(p=>`<tr><td><b>${esc(p.id)}</b></td><td>${fmtData(p.data)}</td><td>${esc(p.descricao)}</td><td>${esc(p.quantidade)}</td><td>${brl(p.valor)}</td><td>${fmtData(p.previsao)}</td><td>${statusChip(p.status)}</td></tr>`).join('')}</tbody></table></div>`;
-  }
-  function fichaFornecedor(){
-    const f=fornecedorAtual;
-    const todos=pedidosDoFornecedor(f.id);
-    const abertos=todos.filter(pedidoAberto), historico=todos.filter(p=>!pedidoAberto(p));
-    let corpo='';
-    if(fornecedorAba==='dados')corpo=`<div class="duas-colunas">
-      <section class="card card-pad">${titulo('Dados cadastrais','▤')}${info('Nome da empresa',esc(f.nome))}${info('CNPJ',esc(formatarCnpj(f.cnpj)))}${info('Telefone',esc(f.telefone))}${info('Categoria',esc(f.categoria))}</section>
-      <section class="card card-pad">${titulo('Endereço e fornecimento','⌖')}${info('Endereço',esc(f.endereco))}${info('Tipo de serviço fornecido',esc(f.servico))}</section>
-      <section class="card card-pad" style="grid-column:1/-1">${titulo('Observações','✎')}<p class="nota for-observacao">${esc(f.observacoes)||'Nenhuma observação cadastrada.'}</p></section>
-    </div>`;
-    if(fornecedorAba==='abertos')corpo=`<div class="mini-indicadores">${kpi('Pedidos abertos',abertos.length,'Compras ainda não finalizadas')}${kpi('Valor em pedidos abertos',brl(abertos.reduce((a,p)=>a+p.valor,0)),'Total previsto')}${kpi('Pedidos no histórico',historico.length,'Recebidos, finalizados ou cancelados')}</div><section class="card card-pad">${titulo('Pedidos de compra em aberto','▤')}${tabelaPedidosFornecedor(abertos)}</section>`;
-    if(fornecedorAba==='historico')corpo=`<section class="card card-pad">${titulo('Histórico de pedidos','◷')}${tabelaPedidosFornecedor(historico,true)}<p class="notinha">Neste protótipo, o histórico apresenta pedidos recebidos, finalizados ou cancelados.</p></section>`;
-    return `<button type="button" class="link" onclick="ir('fornecedores')">← Voltar à listagem de fornecedores</button><div style="height:13px"></div>
-      ${cabecalho('Ficha do Fornecedor','Cadastro, pedidos de compra e histórico da empresa')}
-      <section class="card for-ficha-topo"><div class="for-ficha-head"><div class="for-ficha-avatar">▤</div><div><h2>${esc(f.nome)}</h2><p>Código ${esc(f.id)} · CNPJ ${esc(formatarCnpj(f.cnpj))}</p><p class="for-meta-texto">${esc(f.categoria)}</p></div></div><button type="button" class="botao botao-outline" onclick="abrirFormularioFornecedor('${f.id}')">✎ Editar cadastro</button></section>
-      <div class="abas"><button type="button" class="aba ${fornecedorAba==='dados'?'ativa':''}" onclick="mudarAbaFornecedor('dados')">Dados</button><button type="button" class="aba ${fornecedorAba==='abertos'?'ativa':''}" onclick="mudarAbaFornecedor('abertos')">Pedidos abertos (${abertos.length})</button><button type="button" class="aba ${fornecedorAba==='historico'?'ativa':''}" onclick="mudarAbaFornecedor('historico')">Histórico de pedidos</button></div>
-      ${corpo}<p class="notinha">Dados e compras demonstrativos. A integração real com Compras e Estoque será feita no backend.</p>`;
-  }
-
-  function paginaContratos(){return tabelaSimples('Contratos','Acompanhamento dos contratos firmados com clientes','Contratos cadastrados',['Número','Cliente','Objeto','Situação'],contratos.map(x=>`<tr><td>${esc(x.numero)}</td><td>${esc(x.cliente)}</td><td>${esc(x.objeto)}</td><td>${statusChip(x.situacao)}</td></tr>`).join(''));}
-  function outraPagina(){const m=modulos.find(x=>x.id===paginaAtual);return `${cabecalho(m.nome,'Área reservada para o módulo '+m.nome.toLowerCase())}<section class="card card-pad" style="padding:65px 20px;text-align:center"><div style="font-size:40px;color:var(--verde)">${m.icone}</div><h2>Módulo ${m.nome}</h2><p class="suave">Nesta etapa, apenas a navegação está disponível.</p><button class="botao botao-outline" style="margin-top:18px" onclick="ir('inicio')">Voltar à Home</button></section>`;}
-  /* ===========================================================
-     MÓDULO AGENDAMENTO — PROTÓTIPO NAVEGÁVEL
-     - Horários: seg-sex 08-12 / 13-18 e sáb 08-12
-     - Visitas de 60 minutos; folga logística de 10 min
-     - 4 sugestões: 2 manhã e 2 tarde, em dias/horas únicos
-     - Distâncias *ilustrativas* estimadas, NÃO quilometragem viária
-     - Para produção, substituir calcularKmDemo() por API de rotas
-       com distância por estrada + tempo em tráfego e geocodificação
-     =========================================================== */
+  /* ================= AGENDAMENTO SEMANAL ================= */
   const CONFIG_AGENDA = {
-    duracaoMin:60, intervaloLogisticoMin:10,
-    velocidadeMediaKmH:35, maxEntreVisitasKm:30,
-    antecedenciaMin:120, diasBusca:28,
-    horas:Array.from({length:10},(_,i)=>i+8),
-    horasSugestoes:[8,9,10,11,13,14,15,16]
+    duracaoMin:60, intervaloLogisticoMin:10, maxEntreVisitasKm:30, antecedenciaMin:120, diasBusca:28,
+    horas:Array.from({length:10},(_,i)=>i+8), horasSugestoes:[8,9,10,11,13,14,15,16]
   };
-  // Coordenadas genéricas dos BAIRROS, sem qualquer endereço pessoal real.
   const locaisAgenda = {
     centro:{nome:'Centro',lat:-22.9068,lng:-43.1729},
     tijuca:{nome:'Tijuca',lat:-22.9249,lng:-43.2325},
     meier:{nome:'Méier',lat:-22.9032,lng:-43.2796},
-    vilaIsabel:{nome:'Vila Isabel',lat:-22.9161,lng:-43.2479},
-    barra:{nome:'Barra da Tijuca',lat:-23.0004,lng:-43.3659},
-    jacarepagua:{nome:'Jacarepaguá',lat:-22.9528,lng:-43.3405},
-    madureira:{nome:'Madureira',lat:-22.8741,lng:-43.3380},
-    recreio:{nome:'Recreio dos Bandeirantes',lat:-23.0225,lng:-43.4694},
-    campoGrande:{nome:'Campo Grande',lat:-22.9036,lng:-43.5596}
+    barra:{nome:'Barra da Tijuca',lat:-23.0004,lng:-43.3659}
   };
-  const clienteBairro = {'000142':'tijuca','000141':'meier','000140':'barra','000139':'vilaIsabel'};
-  const ESCRITORIO_DEMO = {nome:'Base (Centro)',lat:locaisAgenda.centro.lat,lng:locaisAgenda.centro.lng};
   const CHAVE_AGENDA = 'serralheria-casa-das-artes-agenda-demo-v2';
   const diaSemanaCurto=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
+  function dataBrasilia() {
+    const parts = new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    const v = Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));
+    return `${v.year}-${v.month}-${v.day}`;
+  }
+
+  function parseISO(s){ return new Date(`${s}T12:00:00`); }
+  function toISO(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+  function addDias(s,n){ const d=parseISO(s); d.setDate(d.getDate()+n); return toISO(d); }
+  function segundaFeira(s){ const d=parseISO(s); const ds=(d.getDay()+6)%7; d.setDate(d.getDate()-ds); return toISO(d); }
+  function diaNum(s){ return parseISO(s).getDay(); }
+  function curto(s){ return parseISO(s).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}); }
+  function legivel(s){ return parseISO(s).toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'}); }
+  function horaStr(h){ return String(h).padStart(2,'0')+':00'; }
+
   let semanaAgenda = segundaFeira(dataBrasilia());
   let diaAgenda = dataBrasilia();
   let agendaFormAberto = false;
-  let opcoesAgenda = [];
-  let formAgenda={clienteId:'000142',bairro:'tijuca',tipo:'Visita técnica',endereco:'',observacao:''};
-
-  function dataBrasilia(){
-    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-    const v=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));
-    return `${v.year}-${v.month}-${v.day}`;
-  }
-  function horarioBrasilia(){
-    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
-    const v=Object.fromEntries(parts.filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));
-    return Number(v.hour)*60+Number(v.minute);
-  }
-  function parseISO(s){return new Date(`${s}T12:00:00`);}
-  function toISO(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-  function addDias(s,n){const d=parseISO(s);d.setDate(d.getDate()+n);return toISO(d);}
-  function segundaFeira(s){const d=parseISO(s);const ds=(d.getDay()+6)%7;d.setDate(d.getDate()-ds);return toISO(d);}
-  function diaNum(s){return parseISO(s).getDay();}
-  function curto(s){return parseISO(s).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});}
-  function legivel(s){return parseISO(s).toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});}
-  function horaStr(h){return String(h).padStart(2,'0')+':00';}
-  function minutos(h){return h*60;}
-  function horaComercial(s,h){const d=diaNum(s);return d===6?(h>=8&&h<12):(d>=1&&d<=5&&(h>=8&&h<12||h>=13&&h<18));}
-  function futuroPermitido(s,h){return s>dataBrasilia()||(s===dataBrasilia()&&minutos(h)>=horarioBrasilia()+CONFIG_AGENDA.antecedenciaMin);}
-  function seedAgenda(){
-    const base=segundaFeira(dataBrasilia());
-    const configs=[
-      [0,9,'000142','tijuca','Medição de portão'],[0,14,'000141','meier','Visita técnica'],
-      [1,10,'000139','vilaIsabel','Cobertura metálica'],[1,15,'000142','tijuca','Orçamento de grade'],
-      [2,9,'000140','barra','Visita técnica'],[2,14,'000141','meier','Inspeção de telhado'],
-      [3,10,'000142','tijuca','Medição'],[3,15,'000139','vilaIsabel','Orçamento de corrimão'],
-      [4,9,'000141','meier','Visita técnica'],[4,14,'000140','barra','Cotação de cobertura'],
-      [7,9,'000139','vilaIsabel','Avaliação de cobertura'],[8,14,'000142','tijuca','Medição de portão']
-    ];
-    return configs.map(([off,h,id,bairro,tipo],i)=>({
-      id:`AG-DEMO-${String(i+1).padStart(3,'0')}`,data:addDias(base,off),hora:h,
-      clienteId:id,cliente:(clientes.find(c=>c.id===id)||{}).nome||'Cliente exemplo',
-      bairro,tipo,endereco:'',observacao:'Agendamento fictício de demonstração',manual:false
-    }));
-  }
-  let agendamentos;
+  let agendamentos = [];
   try {
-    const saved=JSON.parse(localStorage.getItem(CHAVE_AGENDA));
-    agendamentos=Array.isArray(saved)?saved:seedAgenda();
-  } catch(e){agendamentos=seedAgenda();}
-  function proximoDiaAberto(){
-    for(let i=1;i<=7;i++){const data=addDias(dataBrasilia(),i);if(diaNum(data)!==0)return data;}
-    return addDias(dataBrasilia(),1);
-  }
-  function salvarAgenda(){try{localStorage.setItem(CHAVE_AGENDA,JSON.stringify(agendamentos));}catch(e){console.warn('Armazenamento local indisponível',e);}}
-  function visitasDia(data){return agendamentos.filter(a=>a.data===data).slice().sort((a,b)=>a.hora-b.hora);}
-  function kmLinha(a,b){
-    const r=Math.PI/180, R=6371;
-    const dLat=(b.lat-a.lat)*r, dLon=(b.lng-a.lng)*r;
-    const x=Math.sin(dLat/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dLon/2)**2;
-    return 2*R*Math.asin(Math.min(1,Math.sqrt(x)));
-  }
-  function coordDe(bairro){const b=locaisAgenda[bairro]||locaisAgenda.centro;return {lat:b.lat,lng:b.lng};}
-  // SOMENTE PROTÓTIPO. O fator não representa distâncias rodoviárias reais.
-  function calcularKmDemo(bairroA,bairroB){return kmLinha(coordDe(bairroA),coordDe(bairroB))*1.3;}
-  function minutosDeslocamento(km){return Math.ceil(km/CONFIG_AGENDA.velocidadeMediaKmH*60)+CONFIG_AGENDA.intervaloLogisticoMin;}
-  function verificarPossibilidade(data,h,bairro){
-    const resultado={permitido:true,avisos:[],kmAdicional:0,distanciaMax:0,logisticaOk:true};
-    if(!horaComercial(data,h)){resultado.permitido=false;resultado.avisos.push('Fora do horário comercial.');return resultado;}
-    if(!futuroPermitido(data,h)){resultado.permitido=false;resultado.avisos.push('Data passada ou antecedência menor que 2 horas.');return resultado;}
-    const visitas=visitasDia(data);
-    if(visitas.some(v=>v.hora===h)){
-      resultado.permitido=false;resultado.avisos.push('Horário ocupado.');return resultado;
-    }
-    const anterior=visitas.filter(v=>v.hora<h).at(-1)||null;
-    const proxima=visitas.find(v=>v.hora>h)||null;
-    const kmA=anterior?calcularKmDemo(anterior.bairro,bairro):0;
-    const kmP=proxima?calcularKmDemo(bairro,proxima.bairro):0;
-    const kmDireto=anterior&&proxima?calcularKmDemo(anterior.bairro,proxima.bairro):0;
-    resultado.kmAdicional=Math.max(0,kmA+kmP-kmDireto);
-    resultado.distanciaMax=Math.max(kmA,kmP);
-    if(kmA>CONFIG_AGENDA.maxEntreVisitasKm || kmP>CONFIG_AGENDA.maxEntreVisitasKm){
-      resultado.logisticaOk=false;
-      resultado.avisos.push(`Distância estimada de ${resultado.distanciaMax.toFixed(1).replace('.',',')} km entre visitas (limite de 30 km).`);
-    }
-    if(anterior && (h-anterior.hora)*60 < CONFIG_AGENDA.duracaoMin+minutosDeslocamento(kmA)){
-      resultado.logisticaOk=false;resultado.avisos.push('Sem tempo suficiente de deslocamento após a visita anterior.');
-    }
-    if(proxima && (proxima.hora-h)*60 < CONFIG_AGENDA.duracaoMin+minutosDeslocamento(kmP)){
-      resultado.logisticaOk=false;resultado.avisos.push('Sem tempo suficiente de deslocamento antes da próxima visita.');
-    }
-    return resultado;
-  }
-  function atualizarClienteAgenda(id){
-    pegarCamposAgenda();
-    formAgenda.clienteId=id;formAgenda.bairro=clienteBairro[id]||'centro';opcoesAgenda=[];render();
-  }
-  function atualizarBairroAgenda(bairro){pegarCamposAgenda();formAgenda.bairro=bairro;opcoesAgenda=[];render();}
-  function pegarCamposAgenda(){
-    const tipo=document.getElementById('agTipo');const endereco=document.getElementById('agEndereco');
-    const observacao=document.getElementById('agObs');
-    if(tipo)formAgenda.tipo=tipo.value.trim();
-    if(endereco)formAgenda.endereco=endereco.value.trim();
-    if(observacao)formAgenda.observacao=observacao.value.trim();
-  }
-  function gerarSugestoesAgenda(){
-    pegarCamposAgenda();
-    if(!formAgenda.tipo){alert('Informe o tipo de visita.');return;}
-    const candidatos=[]; const base=dataBrasilia();
-    for(let dias=0;dias<CONFIG_AGENDA.diasBusca;dias++){
-      const data=addDias(base,dias);
-      for(const h of CONFIG_AGENDA.horasSugestoes){
-        const checagem=verificarPossibilidade(data,h,formAgenda.bairro);
-        if(checagem.permitido&&checagem.logisticaOk){
-          candidatos.push({data,h,turno:h<12?'manha':'tarde',
-            kmAdicional:checagem.kmAdicional,score:checagem.kmAdicional*3+dias*.3+h*.005});
-        }
-      }
-    }
-    candidatos.sort((a,b)=>a.score-b.score||a.data.localeCompare(b.data)||a.h-b.h);
-    let escolhidas=[];const datas=new Set(),horarios=new Set();
-    for(const turno of ['manha','tarde']){
-      for(const item of candidatos){
-        if(item.turno!==turno||datas.has(item.data)||horarios.has(item.h))continue;
-        if(escolhidas.filter(x=>x.turno===turno).length>=2)break;
-        escolhidas.push(item);datas.add(item.data);horarios.add(item.h);
-      }
-    }
-    opcoesAgenda=escolhidas;render();
-    document.getElementById('ag-sugestoes')?.scrollIntoView({behavior:'smooth',block:'nearest'});
-  }
-  function confirmarAgenda(data,h,manual){
-    pegarCamposAgenda();
-    const checagem=verificarPossibilidade(data,h,formAgenda.bairro);
-    if(!checagem.permitido){alert('Não é possível confirmar: '+checagem.avisos.join(' '));return;}
-    if(manual&&!checagem.logisticaOk){
-      const autorizar=document.getElementById('ag-excecao')?.checked;
-      if(!autorizar){alert('Existem alertas logísticos: '+checagem.avisos.join(' ')+'\nMarque a autorização de exceção para continuar.');return;}
-    } else if(!manual&&!checagem.logisticaOk){
-      alert('O horário deixou de atender às regras de deslocamento. Gere novas sugestões.');return;
-    }
-    const cliente=clientes.find(c=>c.id===formAgenda.clienteId);
-    if(!cliente){alert('Selecione um cliente válido.');return;}
-    agendamentos.push({id:'AG-'+Date.now(),data,hora:h,clienteId:cliente.id,cliente:cliente.nome,
-      bairro:formAgenda.bairro,tipo:formAgenda.tipo,endereco:formAgenda.endereco,
-      observacao:formAgenda.observacao,manual:!!manual});
-    salvarAgenda();agendaFormAberto=false;opcoesAgenda=[];semanaAgenda=segundaFeira(data);diaAgenda=data;render();
-    document.getElementById('rotas-dia')?.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-  function confirmarSugestaoAgenda(index){
-    if(!Number.isInteger(index)||!opcoesAgenda[index])return;
-    const o=opcoesAgenda[index]; confirmarAgenda(o.data,o.h,false);
-  }
-  function confirmarManualAgenda(){
-    const data=document.getElementById('agDataManual')?.value;
-    const horaTexto=document.getElementById('agHoraManual')?.value;
-    if(!data||!horaTexto){alert('Escolha data e horário para a opção manual.');return;}
-    const h=Number(horaTexto.slice(0,2));
-    confirmarAgenda(data,h,true);
-  }
-  function abrirFormAgenda(){agendaFormAberto=!agendaFormAberto;opcoesAgenda=[];render();}
-  function mudarSemanaAgenda(offset){semanaAgenda=addDias(semanaAgenda,offset*7);diaAgenda=semanaAgenda;render();}
-  function semanaVigenteAgenda(){semanaAgenda=segundaFeira(dataBrasilia());diaAgenda=dataBrasilia();render();}
-  function selecionarDiaAgenda(data){diaAgenda=data;render();document.getElementById('rotas-dia')?.scrollIntoView({behavior:'smooth',block:'nearest'});}
-  function selecionarCelulaAgenda(data,h){diaAgenda=data;render();document.getElementById('rotas-dia')?.scrollIntoView({behavior:'smooth',block:'nearest'});}
-  function cardAgendamentoForma(){
-    if(!agendaFormAberto)return '';
-    const bairros=Object.entries(locaisAgenda).map(([id,b])=>`<option value="${id}" ${formAgenda.bairro===id?'selected':''}>${esc(b.nome)}</option>`).join('');
-    const pessoas=clientes.map(c=>`<option value="${c.id}" ${formAgenda.clienteId===c.id?'selected':''}>${esc(c.nome)}</option>`).join('');
-    const opcoes=opcoesAgenda.map((o,i)=>`<div class="ag-opcao"><span class="turno">Opção ${i+1} · ${o.turno==='manha'?'Manhã':'Tarde'}</span><span class="data">${esc(legivel(o.data))}</span><span class="horario">${horaStr(o.h)}</span><span class="info-menor">Acréscimo estimado na rota: ${o.kmAdicional.toFixed(1).replace('.',',')} km</span><button type="button" class="botao botao-pequeno" onclick="confirmarSugestaoAgenda(${i})">Selecionar horário</button></div>`).join('');
-    return `<section class="card card-pad ag-section" id="novo-agendamento">
-      <div class="cabecalho"><div>${titulo('Novo agendamento','✚')}<p class="suave">Escolha o cliente e a região da visita para receber até 4 sugestões de agenda.</p></div><button class="botao botao-outline botao-pequeno" onclick="abrirFormAgenda()">Fechar ×</button></div>
-      <div class="agenda-chamada"><b>Como funciona:</b> o sistema procura 2 opções pela manhã e 2 à tarde, em datas e horários diferentes, considerando os compromissos existentes, o limite ilustrativo de 30 km entre visitas consecutivas e uma margem de deslocamento. A quinta opção é manual e sinaliza exceções.</div>
-      <div class="ag-form">
-        <label>Cliente<select class="campo-input" id="agCliente" onchange="atualizarClienteAgenda(this.value)">${pessoas}</select></label>
-        <label>Região da visita (simulação)<select class="campo-input" id="agBairro" onchange="atualizarBairroAgenda(this.value)">${bairros}</select></label>
-        <label>Tipo de visita<input id="agTipo" class="campo-input" maxlength="100" value="${esc(formAgenda.tipo)}" placeholder="Ex.: Visita técnica" /></label>
-        <label>Endereço detalhado (opcional)<input id="agEndereco" class="campo-input" maxlength="160" value="${esc(formAgenda.endereco)}" placeholder="Ex.: Rua, número, referência" /></label>
-        <label class="ag-full">Observação<input id="agObs" class="campo-input" maxlength="250" value="${esc(formAgenda.observacao)}" placeholder="Ex.: Cliente disponível após 9h" /></label>
-      </div>
-      <div class="ag-submit"><button class="botao" onclick="gerarSugestoesAgenda()">✦ Sugerir 4 horários</button></div>
-      <div id="ag-sugestoes" class="ag-section"><h3>Quatro sugestões automáticas · 2 manhã + 2 tarde</h3>
-        ${opcoesAgenda.length?`<div class="ag-sugestoes">${opcoes}</div>`:'<p class="ag-cinza" style="margin-top:10px">Clique em “Sugerir 4 horários” para consultar os intervalos livres.</p>'}
-        ${opcoesAgenda.length&&opcoesAgenda.length<4?'<div class="ag-rota-avisos">Não foram encontrados quatro horários que atendam a todas as regras. Você pode tentar outra região ou usar a opção manual.</div>':''}
-      </div>
-      <div class="ag-manual"><div class="card-titulo"><span class="sinal">⑤</span><h2>5ª opção — agendamento manual</h2></div><p class="ag-cinza" style="margin-bottom:12px">Quando nenhuma sugestão atender o cliente, escolha outro dia e horário. Horários ocupados ou fora do expediente continuam bloqueados.</p>
-        <div class="manual-form"><label>Dia<input class="campo-input" type="date" id="agDataManual" min="${dataBrasilia()}" value="${proximoDiaAberto()}" onchange="atualizarAvisoManual()" /></label>
-          <label>Horário<select class="campo-input" id="agHoraManual" onchange="atualizarAvisoManual()">${CONFIG_AGENDA.horas.map(h=>`<option value="${horaStr(h)}" ${h===10?'selected':''}>${horaStr(h)}</option>`).join('')}</select></label>
-          <button class="botao botao-outline" onclick="confirmarManualAgenda()">Confirmar manualmente</button></div>
-        <p id="agAvisoManual" class="ag-atencao" aria-live="polite"></p>
-        <label class="ag-inline" style="margin-top:8px;font-weight:400;color:var(--texto)"><input id="ag-excecao" type="checkbox" /> <span>Autorizar exceção logística caso o limite de 30 km ou a margem de deslocamento não sejam atendidos</span></label>
-      </div>
-      <p class="notinha">Demonstração: distância calculada com coordenadas aproximadas dos bairros e fator ilustrativo. Em produção, use API de rotas para distância e tempo <b>reais por estrada</b> e validadores no backend.</p>
-    </section>`;
-  }
-  function atualizarAvisoManual(){
-    const el=document.getElementById('agAvisoManual');if(!el)return;
-    const data=document.getElementById('agDataManual')?.value;
-    const horaTxt=document.getElementById('agHoraManual')?.value;
-    if(!data||!horaTxt){el.textContent='';return;}
-    const resultado=verificarPossibilidade(data,Number(horaTxt.slice(0,2)),formAgenda.bairro);
-    el.textContent=resultado.avisos.length?resultado.avisos.join(' '):'✓ Horário livre e compatível com as regras demonstrativas.';
-  }
-  function prepararAvisoManual(){if(agendaFormAberto)atualizarAvisoManual();}
-  function roteiroDoDia(data){
-    const lista=visitasDia(data);
-    if(!lista.length)return `<section id="rotas-dia" class="card card-pad ag-section"><div class="cabecalho"><div>${titulo('Rota sugerida · '+esc(legivel(data)),'⌖')}<p class="suave">A rota aparece após selecionar o dia na agenda.</p></div></div><div class="ag-vazio">Nenhuma visita agendada neste dia. A rota será calculada após um agendamento.</div></section>`;
-    const pontos=[{...ESCRITORIO_DEMO,base:true},...lista.map(v=>({...coordDe(v.bairro),nome:locaisAgenda[v.bairro]?.nome||v.bairro,base:false}))];
-    let kmTotal=0,avisos=[]; let deslocamento=0;
-    let anterior=null;
-    for(let i=0;i<lista.length;i++){
-      const visita=lista[i];const atual=coordDe(visita.bairro);
-      const from=anterior?coordDe(anterior.bairro):ESCRITORIO_DEMO;
-      const trecho=kmLinha(from,atual)*1.3;
-      kmTotal+=trecho;deslocamento+=minutosDeslocamento(trecho);
-      if(anterior){
-        if(trecho>CONFIG_AGENDA.maxEntreVisitasKm) avisos.push(`${anterior.cliente} → ${visita.cliente}: ${trecho.toFixed(1)} km estimados (acima de 30 km).`);
-        if((visita.hora-anterior.hora)*60<CONFIG_AGENDA.duracaoMin+minutosDeslocamento(trecho))avisos.push(`Possível atraso entre as visitas de ${horaStr(anterior.hora)} e ${horaStr(visita.hora)}.`);
-      }
-      anterior=visita;
-    }
-    const volta=kmLinha(coordDe(lista.at(-1).bairro),ESCRITORIO_DEMO)*1.3;
-    kmTotal+=volta;deslocamento+=minutosDeslocamento(volta);
-    pontos.push({...ESCRITORIO_DEMO,base:true,final:true});
-    const lats=pontos.map(p=>p.lat),lngs=pontos.map(p=>p.lng);
-    const xMin=Math.min(...lngs)-.016,xMax=Math.max(...lngs)+.016;
-    const yMin=Math.min(...lats)-.016,yMax=Math.max(...lats)+.016;
-    const xy=p=>({x:30+(p.lng-xMin)/(xMax-xMin)*500,y:260-(p.lat-yMin)/(yMax-yMin)*210});
-    const listaPontos=pontos.map(xy);
-    const linhas=listaPontos.map(p=>`${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-    const grid=Array.from({length:7},(_,i)=>`<line x1="${i*90}" x2="${i*90}" y1="0" y2="310" stroke="#deebe2" stroke-width="1" />`).join('')+Array.from({length:5},(_,i)=>`<line y1="${i*77}" y2="${i*77}" x1="0" x2="560" stroke="#deebe2" stroke-width="1" />`).join('');
-    const marcadores=listaPontos.slice(0,-1).map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="${i===0?15:13}" fill="${i===0?'#303a3f':'#468b59'}" stroke="white" stroke-width="3"/><text x="${p.x}" y="${p.y+4}" fill="white" font-weight="bold" text-anchor="middle" font-size="12">${i===0?'B':i}</text>`).join('');
-    const itens=lista.map((v,i)=>`<div class="ag-rota-item"><div class="ag-passo">${i+1}</div><div><strong>${horaStr(v.hora)} — ${esc(v.cliente)}</strong><p>${esc(v.tipo)} · ${esc(locaisAgenda[v.bairro]?.nome||v.bairro)}</p>${v.manual?'<span class="chip chip-laranja">Manual</span>':''}</div></div>`).join('');
-    const origem='Centro, Rio de Janeiro, RJ';
-    const enderecos=lista.map(v=>v.endereco?`${v.endereco}, ${locaisAgenda[v.bairro]?.nome||''}, Rio de Janeiro, RJ`:`${locaisAgenda[v.bairro]?.nome||'Centro'}, Rio de Janeiro, RJ`);
-    const url='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(origem)+'&destination='+encodeURIComponent(origem)+'&waypoints='+encodeURIComponent(enderecos.join('|'))+'&travelmode=driving';
-    return `<section id="rotas-dia" class="card card-pad ag-section"><div class="agenda-toolbar"><div>${titulo('Rota sugerida · '+esc(legivel(data)),'⌖')}<p class="suave">Ordem cronológica das visitas, com estimativa visual dos deslocamentos.</p></div><a class="botao botao-outline" href="${url}" target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a></div>
-      <div class="ag-resumo-rota"><div><span>Visitas</span><strong>${lista.length}</strong></div><div><span>Distância demonstrativa</span><strong>~${kmTotal.toFixed(1).replace('.',',')} km</strong></div><div><span>Deslocamento estimado</span><strong>~${Math.round(deslocamento)} min</strong></div></div>
-      ${avisos.length?`<div class="ag-rota-avisos">⚠ ${avisos.map(esc).join(' · ')}</div>`:''}
-      <div class="ag-layout-rota"><div class="ag-mapa"><svg viewBox="0 0 560 310" role="img" aria-label="Esquema geográfico ilustrativo da rota do dia"><rect width="560" height="310" fill="transparent"/>${grid}<polyline points="${linhas}" fill="none" stroke="#81b48c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".24"/><polyline points="${linhas}" fill="none" stroke="#317d48" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4"/>${marcadores}</svg><span class="ag-mapa-rodape">Visualização esquemática · não representa ruas ou trajetos reais</span></div><div><div class="ag-rota-item"><div class="ag-passo" style="background:#303a3f;color:white">B</div><div><strong>Saída · Base demonstrativa</strong><p>Centro, Rio de Janeiro / RJ</p></div></div>${itens}<div class="ag-rota-item"><div class="ag-passo" style="background:#e6eae7;color:#637266">↩</div><div><strong>Retorno à base</strong><p>Trajeto de volta incluído na estimativa</p></div></div></div></div>
-      <p class="notinha">A rota apresenta as visitas já marcadas em ordem de horário. Se os horários forem fixos, a ordem não pode ser alterada livremente para encurtar a distância. Distância e trânsito reais exigem geocodificação, matriz viária e serviço de roteirização; o Google Maps recalculará o trajeto nas vias.</p>
-    </section>`;
-  }
-  function agenda(){
-    const fim=addDias(semanaAgenda,6);
-    const total=agendamentos.filter(a=>a.data>=semanaAgenda&&a.data<=fim).length;
-    const dias=Array.from({length:7},(_,i)=>addDias(semanaAgenda,i));
-    const cab=`<div class="agenda-hora" style="background:#f6faf7"></div>${dias.map(d=>`<button type="button" class="agenda-cab-dia ${d===diaAgenda?'selecionado':''} ${d===dataBrasilia()?'hoje':''}" onclick="selecionarDiaAgenda('${d}')" title="Ver rota de ${esc(legivel(d))}"><small>${diaSemanaCurto[diaNum(d)]}</small><strong>${curto(d)}</strong><small>${visitasDia(d).length} visita(s)</small></button>`).join('')}`;
-    const rows=CONFIG_AGENDA.horas.map(h=>{
-      const cells=dias.map(d=>{
-        const aberto=horaComercial(d,h),agendaVisita=visitasDia(d).find(a=>a.hora===h);
-        const passado=!futuroPermitido(d,h);
-        if(!aberto)return `<div class="agenda-celula bloqueado"><span class="agenda-fechado">Fechado</span></div>`;
-        if(agendaVisita)return `<button type="button" class="agenda-celula ocupado ${d===diaAgenda?'selecionado':''} ${passado?'passado':''}" onclick="selecionarCelulaAgenda('${d}',${h})"><span class="agenda-tag"><b>${esc(agendaVisita.cliente)}</b>${esc(locaisAgenda[agendaVisita.bairro]?.nome||'Visita')}</span></button>`;
-        return `<button type="button" class="agenda-celula ${d===diaAgenda?'selecionado':''} ${passado?'passado':''}" onclick="selecionarCelulaAgenda('${d}',${h})"><span class="agenda-vago">${passado?'—':'Livre'}</span></button>`;
-      }).join('');return `<div class="agenda-hora">${horaStr(h)}</div>${cells}`;
+    const saved = JSON.parse(localStorage.getItem(CHAVE_AGENDA));
+    agendamentos = Array.isArray(saved) ? saved : [];
+  } catch(e) { agendamentos = []; }
+
+  function visitasDia(data) { return agendamentos.filter(a=>a.data===data).sort((a,b)=>a.hora-b.hora); }
+
+  function agenda() {
+    const fim = addDias(semanaAgenda,6);
+    const total = agendamentos.filter(a => a.data>=semanaAgenda && a.data<=fim).length;
+    const dias = Array.from({length:7}, (_,i) => addDias(semanaAgenda,i));
+
+    const cab = `<div class="agenda-hora" style="background:#f6faf7"></div>${dias.map(d => 
+      `<button type="button" class="agenda-cab-dia ${d===diaAgenda?'selecionado':''} ${d===dataBrasilia()?'hoje':''}" onclick="diaAgenda='${d}';render();">
+        <small>${diaSemanaCurto[diaNum(d)]}</small><strong>${curto(d)}</strong><small>${visitasDia(d).length} visita(s)</small>
+      </button>`
+    ).join('')}`;
+
+    const rows = CONFIG_AGENDA.horas.map(h => {
+      const cells = dias.map(d => {
+        const dN = diaNum(d);
+        const aberto = dN===6 ? (h>=8 && h<12) : (dN>=1 && dN<=5 && (h>=8 && h<12 || h>=13 && h<18));
+        const vis = visitasDia(d).find(a => a.hora === h);
+        if(!aberto) return `<div class="agenda-celula bloqueado"><span class="agenda-fechado">Fechado</span></div>`;
+        if(vis) return `<button type="button" class="agenda-celula ocupado ${d===diaAgenda?'selecionado':''}"><span class="agenda-tag"><b>${esc(vis.cliente)}</b>${esc(vis.tipo)}</span></button>`;
+        return `<button type="button" class="agenda-celula ${d===diaAgenda?'selecionado':''}"><span class="agenda-vago">Livre</span></button>`;
+      }).join('');
+      return `<div class="agenda-hora">${horaStr(h)}</div>${cells}`;
     }).join('');
-    return `${cabecalho('Agendamento','Agenda semanal do vendedor · horários e deslocamentos previstos',`<button class="botao" onclick="abrirFormAgenda()">+ Novo agendamento</button>`)}
-      <div class="mini-indicadores">${kpi('Visitas na semana',total,'Segunda-feira a domingo')}${kpi('Visitas no dia selecionado',visitasDia(diaAgenda).length,curto(diaAgenda))}${kpi('Limite entre visitas','30 km','Distância viária: exige integração')}</div>
-      ${cardAgendamentoForma()}
-      <section class="card agenda-painel ag-section"><div class="agenda-toolbar"><div><h2>Calendário semanal</h2><p class="suave">Segunda a sexta: 08h–12h e 13h–18h · Sábado: 08h–12h · Domingo: fechado</p></div><div class="agenda-controles"><button class="botao botao-outline botao-pequeno" onclick="mudarSemanaAgenda(-1)" title="Semana anterior">←</button><div class="agenda-periodo">${curto(semanaAgenda)} a ${curto(fim)} · ${parseISO(fim).getFullYear()}</div><button class="botao botao-outline botao-pequeno" onclick="mudarSemanaAgenda(1)" title="Próxima semana">→</button><button class="botao botao-outline botao-pequeno" onclick="semanaVigenteAgenda()">Esta semana</button></div></div>
-        <div class="agenda-legenda"><span><i class="legenda-bola" style="background:#468b59"></i>Agendado</span><span><i class="legenda-bola" style="background:#cddbd1"></i>Disponível</span><span><i class="legenda-bola" style="background:#c5cdc8"></i>Fechado / almoço</span><span>Fuso: Brasília (UTC−3)</span></div>
-        <div class="agenda-scroller"><div class="agenda-calendario">${cab}${rows}</div></div><p class="notinha">Clique na data ou em um horário para consultar o roteiro do dia. Visitas fictícias demonstrativas; não é uma agenda compartilhada real.</p></section>
-      ${roteiroDoDia(diaAgenda)}`;
-  }
 
-
-  /* ==========================================================
-     OBRAS: base demonstrativa com identificação, cliente e prazo
-     Dentro do prazo / atrasadas são subconjuntos de "Em andamento".
-     ========================================================== */
-  const OBRAS_STORAGE='casa-das-artes-obras-demo-v1';
-  const obrasIniciais=[
-    {id:'OBR-2026-041',clienteId:'000142',orcamentoId:'ORC-1001',servico:'Instalação de portão automático',inicio:somarDias(-18),prazo:somarDias(12),progresso:68,status:'Em andamento',responsavel:'Equipe de instalação A',endereco:'Méier, Rio de Janeiro / RJ',observacao:'Aguardando a chegada do motor do portão.'},
-    {id:'OBR-2026-040',clienteId:'000141',orcamentoId:'ORC-1006',servico:'Cobertura metálica residencial',inicio:somarDias(-24),prazo:somarDias(8),progresso:52,status:'Em andamento',responsavel:'Equipe de cobertura',endereco:'Tijuca, Rio de Janeiro / RJ',observacao:'Montagem dos suportes em execução.'},
-    {id:'OBR-2026-039',clienteId:'000140',orcamentoId:'ORC-1003',servico:'Guarda-corpo em aço',inicio:somarDias(-28),prazo:somarDias(-3),progresso:75,status:'Em andamento',responsavel:'Equipe de soldagem',endereco:'Vila Isabel, Rio de Janeiro / RJ',observacao:'Prazo ultrapassado; concluir acabamento e vistoria.'},
-    {id:'OBR-2026-038',clienteId:'000139',orcamentoId:'ORC-1004',servico:'Portão de garagem',inicio:somarDias(-16),prazo:somarDias(19),progresso:31,status:'Em andamento',responsavel:'Equipe de fabricação',endereco:'Barra da Tijuca, Rio de Janeiro / RJ',observacao:'Estrutura em fase de fabricação.'},
-    {id:'OBR-2026-037',clienteId:'000142',orcamentoId:'ORC-1005',servico:'Reparo de cobertura e calhas',inicio:somarDias(-37),prazo:somarDias(-7),progresso:88,status:'Em andamento',responsavel:'Equipe de manutenção',endereco:'Centro, Rio de Janeiro / RJ',observacao:'Atraso devido à entrega de materiais.'},
-    {id:'OBR-2026-036',clienteId:'000141',orcamentoId:'ORC-1006',servico:'Reforço de estrutura metálica',inicio:somarDias(-50),prazo:somarDias(-11),progresso:100,status:'Concluída',responsavel:'Equipe de instalação B',endereco:'Tijuca, Rio de Janeiro / RJ',observacao:'Entrega e aceite concluídos.'}
-  ];
-  let obras;
-  try{const salvas=JSON.parse(localStorage.getItem(OBRAS_STORAGE));obras=Array.isArray(salvas)?salvas:obrasIniciais;}
-  catch{obras=obrasIniciais;}
-  function salvarObras(){try{localStorage.setItem(OBRAS_STORAGE,JSON.stringify(obras));}catch(e){console.warn('Sem persistência local para obras',e);}}
-  function clienteDaObra(ob){return clientes.find(c=>c.id===ob.clienteId)||null;}
-  function statusPrazoObra(ob){if(ob.status!=='Em andamento')return ob.status;return ob.prazo<somarDias(0)?'Em atraso':'Dentro do prazo';}
-  function obrasEmAndamento(){return obras.filter(o=>o.status==='Em andamento');}
-  function abertasNoPrazo(){return obrasEmAndamento().filter(o=>o.prazo>=somarDias(0));}
-  function abertasEmAtraso(){return obrasEmAndamento().filter(o=>o.prazo<somarDias(0));}
-  function filtrarObras(){
-    const id=textoNormalizado(obrasFiltroId),cliente=textoNormalizado(obrasFiltroCliente);
-    return obras.filter(o=>{
-      const c=clienteDaObra(o);
-      return textoNormalizado(o.id).includes(id)&&textoNormalizado(c?.nome||'').includes(cliente)
-        &&(!obrasFiltroInicio||o.inicio>=obrasFiltroInicio)&&(!obrasFiltroFim||o.inicio<=obrasFiltroFim)
-        &&(obrasFiltroStatus==='Todas'||o.status===obrasFiltroStatus);
-    }).sort((a,b)=>b.inicio.localeCompare(a.inicio));
-  }
-  function obraTabelaLinhas(){return filtrarObras().map(o=>{
-    const cliente=clienteDaObra(o), atrasada=statusPrazoObra(o)==='Em atraso';
-    return `<tr><td><button class="link" onclick="abrirObra('${esc(o.id)}')">${esc(o.id)} ↗</button></td>
-      <td><button class="link" onclick="abrirCliente('${esc(cliente?.id||'')}')">${esc(cliente?.nome||'Cliente não encontrado')}</button></td>
-      <td>${esc(o.servico)}<small class="suave" style="display:block">${esc(o.responsavel||'')}</small></td>
-      <td>${o.osId?`<button class="link" onclick="abrirOS('${esc(o.osId)}')">${esc(o.osId)} ↗</button>`:'<span class="suave">Legado</span>'}</td>
-      <td>${fmtData(o.inicio)}</td><td>${fmtData(o.prazo)}</td>
-      <td><b>${Math.min(100,Math.max(0,Number(o.progresso)||0))}%</b><div class="ob-progresso"><div style="width:${Math.min(100,Math.max(0,Number(o.progresso)||0))}%"></div></div></td>
-      <td>${statusChip(o.status)}<span class="ob-status ${atrasada?'ob-atrasada':''}">${esc(statusPrazoObra(o))}</span></td>
-      <td><button class="link" onclick="abrirObra('${esc(o.id)}')">Ver detalhes →</button></td></tr>`;
-  }).join('')||'<tr><td colspan="9" class="sem-resultado">Nenhuma obra encontrada com esses filtros.</td></tr>';}
-  function atualizarFiltrosObras(campo,valor){
-    if(campo==='id')obrasFiltroId=valor;
-    if(campo==='cliente')obrasFiltroCliente=valor;
-    if(campo==='inicio')obrasFiltroInicio=valor;
-    if(campo==='fim')obrasFiltroFim=valor;
-    if(campo==='status')obrasFiltroStatus=valor;
-    const lista=document.getElementById('obrasLinhas');if(lista)lista.innerHTML=obraTabelaLinhas();
-    const n=document.getElementById('obrasContador');if(n)n.textContent=filtrarObras().length+' obra(s) encontrada(s)';
-    const aviso=document.getElementById('obrasFiltroAviso');if(aviso)aviso.textContent=obrasFiltroInicio&&obrasFiltroFim&&obrasFiltroInicio>obrasFiltroFim?'A data inicial deve ser anterior ou igual à data final.':'';
-  }
-  function limparFiltrosObras(){obrasFiltroId='';obrasFiltroCliente='';obrasFiltroInicio='';obrasFiltroFim='';obrasFiltroStatus='Em andamento';render();}
-  function abrirObra(id){const o=obras.find(x=>x.id===id);if(!o)return;obraAtual=o;formularioNovaObra=false;paginaAtual='obras';render();window.scrollTo(0,0);}
-  function abrirNovaObra(){osParaNovaObraId=null;formularioNovaObra=true;obraAtual=null;paginaAtual='obras';render();}
-  function fecharNovaObra(){formularioNovaObra=false;osParaNovaObraId=null;render();}
-  function cadastrarObra(ev){
-    ev.preventDefault();const f=new FormData(ev.target);
-    const idOS=String(f.get('osId')||'');
-    const os=ordensServico.find(x=>x.id===idOS);
-    if(!os||os.legado||os.status!=='Aguardando planejamento'||obraDaOS(idOS)){
-      alert('Selecione uma ordem de serviço válida, aprovada e sem execução vinculada.');return;
-    }
-    const inicio=String(f.get('inicio')||''),prazo=String(f.get('prazo')||'');
-    if(!inicio||!prazo||prazo<inicio){alert('Informe datas válidas. O prazo não pode ser anterior ao início.');return;}
-    const novo={id:'OBR-'+new Date().getFullYear()+'-'+Date.now().toString().slice(-7),
-      clienteId:os.clienteId,orcamentoId:os.orcamentoId,osId:os.id,
-      tipoExecucao:String(f.get('tipoExecucao')||'Obra'),servico:os.servico,inicio,prazo,
-      progresso:0,status:'Em andamento',responsavel:String(f.get('responsavel')||'').trim(),
-      endereco:String(f.get('endereco')||'').trim(),observacao:String(f.get('observacao')||'').trim()};
-    if(obras.some(x=>x.id===novo.id))novo.id+='-'+(obras.length+1);
-    obras.unshift(novo);
-    os.obraId=novo.id;os.status='Em execução';
-    salvarObras();salvarOS();
-    formularioNovaObra=false;osParaNovaObraId=null;obraAtual=novo;
-    obrasFiltroStatus='Em andamento';render();window.scrollTo(0,0);
-  }
-
-  function atualizarObra(id,campo,valor){
-    const o=obras.find(x=>x.id===id);if(!o)return;
-    if(campo==='status'&&!['Em andamento','Concluída','Planejada'].includes(valor))return;
-    if(campo==='progresso'&&(!Number.isFinite(Number(valor))||Number(valor)<0||Number(valor)>100))return;
-    o[campo]=campo==='progresso'?Number(valor):valor;
-    if(campo==='status'&&valor==='Concluída')o.progresso=100;
-    if(o.osId){const os=ordensServico.find(x=>x.id===o.osId);if(os){os.status=o.status==='Concluída'?'Concluída':o.status==='Em andamento'?'Em execução':'Aguardando planejamento';salvarOS();}}
-    salvarObras();render();
-  }
-  function formularioCadastroObra(){
-    const elegiveis=ordensServico.filter(o=>!o.legado&&o.status==='Aguardando planejamento'&&!obraDaOS(o.id));
-    const selecionada=elegiveis.find(o=>o.id===osParaNovaObraId)||elegiveis[0];
-    const c=clientes.find(x=>x.id===selecionada?.clienteId);
-    return `${cabecalho('Iniciar obra ou serviço','A execução deve nascer de uma ordem de serviço aprovada','<button class="botao botao-outline" onclick="fecharNovaObra()">← Voltar</button>')}
-      <section class="card card-pad">${titulo('Abertura de execução','▥')}
-      ${!elegiveis.length?`<div class="nota">Não há ordens de serviço aguardando planejamento. Aprove um orçamento primeiro.</div><div style="margin-top:14px"><button class="botao" onclick="ir('orcamentos')">Ir para Orçamentos →</button></div>`:
-      `<form onsubmit="cadastrarObra(event)"><div class="ob-form">
-        <label style="grid-column:1/-1">Ordem de serviço *<select name="osId" required onchange="osParaNovaObraId=this.value;atualizarCamposObraOS(this.value)">${elegiveis.map(o=>`<option value="${esc(o.id)}" ${o.id===selecionada.id?'selected':''}>${esc(o.id)} — ${esc(clientes.find(c=>c.id===o.clienteId)?.nome||'Cliente')} — ${esc(o.servico)}</option>`).join('')}</select></label>
-        <div class="os-origem"><small>Cliente vinculado</small><b id="osClienteSelecionado">${esc(c?.nome||'—')}</b></div><div class="os-origem"><small>Serviço contratado</small><b id="osServicoSelecionado">${esc(selecionada.servico)}</b></div>
-        <label>Tipo de execução *<select name="tipoExecucao"><option>Obra</option><option>Serviço</option></select></label>
-        <label>Data de início *<input name="inicio" type="date" class="campo-input" value="${somarDias(0)}" required></label>
-        <label>Prazo de entrega *<input name="prazo" type="date" class="campo-input" value="${somarDias(20)}" required></label>
-        <label>Responsável / equipe<input name="responsavel" class="campo-input" maxlength="100"></label>
-        <label>Local da execução<input name="endereco" class="campo-input" maxlength="170"></label>
-        <label style="grid-column:1/-1">Observações<input name="observacao" class="campo-input" maxlength="240"></label>
-      </div><div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px"><button class="botao botao-outline" type="button" onclick="fecharNovaObra()">Cancelar</button><button class="botao" type="submit">Criar e iniciar execução</button></div></form>`}
-      </section><p class="notinha">Cadastro demonstrativo no navegador; na aplicação real, o backend deverá criar a obra e atualizar a OS na mesma transação.</p>`;
-  }
-
-  function fichaObra(){
-    const o=obraAtual,c=clienteDaObra(o),atrasada=statusPrazoObra(o)==='Em atraso';
-    const os=o.osId?ordensServico.find(x=>x.id===o.osId):null;
-    const orc=os?.orcamentoId?orcamentos.find(x=>x.id===os.orcamentoId):null;
-    const referencia=orc?`<button class="link" onclick="abrirOrcamento('${esc(orc.id)}','obras')">${esc(orc.id)} ↗</button>`:'Não confirmado (registro legado)';
-    return `<button class="link" onclick="obraAtual=null;render()">← Voltar à lista de obras</button><div style="height:13px"></div>
-      ${cabecalho('Ficha da obra','Projeto '+esc(o.id))}
-      <section class="card card-pad" style="margin-bottom:17px"><div class="cabecalho" style="margin-bottom:13px"><div><h2 style="font-size:21px">${esc(o.servico)}</h2><p class="suave">${esc(o.id)} • ${esc(o.endereco||'Local a confirmar')}</p></div>${statusChip(o.status)}</div>
-        <div class="ob-ficha-resumo"><div class="card"><small>Início</small><strong>${fmtData(o.inicio)}</strong></div><div class="card"><small>Prazo previsto</small><strong>${fmtData(o.prazo)}</strong></div><div class="card"><small>Situação do prazo</small><strong style="color:${atrasada?'var(--vermelho)':'var(--verde-escuro)'}">${esc(statusPrazoObra(o))}</strong></div></div>
-        <div class="duas-colunas"><div>${info('Cliente',`<button class="link" onclick="abrirCliente('${esc(c?.id||'')}')">${esc(c?.nome||'Não cadastrado')} ↗</button>`)}${info('Orçamento de origem',referencia)}${info('Ordem de Serviço',os?`<button class="link" onclick="abrirOS('${esc(os.id)}')">${esc(os.id)} ↗</button>`:'Não vinculada (registro legado)')}${info('Tipo de execução',esc(o.tipoExecucao||'Obra'))}${info('Responsável',esc(o.responsavel||'Não definido'))}</div><div>${info('Andamento',esc(o.progresso)+'%')}${info('Endereço da obra',esc(o.endereco||'A confirmar'))}</div></div>
-        <div class="progresso"><div style="width:${Math.min(100,Math.max(0,Number(o.progresso)||0))}%"></div></div>
-        ${atrasada?'<div class="ob-aviso">Esta obra está em andamento e ultrapassou o prazo de entrega previsto.</div>':''}
-      </section>
-      <section class="card card-pad" style="margin-bottom:17px">${fluxoRelacionamento(orc,os,o)}</section>
-      <div class="duas-colunas"><section class="card card-pad">${titulo('Acompanhamento da obra','▥')}
-        <label style="display:block;font-size:12px;font-weight:700;color:#52665a">Status<select onchange="atualizarObra('${esc(o.id)}','status',this.value)">${['Planejada','Em andamento','Concluída'].map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}</select></label>
-        <label style="display:block;font-size:12px;font-weight:700;color:#52665a;margin-top:16px">Progresso (%)<input class="campo-input" type="number" min="0" max="100" step="1" value="${Number(o.progresso)||0}" onchange="atualizarObra('${esc(o.id)}','progresso',this.value)"></label>
-        <p class="notinha">A edição altera os indicadores de obras da Home e desta tela.</p></section>
-        <section class="card card-pad">${titulo('Observações e arquivos','✎')}<p class="nota">${esc(o.observacao||'Nenhuma observação registrada.')}</p><div style="height:16px"></div><button class="botao botao-outline" onclick="abrirCliente('${esc(c?.id||'')}','documentos')">Ver documentos do cliente →</button></section></div>`;
-  }
-  function paginaObras(){
-    if(formularioNovaObra)return formularioCadastroObra();
-    if(obraAtual)return fichaObra();
-    return `${cabecalho('Obras','Controle de execução e acompanhamento de prazos de todas as obras','<button class="botao" onclick="abrirNovaObra()">+ Nova obra</button>')}
-      <div class="mini-indicadores">${kpi('Obras em andamento',obrasEmAndamento().length,'Total de obras ainda em execução')}${kpi('Dentro do prazo',abertasNoPrazo().length,'Em andamento com prazo ainda vigente')}${kpi('Obras em atraso',abertasEmAtraso().length,'Em andamento com prazo ultrapassado')}</div>
-      <section class="card card-pad">${titulo('Pesquisar obras','⌕')}
-        <div class="ob-filtros">
-          <label for="obBuscaId">ID da obra<input id="obBuscaId" type="search" class="campo-input" placeholder="Ex.: OBR-2026-041" value="${esc(obrasFiltroId)}" oninput="atualizarFiltrosObras('id',this.value)"></label>
-          <label for="obBuscaCliente">Nome do cliente<input id="obBuscaCliente" type="search" class="campo-input" placeholder="Ex.: João da Silva" value="${esc(obrasFiltroCliente)}" oninput="atualizarFiltrosObras('cliente',this.value)"></label>
-          <label for="obInicio">Data inicial<input id="obInicio" type="date" class="campo-input" value="${esc(obrasFiltroInicio)}" onchange="atualizarFiltrosObras('inicio',this.value)"></label>
-          <label for="obFim">Data final<input id="obFim" type="date" class="campo-input" value="${esc(obrasFiltroFim)}" onchange="atualizarFiltrosObras('fim',this.value)"></label>
-          <button class="botao botao-outline" onclick="limparFiltrosObras()">Limpar filtros</button>
+    return `${cabecalho('Agendamento', 'Agenda semanal de visitas técnicas e medições')}
+      <div class="mini-indicadores">
+        ${kpi('Visitas na semana', total, 'Segunda a domingo')}
+        ${kpi('Visitas no dia selecionado', visitasDia(diaAgenda).length, curto(diaAgenda))}
+      </div>
+      <section class="card agenda-painel ag-section">
+        <div class="agenda-toolbar">
+          <div><h2>Calendário semanal</h2><p class="suave">Segunda a sexta: 08h–12h e 13h–18h · Sábado: 08h–12h</p></div>
+          <div class="agenda-controles">
+            <button class="botao botao-outline botao-pequeno" onclick="semanaAgenda=addDias(semanaAgenda,-7);diaAgenda=semanaAgenda;render();">←</button>
+            <div class="agenda-periodo">${curto(semanaAgenda)} a ${curto(fim)}</div>
+            <button class="botao botao-outline botao-pequeno" onclick="semanaAgenda=addDias(semanaAgenda,7);diaAgenda=semanaAgenda;render();">→</button>
+          </div>
         </div>
-        <div class="ob-tools"><span class="suave" style="font-size:12px" id="obrasContador">${filtrarObras().length} obra(s) encontrada(s)</span>
-          <label style="display:flex;align-items:center;gap:9px;color:#52665a;font-size:12px">Situação <select aria-label="Filtrar obras por situação" onchange="atualizarFiltrosObras('status',this.value)">${['Em andamento','Planejada','Concluída','Todas'].map(s=>`<option ${s===obrasFiltroStatus?'selected':''}>${s}</option>`).join('')}</select></label></div>
-        <p style="font-size:11px;color:var(--suave);margin-bottom:10px">O período filtra pela <b>data de início</b> das obras, com inclusão das duas datas.</p><p class="orc-erro" id="obrasFiltroAviso">${obrasFiltroInicio&&obrasFiltroFim&&obrasFiltroInicio>obrasFiltroFim?'A data inicial deve ser anterior ou igual à data final.':''}</p>
-        <div class="tabela-wrap"><table><thead><tr><th>ID da obra</th><th>Cliente</th><th>Serviço</th><th>OS</th><th>Início</th><th>Prazo final</th><th>Progresso</th><th>Situação</th><th>Ação</th></tr></thead><tbody id="obrasLinhas">${obraTabelaLinhas()}</tbody></table></div>
-      </section><p class="notinha">Exemplos fictícios; o indicador de atraso compara o prazo previsto com a data atual. Não substitui avaliação técnica de evolução da obra.</p>`;
-  }
-  /* ==========================================================
-     DOCUMENTOS DO CLIENTE: metadados demonstrativos e upload
-     temporário SOMENTE em memória; nunca colocar anexos ou
-     documentos pessoais em localStorage neste protótipo.
-     ========================================================== */
-  const documentosExemplo=[
-    {id:'DOC-001',clienteId:'000142',nome:'Contrato de prestação de serviços assinado.pdf',tipo:'Contrato',origem:'E-mail',data:'2026-10-22',descricao:'Contrato assinado para execução dos serviços de serralheria.',tamanho:'412 KB',amostra:true},
-    {id:'DOC-002',clienteId:'000142',nome:'Fotos do portão - vistoria inicial.jpg',tipo:'Foto da obra',origem:'WhatsApp',data:'2026-11-03',descricao:'Registro fotográfico do local antes da instalação.',tamanho:'2,1 MB',amostra:true},
-    {id:'DOC-003',clienteId:'000142',nome:'Vídeo da cobertura - vistoria.mp4',tipo:'Vídeo da obra',origem:'WhatsApp',data:'2026-11-05',descricao:'Vídeo do local para avaliação da estrutura.',tamanho:'9,4 MB',amostra:true},
-    {id:'DOC-004',clienteId:'000142',nome:'Documento enviado pelo cliente.png',tipo:'Documento do cliente',origem:'Atendimento',data:'2026-10-23',descricao:'Imagem de documento recebida para conferência cadastral.',tamanho:'750 KB',amostra:true},
-    {id:'DOC-005',clienteId:'000141',nome:'Contrato de cobertura assinado.pdf',tipo:'Contrato',origem:'E-mail',data:'2026-10-18',descricao:'Contrato de prestação de serviço de cobertura metálica.',tamanho:'383 KB',amostra:true},
-    {id:'DOC-006',clienteId:'000141',nome:'Foto do local de instalação.jpg',tipo:'Foto da obra',origem:'WhatsApp',data:'2026-10-26',descricao:'Registro prévio da área de instalação.',tamanho:'1,4 MB',amostra:true},
-    {id:'DOC-007',clienteId:'000140',nome:'Foto da estrutura.jpg',tipo:'Foto da obra',origem:'WhatsApp',data:'2026-10-20',descricao:'Estrutura enviada para orçamento.',tamanho:'1,8 MB',amostra:true}
-  ];
-  const documentosSessao=[];
-  function documentosDoCliente(id){return [...documentosExemplo,...documentosSessao].filter(d=>d.clienteId===id).sort((a,b)=>b.data.localeCompare(a.data));}
-  function iconDoc(tipo){return tipo==='Contrato'?'▤':tipo==='Foto da obra'?'▧':tipo==='Vídeo da obra'?'▶':tipo==='Documento do cliente'?'▣':'◇';}
-  function abaDocumentosCliente(c){
-    const docs=documentosDoCliente(c.id);
-    return `<div class="cl-hist-filtros"><div><h2>Documentos do cliente</h2><p class="suave">Contratos, fotos, vídeos e arquivos recebidos por diferentes canais</p></div>
-      <button class="botao" onclick="formularioDocumentoAberto=!formularioDocumentoAberto;render()">${formularioDocumentoAberto?'Fechar formulário':'＋ Adicionar documento'}</button></div>
-      <div class="cl-doc-aviso">Protótipo: os arquivos de exemplo são apenas registros visuais; não existem anexos reais. Arquivos selecionados neste navegador ficam disponíveis somente durante esta sessão e não são enviados a servidores.</div>
-      ${formularioDocumentoAberto?`<section class="card card-pad" style="margin-bottom:18px">${titulo('Adicionar documento ao cliente','▧')}<form onsubmit="salvarDocumentoCliente(event)"><div class="doc-form">
-        <label>Arquivo (PDF, imagem ou vídeo)*<input required type="file" name="arquivo" class="campo-input" accept=".pdf,.png,.jpg,.jpeg,.webp,.mp4,.mov"></label>
-        <label>Categoria *<select required name="tipo">${['Contrato','Foto da obra','Vídeo da obra','Documento do cliente','Outro'].map(t=>`<option>${t}</option>`).join('')}</select></label>
-        <label>Recebido via<select name="origem">${['WhatsApp','E-mail','Atendimento','Portal do cliente','Outro canal'].map(o=>`<option>${o}</option>`).join('')}</select></label>
-        <label>Data de recebimento<input type="date" class="campo-input" name="data" value="${somarDias(0)}" required></label>
-        <label class="full">Descrição<textarea name="descricao" maxlength="400" placeholder="Ex.: contrato assinado referente à obra..."></textarea></label>
-      </div><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:17px"><button class="botao botao-outline" type="button" onclick="formularioDocumentoAberto=false;render()">Cancelar</button><button class="botao" type="submit">Adicionar ao protótipo</button></div></form></section>`:''}
-      <div class="mini-indicadores">${kpi('Documentos',docs.length,'Arquivos associados ao cliente')}${kpi('Contratos',docs.filter(x=>x.tipo==='Contrato').length,'Contratos cadastrados')}${kpi('Fotos e vídeos',docs.filter(x=>x.tipo==='Foto da obra'||x.tipo==='Vídeo da obra').length,'Registros de vistoria e obras')}</div>
-      <section class="card card-pad">${titulo('Arquivos recebidos','▧')}<div class="cl-doc-grid">${docs.map(d=>`<button class="cl-doc-card" onclick="abrirDocumento('${esc(d.id)}')" aria-label="Detalhes do documento ${esc(d.nome)}">
-          <span class="cl-doc-icon">${iconDoc(d.tipo)}</span><strong>${esc(d.nome)}</strong><span class="chip chip-verde" style="align-self:start">${esc(d.tipo)}</span><small>Recebido em ${fmtData(d.data)} • Via ${esc(d.origem)}</small>
-          <div class="cl-doc-rodape"><span>${esc(d.tamanho||'')}</span><span class="link">Ver detalhes →</span></div></button>`).join('')||'<div class="cl-hist-vazio">Nenhum documento cadastrado.</div>'}</div></section>`;
-  }
-  function salvarDocumentoCliente(ev){
-    ev.preventDefault();const f=new FormData(ev.target),file=f.get('arquivo');
-    if(!(file instanceof File)||!file.name){alert('Selecione um arquivo.');return;}
-    const nome=file.name.toLowerCase(),permitido=/\.(pdf|jpe?g|png|webp|mp4|mov)$/.test(nome);
-    if(!permitido){alert('Formato não aceito neste protótipo. Use PDF, PNG, JPG, WEBP, MP4 ou MOV.');return;}
-    if(file.size>40*1024*1024){alert('Limite demonstrativo: 40 MB por arquivo.');return;}
-    const tipo=String(f.get('tipo')),data=String(f.get('data'));
-    if(!data){alert('Informe a data de recebimento.');return;}
-    documentosSessao.unshift({id:'DOC-'+Date.now().toString(),clienteId:clienteAtual.id,nome:file.name,tipo,origem:String(f.get('origem')||'Não informado'),data,descricao:String(f.get('descricao')||'').trim(),tamanho:(file.size/1024/1024).toFixed(2).replace('.',',')+' MB',amostra:false,url:URL.createObjectURL(file),mime:file.type});
-    formularioDocumentoAberto=false;render();
-  }
-  /* ==========================================================
-     HISTÓRICO: cronologia de contatos, negociação, orçamentos,
-     pedidos, contratos, obras e documentos vinculados ao cliente.
-     ========================================================== */
-  const eventosFixos=[
-    {id:'h-001',clienteId:'000142',data:'2026-11-06',hora:'15:42',tipo:'Atendimento',titulo:'Cliente confirmou contato por WhatsApp',descricao:'Atendente entrou em contato para confirmar disponibilidade de uma visita técnica. Cliente solicitou agendamento à tarde.',responsavel:'Ana Martins',canal:'WhatsApp'},
-    {id:'h-002',clienteId:'000142',data:'2026-11-01',hora:'11:10',tipo:'Negociação',titulo:'Negociação sobre condições de pagamento',descricao:'Cliente solicitou simulação de parcelamento para o serviço de instalação do portão.',responsavel:'Equipe comercial',canal:'Telefone'},
-    {id:'h-003',clienteId:'000142',data:'2026-10-23',hora:'10:05',tipo:'Contrato',titulo:'Contrato de prestação de serviços assinado',descricao:'Contrato recebido e vinculado ao cadastro do cliente. Consulte o documento na aba Documentos.',responsavel:'Administrativo',canal:'E-mail',alvo:{tipo:'documentos'}},
-    {id:'h-004',clienteId:'000142',data:'2026-10-20',hora:'09:30',tipo:'Atendimento',titulo:'Primeiro contato para levantamento de necessidades',descricao:'Cliente solicitou informações sobre portão automático e cobertura. Atendimento inicial por telefone.',responsavel:'Ana Martins',canal:'Telefone'},
-    {id:'h-005',clienteId:'000141',data:'2026-11-05',hora:'16:00',tipo:'Atendimento',titulo:'Cliente pediu atualização sobre a cobertura',descricao:'Cliente consultou andamento dos materiais e previsão de instalação.',responsavel:'Ana Martins',canal:'WhatsApp'},
-    {id:'h-006',clienteId:'000141',data:'2026-10-18',hora:'14:20',tipo:'Contrato',titulo:'Contrato de cobertura recebido',descricao:'Instrumento assinado pela cliente e enviado por e-mail.',responsavel:'Administrativo',canal:'E-mail',alvo:{tipo:'documentos'}},
-    {id:'h-007',clienteId:'000140',data:'2026-11-02',hora:'13:10',tipo:'Negociação',titulo:'Ajustes de medidas do guarda-corpo',descricao:'Cliente solicitou revisão das medidas antes da fabricação.',responsavel:'Comercial',canal:'WhatsApp'},
-    {id:'h-008',clienteId:'000139',data:'2026-11-06',hora:'10:00',tipo:'Atendimento',titulo:'Aguardando resposta sobre portão de garagem',descricao:'Mensagem enviada solicitando posição sobre o orçamento em aberto.',responsavel:'Equipe comercial',canal:'WhatsApp'}
-  ];
-  // Pagamentos ilustrativos identificados por cliente para evitar misturar históricos.
-  const pagamentosExemplo=[
-    {id:'PAG-1401',clienteId:'000142',data:'2026-11-05',valor:2450,forma:'Cartão Visa •••• 1234',situacao:'Pago'},
-    {id:'PAG-1320',clienteId:'000142',data:'2026-10-27',valor:480,forma:'PIX',situacao:'Pendente'},
-    {id:'PAG-1208',clienteId:'000141',data:'2026-10-19',valor:1380,forma:'Boleto',situacao:'Pago'}
-  ];
-  function eventosDoCliente(id){
-    const lista=eventosFixos.filter(e=>e.clienteId===id).map(e=>({...e}));
-    for(const pg of pagamentosExemplo.filter(x=>x.clienteId===id)){
-      lista.push({id:'pag-'+pg.id,clienteId:id,data:pg.data,hora:'11:30',tipo:'Pagamento',titulo:'Movimentação financeira — '+pg.id,
-        descricao:'Valor: '+brl(pg.valor)+'. Forma: '+pg.forma+'. Situação: '+pg.situacao+'.',responsavel:'Financeiro',canal:'Sistema',alvo:{tipo:'financeiro'}});
-    }
-    for(const o of orcamentos.filter(x=>clienteDoOrcamento(x)?.id===id)){
-      lista.push({id:'orc-'+o.id,clienteId:id,data:o.envio,hora:'10:00',tipo:'Orçamento',titulo:o.id+' — '+o.servico,
-        descricao:'Proposta enviada ao cliente. Valor: '+brl(o.valor)+'. Situação atual: '+o.status+'. Próximo contato: '+fmtData(o.proximoContato)+'.',responsavel:'Equipe comercial',canal:'Sistema',alvo:{tipo:'orcamento',id:o.id}});
-    }
-    for(const o of ordensServico.filter(x=>x.clienteId===id)){
-      lista.push({id:'os-'+o.id,clienteId:id,data:o.data,hora:'09:00',tipo:'Pedido',titulo:o.id+' — '+o.servico,
-        descricao:'Ordem de serviço / pedido. Valor: '+brl(o.valor)+'. Situação: '+o.status+'. '+(o.orcamentoId?'Orçamento de origem: '+o.orcamentoId+'.':'Registro legado sem orçamento confirmado.'),responsavel:'Equipe operacional',canal:'Sistema',alvo:{tipo:'os',id:o.id}});
-    }
-    // Compromissos já cadastrados no módulo Agendamento, inclusive futuros.
-    for(const a of agendamentos.filter(x=>x.clienteId===id)){
-      lista.push({id:'age-'+a.id,clienteId:id,data:a.data,hora:String(a.hora).padStart(2,'0')+':00',tipo:'Agendamento',
-        titulo:'Visita agendada — '+a.tipo,descricao:'Atendimento previsto para '+fmtData(a.data)+' às '+String(a.hora).padStart(2,'0')+':00. Região: '+(a.bairro||'não informada')+'. '+(a.observacao||''),
-        responsavel:'Atendente / vendedor',canal:'Agenda',alvo:{tipo:'agendamento',data:a.data}});
-    }
-    for(const o of obras.filter(x=>x.clienteId===id)){
-      lista.push({id:'obra-'+o.id,clienteId:id,data:o.inicio,hora:'08:00',tipo:'Obra',titulo:o.id+' — '+o.servico,
-        descricao:'Abertura de obra. Início: '+fmtData(o.inicio)+'. Prazo: '+fmtData(o.prazo)+'. Situação atual: '+statusPrazoObra(o)+'. Progresso: '+o.progresso+'%.',responsavel:o.responsavel||'Equipe operacional',canal:'Sistema',alvo:{tipo:'obra',id:o.id}});
-    }
-    for(const d of documentosDoCliente(id)){
-      lista.push({id:'doc-'+d.id,clienteId:id,data:d.data,hora:'12:00',tipo:'Documento',titulo:'Documento recebido: '+d.nome,
-        descricao:d.descricao||'Documento cadastrado na ficha do cliente.',responsavel:'Atendimento',canal:d.origem,alvo:{tipo:'documento',id:d.id}});
-    }
-    return lista.sort((a,b)=>b.data.localeCompare(a.data)||String(b.hora||'').localeCompare(String(a.hora||'')));
-  }
-  function iconEvento(tipo){return ({'Atendimento':'☎','Agendamento':'▦','Negociação':'↔','Orçamento':'▧','Pedido':'▤','Contrato':'✎','Documento':'▣','Obra':'⌂','Pagamento':'▥'})[tipo]||'◷';}
-  function abaHistoricoInterativo(c){
-    const todos=eventosDoCliente(c.id),filtrados=todos.filter(e=>historicoFiltro==='Todos'||e.tipo===historicoFiltro);
-    return `<div class="cl-hist-filtros"><div><h2>Linha do tempo do relacionamento</h2><p class="suave">Todos os registros do cliente em ordem cronológica; selecione um evento para saber mais.</p></div>
-      <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#53675b">Tipo de evento<select onchange="historicoFiltro=this.value;render()">${['Todos','Atendimento','Agendamento','Negociação','Orçamento','Pedido','Contrato','Obra','Documento','Pagamento'].map(t=>`<option ${historicoFiltro===t?'selected':''}>${t}</option>`).join('')}</select></label></div>
-      <div class="mini-indicadores">${kpi('Eventos registrados',todos.length,'Histórico consolidado')}${kpi('Orçamentos e negociações',todos.filter(e=>['Orçamento','Negociação'].includes(e.tipo)).length,'Propostas e tratativas')}${kpi('Pedidos, obras e documentos',todos.filter(e=>['Pedido','Obra','Documento'].includes(e.tipo)).length,'Atividades registradas')}</div>
-      <section class="card card-pad">${titulo('Histórico completo','◷')}<ol class="cl-hist-lista">
-        ${filtrados.map(e=>`<li class="cl-hist-item"><span class="cl-hist-bolha">${iconEvento(e.tipo)}</span><button class="cl-hist-evento" onclick="abrirEventoHistorico('${esc(e.id)}')" aria-label="Abrir detalhes: ${esc(e.titulo)}">
-          <span><span class="cl-hist-data">${fmtData(e.data)} · ${esc(e.hora||'')}</span><br><span class="cl-hist-tipo">${esc(e.tipo)}</span><b>${esc(e.titulo)}</b><p>${esc(e.descricao).slice(0,125)}${e.descricao.length>125?'…':''}</p></span><span class="cl-hist-detalhe">Ver detalhes →</span>
-        </button></li>`).join('')||'<li class="cl-hist-vazio">Nenhum evento desta categoria.</li>'}</ol></section>`;
-  }
-  function exibirDrawer(conteudo){
-    document.getElementById('clOverlayDetalhe')?.remove();
-    document.body.insertAdjacentHTML('beforeend',`<div id="clOverlayDetalhe" class="cl-overlay" role="presentation" onclick="if(event.target===this)fecharDrawer()"><section class="cl-drawer" role="dialog" aria-modal="true" aria-labelledby="clDrawerTitulo">${conteudo}<button class="cl-x" onclick="fecharDrawer()" aria-label="Fechar detalhes">×</button></section></div>`);
-    document.body.style.overflow='hidden';document.querySelector('.cl-x')?.focus();
-  }
-  function fecharDrawer(){document.getElementById('clOverlayDetalhe')?.remove();document.body.style.overflow='';}
-  window.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&document.getElementById('clOverlayDetalhe'))fecharDrawer();});
-  function acaoHistorico(e){
-    if(!e.alvo)return '';
-    const a=e.alvo;
-    if(a.tipo==='orcamento')return `<button class="botao" onclick="fecharDrawer();abrirOrcamento('${esc(a.id)}','cliente')">Abrir ficha do orçamento →</button>`;
-    if(a.tipo==='obra')return `<button class="botao" onclick="fecharDrawer();abrirObra('${esc(a.id)}')">Abrir ficha da obra →</button>`;
-    if(a.tipo==='documento')return `<button class="botao" onclick="fecharDrawer();abrirDocumento('${esc(a.id)}')">Abrir documento →</button>`;
-    if(a.tipo==='documentos')return `<button class="botao" onclick="fecharDrawer();mudarAba('documentos')">Ver documentos →</button>`;
-    if(a.tipo==='pedidos')return `<button class="botao" onclick="fecharDrawer();mudarAba('pedidos')">Ver pedidos do cliente →</button>`;
-    if(a.tipo==='os')return `<button class="botao" onclick="fecharDrawer();abrirOS('${esc(a.id)}')">Abrir ordem de serviço →</button>`;
-    if(a.tipo==='agendamento')return `<button class="botao" onclick="fecharDrawer();ir('agendamento');selecionarDiaAgenda('${esc(a.data)}')">Abrir dia na agenda →</button>`;
-    if(a.tipo==='financeiro')return `<button class="botao" onclick="fecharDrawer();mudarAba('financeiro')">Ver financeiro do cliente →</button>`;
-    return '';
-  }
-  function abrirEventoHistorico(id){
-    if(!clienteAtual)return;
-    const e=eventosDoCliente(clienteAtual.id).find(x=>x.id===id);if(!e)return;
-    exibirDrawer(`<header><span class="cl-hist-tipo">${esc(e.tipo)}</span><h2 id="clDrawerTitulo">${esc(e.titulo)}</h2><p class="suave">${fmtData(e.data)} às ${esc(e.hora||'--:--')}</p></header>
-      <p class="cl-descricao">${esc(e.descricao)}</p>
-      ${info('Tipo de interação',esc(e.tipo))}${info('Responsável',esc(e.responsavel||'Não registrado'))}${info('Origem / canal',esc(e.canal||'Não informado'))}${info('Cliente',esc(clienteAtual.nome))}
-      <div class="cl-acoes">${acaoHistorico(e)}<button class="botao botao-outline" onclick="fecharDrawer()">Fechar</button></div>`);
-  }
-  function abrirDocumento(id){
-    const d=[...documentosExemplo,...documentosSessao].find(x=>x.id===id);if(!d)return;
-    let preview='';
-    if(d.url){
-      const video=String(d.mime||'').startsWith('video/')||/\.(mp4|mov)$/i.test(d.nome);
-      const img=String(d.mime||'').startsWith('image/')||/\.(png|jpe?g|webp)$/i.test(d.nome);
-      if(video)preview=`<video class="cl-doc-preview" controls src="${d.url}"></video>`;
-      else if(img)preview=`<img class="cl-doc-preview" alt="Pré-visualização do arquivo enviado" src="${d.url}">`;
-      else preview=`<p class="cl-doc-aviso">Visualização prévia indisponível para este tipo de arquivo. Use o botão de abrir arquivo.</p>`;
-    }else preview='<p class="cl-doc-aviso">Este é um documento de exemplo e possui somente metadados. Nenhum arquivo real está anexado.</p>';
-    exibirDrawer(`<header><span class="cl-hist-tipo">${esc(d.tipo)}</span><h2 id="clDrawerTitulo">${esc(d.nome)}</h2><p class="suave">Recebido em ${fmtData(d.data)}</p></header>
-      ${preview}<p class="cl-descricao">${esc(d.descricao||'Sem descrição.')}</p>
-      ${info('Categoria',esc(d.tipo))}${info('Canal de recebimento',esc(d.origem))}${info('Tamanho informado',esc(d.tamanho||'Não informado'))}
-      <div class="cl-acoes">${d.url?`<a class="botao" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir arquivo local ↗</a>`:''}<button class="botao botao-outline" onclick="fecharDrawer()">Fechar</button></div>`);
+        <div class="agenda-scroller"><div class="agenda-calendario">${cab}${rows}</div></div>
+      </section>`;
   }
 
-
-  /* ==============================================================
-     ORDENS DE SERVIÇO: lista, ficha e início de execução
-     ============================================================== */
-  function abrirOS(id){
-    const os=ordensServico.find(x=>x.id===id);
-    if(!os){alert('Ordem de serviço não encontrada.');return;}
-    osAtual=os;paginaAtual='ordens';clienteAtual=null;orcamentoAtual=null;obraAtual=null;
-    render();window.scrollTo(0,0);
-  }
-  function listaOrdens(){
-    const termo=textoNormalizado(filtroOS),clienteNome=textoNormalizado(filtroOSCliente);
-    return ordensServico.filter(o=>{
-      const c=clientes.find(x=>x.id===o.clienteId);
-      return (textoNormalizado(o.id).includes(termo)||textoNormalizado(o.orcamentoId).includes(termo))
-        &&textoNormalizado(c?.nome||'').includes(clienteNome);
-    }).slice().sort((a,b)=>String(b.data).localeCompare(String(a.data)));
-  }
-  function atualizarListaOrdens(){
-    const linhas=document.getElementById('linhasOS');if(linhas)linhas.innerHTML=linhasOrdensServico();
-    const contador=document.getElementById('contadorOS');if(contador)contador.textContent=listaOrdens().length+' registro(s)';
-  }
-  function linhasOrdensServico(){
-    return listaOrdens().map(o=>{
-      const c=clientes.find(x=>x.id===o.clienteId),obra=obraDaOS(o.id);
-      return `<tr><td><button class="link" onclick="abrirOS('${esc(o.id)}')">${esc(o.id)} ↗</button>${o.legado?'<small class="suave" style="display:block">Legado</small>':''}</td><td><button class="link" onclick="abrirCliente('${esc(o.clienteId)}','pedidos')">${esc(c?.nome||'Não cadastrado')} ↗</button></td><td>${o.orcamentoId?`<button class="link" onclick="abrirOrcamento('${esc(o.orcamentoId)}','ordens')">${esc(o.orcamentoId)} ↗</button>`:'—'}</td><td>${esc(o.servico)}</td><td>${brl(o.valor)}</td><td>${statusChip(o.status)}</td><td>${obra?`<button class="link" onclick="abrirObra('${esc(obra.id)}')">${esc(obra.id)} ↗</button>`:'—'}</td></tr>`;
-    }).join('')||'<tr><td colspan="7" class="sem-resultado">Nenhuma OS encontrada.</td></tr>';
-  }
-  function paginaOrdens(){
-    return `${cabecalho('Ordens de Serviço','Pedidos gerados de orçamentos aprovados e seus serviços em execução','<button class="botao botao-outline" onclick="ir(&#39;orcamentos&#39;)">Ver orçamentos →</button>')}
-      <div class="mini-indicadores">${kpi('Ordens cadastradas',ordensServico.length,'Incluindo registros antigos')}${kpi('Aguardando planejamento',ordensServico.filter(o=>o.status==='Aguardando planejamento').length,'Prontas para iniciar execução')}${kpi('Em execução',ordensServico.filter(o=>o.status==='Em execução').length,'Vinculadas a serviços ou obras')}</div>
-      <section class="card card-pad">${titulo('Consultar ordens de serviço','⌕')}<div class="os-filtros"><label>Código da OS ou orçamento<input class="campo-input" value="${esc(filtroOS)}" placeholder="Ex.: OS-2026-0001" oninput="filtroOS=this.value;atualizarListaOrdens()"></label><label>Nome do cliente<input class="campo-input" value="${esc(filtroOSCliente)}" placeholder="Ex.: Maria Oliveira" oninput="filtroOSCliente=this.value;atualizarListaOrdens()"></label></div>
-      <p class="suave" id="contadorOS" style="font-size:12px;margin-bottom:10px">${listaOrdens().length} registro(s)</p>
-      <div class="tabela-wrap"><table><thead><tr><th>Pedido / OS</th><th>Cliente</th><th>Orçamento de origem</th><th>Serviço</th><th>Valor</th><th>Situação</th><th>Obra / Serviço</th></tr></thead><tbody id="linhasOS">${linhasOrdensServico()}</tbody></table></div></section><p class="notinha">Pedidos legados não têm orçamento de origem confirmado e não recebem vínculos fictícios.</p>`;
-  }
-  function fichaOS(){
-    const os=ordensServico.find(x=>x.id===osAtual?.id);if(!os)return paginaOrdens();
-    const c=clientes.find(x=>x.id===os.clienteId),orc=orcamentos.find(x=>x.id===os.orcamentoId),obra=obraDaOS(os.id);
-    return `<button class="link" onclick="osAtual=null;render()">← Voltar para Ordens de Serviço</button><div style="height:13px"></div>
-      ${cabecalho('Ficha da Ordem de Serviço','Pedido '+esc(os.id),statusChip(os.status))}
-      <section class="card card-pad" style="margin-bottom:18px"><div class="cabecalho"><div><p class="suave">ORDEM DE SERVIÇO</p><h2 style="font-size:23px">${esc(os.id)}</h2><p class="suave">Criada em ${fmtData(os.data)}</p></div>${statusChip(os.status)}</div>
-      ${fluxoRelacionamento(orc,os,obra)}
-      <div class="duas-colunas" style="margin-top:18px"><div>${info('Cliente',`<button class="link" onclick="abrirCliente('${esc(c?.id||'')}','pedidos')">${esc(c?.nome||'Não cadastrado')} ↗</button>`)}${info('Serviço contratado',esc(os.servico))}${info('Valor contratado',brl(os.valor))}</div><div>${info('Orçamento de origem',orc?`<button class="link" onclick="abrirOrcamento('${esc(orc.id)}','ordens')">${esc(orc.id)} ↗</button>`:'Não informado (pedido legado)')}${info('Execução vinculada',obra?`<button class="link" onclick="abrirObra('${esc(obra.id)}')">${esc(obra.id)} ↗</button>`:'Ainda não iniciada')}${info('Situação',statusChip(os.status))}</div></div>
-      <div class="os-acoes">${!obra&&!os.legado&&os.status==='Aguardando planejamento'?`<button class="botao" onclick="prepararObraDaOS('${esc(os.id)}')">Iniciar obra ou serviço →</button>`:''}
-        ${obra?`<button class="botao" onclick="abrirObra('${esc(obra.id)}')">Acompanhar execução →</button>`:''}
-        ${os.legado?'<span class="suave">Registro anterior à integração: origem não confirmada.</span>':''}</div></section>
-      <p class="notinha">A OS é gerada após a aprovação do orçamento. Iniciar a execução cria a ficha de obra/serviço vinculada a ela.</p>`;
-  }
-  function prepararObraDaOS(id){
-    const os=ordensServico.find(x=>x.id===id);
-    if(!os||os.legado||os.status!=='Aguardando planejamento'||obraDaOS(id)){
-      alert('Esta ordem de serviço não está disponível para iniciar uma nova execução.');return;
-    }
-    osParaNovaObraId=os.id;formularioNovaObra=true;obraAtual=null;paginaAtual='obras';render();window.scrollTo(0,0);
-  }
-  function atualizarCamposObraOS(id){
-    const os=ordensServico.find(o=>o.id===id);
-    const c=clientes.find(x=>x.id===os?.clienteId);
-    const cliente=document.getElementById('osClienteSelecionado');if(cliente)cliente.textContent=c?.nome||'—';
-    const servico=document.getElementById('osServicoSelecionado');if(servico)servico.textContent=os?.servico||'—';
+  function render() {
+    renderMenu();
+    elPagina.innerHTML = paginaAtual === 'inicio' ? home() :
+                         paginaAtual === 'clientes' ? (clienteAtual ? fichaCliente() : listarClientes()) :
+                         paginaAtual === 'agendamento' ? agenda() : home();
   }
 
-  function render(){renderMenu();elPagina.innerHTML=paginaAtual==='inicio'?home():paginaAtual==='clientes'?(clienteAtual?fichaCliente():listarClientes()):paginaAtual==='agendamento'?agenda():paginaAtual==='followup'?followup():paginaAtual==='ordens'?(osAtual?fichaOS():paginaOrdens()):paginaAtual==='orcamentos'?(orcamentoAtual?fichaOrcamento():paginaOrcamentos()):paginaAtual==='fornecedores'?paginaFornecedores():paginaAtual==='contratos'?paginaContratos():paginaAtual==='obras'?paginaObras():outraPagina(); prepararAvisoManual();}
-  orcamentos.filter(o=>o.status==='Aprovado').forEach(garantirOSDoOrcamento);
   render();
 </script>
 </body>

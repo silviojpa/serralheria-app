@@ -77,6 +77,7 @@ serralheria-app/
    cd ~/silvio/python/serralheria-app
    docker compose up -d
    ```
+* Nota: Se você quiser que o docker compose up -d suba apenas o PostgreSQL por padrão, basta deixar apenas o serviço do banco no `docker-compose.yml` ou subir explicitamente só o banco com `docker compose up -d db`
 
 2. **Ativar o ambiente virtual e acessar a pasta `web`:**
    ```bash
