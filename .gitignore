@@ -11,7 +11,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
-
+*:Zone.Identifier
 # Django dynamic files
 *.log
 local_settings.py
