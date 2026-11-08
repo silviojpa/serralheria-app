@@ -1,0 +1,5 @@
+version v0.2
+
+Gerado com o log completo da versão v0.2, 
+detalhando a criação da tabela no PostgreSQL, 
+a API REST e a migração de dados estáticos para dados reais do banco na interface SPA.
