@@ -70,6 +70,44 @@ serralheria-app/
 - Docker & Docker Compose instalados e ativos.
 - Python 3.10+ configurado no WSL (Ubuntu).
 
+
+
+## 🛠️ Como Criar e Ativar o Ambiente Virtual (`venv`)
+
+Caso precise recriar o ambiente virtual do Python no projeto, siga estes passos no terminal dentro da pasta `web`:
+
+```bash
+
+# 1. Entrar na pasta web do projeto
+
+cd ~/silvio/python/serralheria-app/web
+
+# 2. Criar o ambiente virtual chamado 'venv'
+
+python3 -m venv venv
+
+# 3. Ativar o ambiente virtual
+
+source venv/bin/activate
+
+# 4. Instalar as dependências do projeto
+
+pip install -r requirements.txt
+
+```
+
+Execute o comando de criação do superuser (ROOT):
+
+````Bash
+python manage.py createsuperuser
+````
+## O terminal vai pedir os seguintes dados:
+
+- Username (Nome de utilizador): (pode carregar Enter para aceitar o sugerido ou digitar um, ex: admin ou silvio)
+- Email address (Endereço de e-mail): (pode preencher com o seu e-mail ou deixar em branco)
+- Password (Palavra-passe): (digite a sua senha — nota: por segurança, os caracteres não aparecem no ecrã enquanto digita)
+- Password (again): (digite a mesma senha novamente para confirmar)
+
 ### Passo a Passo
 
 1. **Subir o container do PostgreSQL:**
@@ -87,8 +125,8 @@ serralheria-app/
 
 3. **Executar migrações do banco (caso necessário):**
    ```bash
-   python manage.py makemigrations
    python manage.py migrate
+   python manage.py makemigrations
    ```
 
 4. **Iniciar o servidor de desenvolvimento:**
@@ -101,6 +139,7 @@ serralheria-app/
 
 ## 📋 Próximos Passos para Continuidade do Desenvolvimento
 
+## OBS: PEDE SENHA MAS QUANDO ATUALIZA A PASIGA ENTRA SEM PEDI A SENHA
 Abaixo está o roteiro sugerido para a evolução gradual dos demais módulos da serralheria:
 
 ### Etapa 1: Módulo de Orçamentos
@@ -143,27 +182,17 @@ O arquivo `README.md` foi gerado e inclui todo o histórico do projeto, a stack 
 
 # Levantamento: O que implementar na Ficha de Cadastro de Clientes (Serralheria App)
 
-
-
 Este documento reúne os pontos essenciais levantados para a evolução do módulo de Clientes, visando preparar o sistema para as próximas etapas (orçamentos, ordens de serviço, obras e mídias).
-
-
 
 ---
 
-
-
 ## 📋 Itens Essenciais para a Ficha de Cadastro
-
-
 
 1. **Dados de Endereço Completos e Geolocalização:**
 
    - Logradouro (Rua/Avenida), Número, Complemento, Bairro, Cidade, Estado e CEP.
 
    - Referência de localização (fundamental para a equipe externa e módulo de agendamento de visitas/rotas).
-
-
 
 2. **Múltiplos Contatos e Pessoas de Contato:**
 
@@ -173,8 +202,6 @@ Este documento reúne os pontos essenciais levantados para a evolução do módu
 
    - Nome do responsável ou síndico (no caso de condomínios e clientes PJ).
 
-
-
 3. **Histórico Comercial (Abas Relacionadas):**
 
    - **Orçamentos:** Histórico de propostas comerciais enviadas.
@@ -182,8 +209,6 @@ Este documento reúne os pontos essenciais levantados para a evolução do módu
    - **Ordens de Serviço / Pedidos:** O que foi fabricado, vendido ou instalado.
 
    - **Obras:** Acompanhamento do andamento das instalações na propriedade do cliente.
-
-
 
 4. **Gestão de Mídias e Documentos (Persistência Híbrida / JSONB ou Tabelas Relacionadas):**
 
