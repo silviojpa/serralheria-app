@@ -4,6 +4,7 @@ services:
   db:
     image: postgres:15-alpine
     container_name: serralheria_db
+    restart: always
     environment:
       POSTGRES_DB: serralheria_db
       POSTGRES_USER: postgres
@@ -16,6 +17,7 @@ services:
   web:
     build: ./web
     container_name: serralheria_web
+    restart: always
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./web:/app
@@ -31,4 +33,4 @@ services:
       - db
 
 volumes:
-      postgres_data:
+  postgres_data:

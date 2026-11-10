@@ -103,6 +103,46 @@
     .info strong { text-align: right; }
     .nota { background: #f6f9f7; border: 1px solid var(--borda); border-radius: 8px; padding: 14px; }
 
+    /* PAINEL DE CADASTRO DE CLIENTE */
+    .painel-cadastro {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 13px;
+      box-shadow: 0 4px 16px rgba(15,40,22,.045);
+      padding: 21px;
+      margin-bottom: 22px;
+      border-left: 5px solid var(--verde);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      gap: 15px;
+      align-items: end;
+    }
+    .form-grid label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #52665a;
+      display: block;
+    }
+    .form-grid input {
+      margin-top: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-acoes {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* AGENDA SEMANAL E ROTAS */
     .agenda-toolbar { display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:0 0 18px; }
     .agenda-controles { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
@@ -185,8 +225,18 @@
       <header class="topo">
         <div class="busca-global">⌕ &nbsp; Sistema de Gestão • Casa das Artes</div>
         <div class="perfil">
-          <div class="avatar">AD</div>
-          <div><strong>Administrador</strong><small>Proprietário</small></div>
+          <div class="avatar">{{ request.user.first_name|default:request.user.username|slice:":2"|upper }}</div>
+          <div>
+            <strong>{{ request.user.first_name|default:request.user.username|title }}</strong>
+            <small>
+              {% if request.user.is_superuser %}
+                Administrador
+              {% else %}
+                Operador
+              {% endif %}
+              • <a href="{% url 'logout' %}" style="color: var(--vermelho); text-decoration: none; font-weight: 900;">Sair</a>
+            </small>
+          </div>
         </div>
       </header>
       <main class="conteudo" id="pagina"></main>
@@ -203,6 +253,7 @@
 
   // DADOS DE CLIENTES — Consumidos do PostgreSQL via Django API REST
   let clientes = [];
+  let formularioNovoClienteAberto = false;
 
   async function carregarClientesDoBackend() {
     try {
@@ -237,6 +288,7 @@
   function ir(p) {
     paginaAtual = p;
     clienteAtual = null;
+    formularioNovoClienteAberto = false;
     render();
     window.scrollTo(0,0);
   }
@@ -245,6 +297,7 @@
     clienteAtual = clientes.find(c => c.id === id) || null;
     if (!clienteAtual) { alert('Cliente não localizado.'); return; }
     paginaAtual = 'clientes';
+    formularioNovoClienteAberto = false;
     render();
     window.scrollTo(0,0);
   }
@@ -297,6 +350,15 @@
       </div>`;
   }
 
+  // CONTROLE DO PAINEL DE NOVO CLIENTE
+  function toggleFormularioNovoCliente() {
+    formularioNovoClienteAberto = !formularioNovoClienteAberto;
+    render();
+    if (formularioNovoClienteAberto) {
+      setTimeout(() => document.getElementById('cadNome')?.focus(), 50);
+    }
+  }
+
   // CLIENTES
   function listarClientes() {
     const linhas = clientes.filter(c => (c.nome + c.id + c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c => 
@@ -309,7 +371,42 @@
       </tr>`
     ).join('');
 
-    return `${cabecalho('Clientes', 'Consulta e centralização de dados cadastrais', '<button class="botao" onclick="abrirModalNovoCliente()">+ Novo cliente</button>')}
+    const painelFormulario = formularioNovoClienteAberto ? `
+      <section class="painel-cadastro">
+        <div class="cabecalho" style="margin-bottom: 14px;">
+          <div>
+            ${titulo('Cadastrar Novo Cliente', '♧')}
+            <p class="suave">Insira as informações do cliente para salvar diretamente no banco de dados.</p>
+          </div>
+          <button class="link" onclick="toggleFormularioNovoCliente()">Fechar ×</button>
+        </div>
+        <form onsubmit="cadastrarCliente(event)">
+          <div class="form-grid">
+            <label>
+              Nome completo / Razão Social *
+              <input class="campo-input" id="cadNome" required placeholder="Ex.: João da Silva" />
+            </label>
+            <label>
+              CPF ou CNPJ *
+              <input class="campo-input" id="cadCpf" required placeholder="000.000.000-00" />
+            </label>
+            <label>
+              Telefone / WhatsApp *
+              <input class="campo-input" id="cadTelefone" required placeholder="(21) 90000-0000" />
+            </label>
+            <div class="form-acoes">
+              <button type="button" class="botao botao-outline" onclick="toggleFormularioNovoCliente()">Cancelar</button>
+              <button type="submit" class="botao">Salvar no PostgreSQL</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    ` : '';
+
+    return `${cabecalho('Clientes', 'Consulta e centralização de dados cadastrais', 
+      `<button class="botao" onclick="toggleFormularioNovoCliente()">${formularioNovoClienteAberto ? 'Fechar formulário' : '+ Novo cliente'}</button>`
+    )}
+    ${painelFormulario}
     <section class="card card-pad">
       ${titulo('Relação de clientes', '♧')}
       <div class="filtro">
@@ -340,13 +437,16 @@
     if (el) el.innerHTML = linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>';
   }
 
-  async function abrirModalNovoCliente() {
-    const nome = prompt("Nome do Cliente:");
-    if (!nome) return;
-    const cpf_cnpj = prompt("CPF ou CNPJ:");
-    if (!cpf_cnpj) return;
-    const telefone = prompt("Telefone:");
-    if (!telefone) return;
+  async function cadastrarCliente(ev) {
+    ev.preventDefault();
+    const nome = document.getElementById('cadNome').value.trim();
+    const cpf_cnpj = document.getElementById('cadCpf').value.trim();
+    const telefone = document.getElementById('cadTelefone').value.trim();
+
+    if (!nome || !cpf_cnpj || !telefone) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
 
     try {
       const response = await fetch('/api/clientes/', {
@@ -360,8 +460,9 @@
       
       const result = await response.json();
       if (response.ok) {
-        alert('Cliente cadastrado com sucesso no PostgreSQL!');
-        carregarClientesDoBackend();
+        formularioNovoClienteAberto = false;
+        await carregarClientesDoBackend();
+        render();
       } else {
         alert('Erro ao cadastrar: ' + (result.message || JSON.stringify(result)));
       }

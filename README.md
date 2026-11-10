@@ -135,6 +135,9 @@ python manage.py createsuperuser
    ```
    *Acesse no navegador através de:* `http://127.0.0.1:8000/`
 
+5. **Monitorar o htpp da aplicação**
+   - docker logs -f serralheria_web
+
 ---
 
 ## 📋 Próximos Passos para Continuidade do Desenvolvimento

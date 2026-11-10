@@ -1,5 +1,11 @@
-version v0.2
+version v0.2.1
+restruturado a forma de subir os containers no docker
+inclusão do botão sair da main page - sucesso
+ajustando o nome do usuário na main page - SUCESSO 
+Ajuste no sub-tamplete de cadastro do cliente - sucesso
 
+
+version v0.2
 Gerado com o log completo da versão v0.2, 
 detalhando a criação da tabela no PostgreSQL, 
 a API REST e a migração de dados estáticos para dados reais do banco na interface SPA.
