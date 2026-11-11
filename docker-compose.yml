@@ -1,18 +1,19 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15-alpine
     container_name: serralheria_db
     restart: always
-    environment:
-      POSTGRES_DB: serralheria_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: sua_senha_segura
+    env_file: .env   # <--- Lê as senhas do arquivo .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    # Testa se o banco já está pronto para receber conexões
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   web:
     build: ./web
@@ -23,14 +24,16 @@ services:
       - ./web:/app
     ports:
       - "8000:8000"
+    env_file: .env   # <--- A web também lê o arquivo .env
     environment:
-      - DB_NAME=serralheria_db
-      - DB_USER=postgres
-      - DB_PASSWORD=sua_senha_segura
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
       - DB_HOST=db
       - DB_PORT=5432
     depends_on:
-      - db
+      db:
+        condition: service_healthy # <--- Só inicia a web quando o banco estiver 100% pronto
 
 volumes:
   postgres_data:

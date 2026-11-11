@@ -33,11 +33,26 @@ def logout_view(request):
 
 # API de Clientes
 @login_required
+@csrf_exempt
 def api_clientes(request):
     if request.method == 'GET':
-        clientes = list(Cliente.objects.values('id', 'nome', 'cpf_cnpj', 'telefone', 'status'))
-        return JsonResponse({'status': 'success', 'data': clientes})
-    
+        clientes = Cliente.objects.all().order_by('-id')
+        data = [{
+            'id': c.id,
+            'nome': c.nome,
+            'cpf_cnpj': c.cpf_cnpj,
+            'telefone': c.telefone,
+            'status': c.status,
+            'cep': c.cep,
+            'endereco': c.endereco,
+            'numero': c.numero,
+            'bairro': c.bairro,
+            'cidade': c.cidade,
+            'uf': c.uf,
+            'observacoes': c.observacoes
+        } for c in clientes]
+        return JsonResponse({'status': 'success', 'data': data})
+
     elif request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -45,20 +60,14 @@ def api_clientes(request):
                 nome=data.get('nome'),
                 cpf_cnpj=data.get('cpf_cnpj'),
                 telefone=data.get('telefone'),
-                email=data.get('email', ''),
-                endereco=data.get('endereco', ''),
-                status=data.get('status', 'ativo')
+                cep=data.get('cep'),
+                endereco=data.get('endereco'),
+                numero=data.get('numero'),
+                bairro=data.get('bairro'),
+                cidade=data.get('cidade'),
+                uf=data.get('uf'),
+                observacoes=data.get('observacoes')
             )
-            return JsonResponse({
-                'status': 'success', 
-                'message': 'Cliente cadastrado com sucesso!',
-                'cliente': {
-                    'id': cliente.id,
-                    'nome': cliente.nome,
-                    'cpf_cnpj': cliente.cpf_cnpj,
-                    'telefone': cliente.telefone,
-                    'status': cliente.status
-                }
-            }, status=201)
+            return JsonResponse({'status': 'success', 'id': cliente.id})
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)

@@ -266,7 +266,15 @@
           nome: c.nome,
           cpf: c.cpf_cnpj,
           contato: c.telefone,
-          status: c.status ? (c.status.charAt(0).toUpperCase() + c.status.slice(1)) : 'Ativo'
+          status: c.status ? (c.status.charAt(0).toUpperCase() + c.status.slice(1)) : 'Ativo',
+          // Mapeamento dos novos campos
+          cep: c.cep,
+          endereco: c.endereco,
+          numero: c.numero,
+          bairro: c.bairro,
+          cidade: c.cidade,
+          uf: c.uf,
+          observacoes: c.observacoes
         }));
         if (typeof atualizarListaClientes === 'function') {
           atualizarListaClientes();
@@ -381,19 +389,21 @@
           <button class="link" onclick="toggleFormularioNovoCliente()">Fechar ×</button>
         </div>
         <form onsubmit="cadastrarCliente(event)">
-          <div class="form-grid">
-            <label>
-              Nome completo / Razão Social *
-              <input class="campo-input" id="cadNome" required placeholder="Ex.: João da Silva" />
-            </label>
-            <label>
-              CPF ou CNPJ *
-              <input class="campo-input" id="cadCpf" required placeholder="000.000.000-00" />
-            </label>
-            <label>
-              Telefone / WhatsApp *
-              <input class="campo-input" id="cadTelefone" required placeholder="(21) 90000-0000" />
-            </label>
+          <div class="form-grid" style="grid-template-columns: repeat(6, 1fr);">
+            <label style="grid-column: span 2">Nome completo / Razão Social * <input class="campo-input" id="cadNome" required placeholder="Ex.: João da Silva" /></label>
+            <label style="grid-column: span 2">CPF ou CNPJ * <input class="campo-input" id="cadCpf" required placeholder="000.000.000-00" /></label>
+            <label style="grid-column: span 2">Telefone / WhatsApp * <input class="campo-input" id="cadTelefone" required placeholder="(21) 00000-0000" /></label>
+            
+            <label style="grid-column: span 1">CEP <input class="campo-input" id="cadCep" placeholder="00000-000" /></label>
+            <label style="grid-column: span 3">Endereço <input class="campo-input" id="cadEndereco" placeholder="Rua das Artes..." /></label>
+            <label style="grid-column: span 2">Número / Comp. <input class="campo-input" id="cadNumero" placeholder="123 - Apt 101" /></label>
+            
+            <label style="grid-column: span 2">Bairro <input class="campo-input" id="cadBairro" placeholder="Ex: Madureira" /></label>
+            <label style="grid-column: span 3">Cidade <input class="campo-input" id="cadCidade" placeholder="Rio de Janeiro" /></label>
+            <label style="grid-column: span 1">UF <input class="campo-input" id="cadUf" placeholder="RJ" maxlength="2" /></label>
+            
+            <label style="grid-column: span 6">Anotações e Preferências Operacionais <textarea class="campo-input" id="cadObs" rows="2" style="resize:vertical; width:100%" placeholder="Ex: Cliente prefere contato via WhatsApp..."></textarea></label>
+            
             <div class="form-acoes">
               <button type="button" class="botao botao-outline" onclick="toggleFormularioNovoCliente()">Cancelar</button>
               <button type="submit" class="botao">Salvar no PostgreSQL</button>
@@ -437,14 +447,23 @@
     if (el) el.innerHTML = linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum cliente encontrado</td></tr>';
   }
 
+  // Cadastrar cliente com novos campos
   async function cadastrarCliente(ev) {
     ev.preventDefault();
     const nome = document.getElementById('cadNome').value.trim();
     const cpf_cnpj = document.getElementById('cadCpf').value.trim();
     const telefone = document.getElementById('cadTelefone').value.trim();
+    
+    const cep = document.getElementById('cadCep').value.trim();
+    const endereco = document.getElementById('cadEndereco').value.trim();
+    const numero = document.getElementById('cadNumero').value.trim();
+    const bairro = document.getElementById('cadBairro').value.trim();
+    const cidade = document.getElementById('cadCidade').value.trim();
+    const uf = document.getElementById('cadUf').value.trim();
+    const observacoes = document.getElementById('cadObs').value.trim();
 
     if (!nome || !cpf_cnpj || !telefone) {
-      alert('Por favor, preencha todos os campos obrigatórios.');
+      alert('Por favor, preencha todos os campos obrigatórios (*).');
       return;
     }
 
@@ -455,7 +474,7 @@
           'Content-Type': 'application/json',
           'X-CSRFToken': getCookie('csrftoken')
         },
-        body: JSON.stringify({ nome, cpf_cnpj, telefone })
+        body: JSON.stringify({ nome, cpf_cnpj, telefone, cep, endereco, numero, bairro, cidade, uf, observacoes })
       });
       
       const result = await response.json();
@@ -488,8 +507,12 @@
 
   function fichaCliente() {
     const c = clienteAtual;
+    const observacoes = c.observacoes || 'Nenhuma observação ou preferência operacional cadastrada para este cliente até o momento.';
+    const endCompleto = c.endereco ? `${c.endereco}, ${c.numero || 'S/N'} - ${c.bairro || ''}<br>${c.cidade || ''}/${c.uf || ''} - CEP: ${c.cep || ''}` : 'Nenhum endereço cadastrado';
+
     return `<button class="link" onclick="ir('clientes')">← Voltar à listagem</button><div style="height:13px"></div>
       ${cabecalho('Cadastro do Cliente', 'Ficha centralizada do cliente')}
+      
       <div class="card cliente-topo">
         <div class="cliente-pessoa">
           <div class="cliente-circulo">${esc(c.nome.split(' ').slice(0,2).map(p=>p[0]).join(''))}</div>
@@ -497,18 +520,25 @@
         </div>
         ${statusChip(c.status)}
       </div>
+
       <div class="duas-colunas">
         <section class="card card-pad">
           ${titulo('Informações básicas', '♧')}
           ${info('Nome completo', esc(c.nome))}
           ${info('CPF / CNPJ', esc(c.cpf || 'Não informado'))}
-          ${info('Telefone', esc(c.contato || 'Não informado'))}
+          ${info('Telefone / WhatsApp', esc(c.contato || 'Não informado'))}
         </section>
+        
         <section class="card card-pad">
           ${titulo('Endereço', '⌖')}
-          ${info('Endereço', 'Nenhum endereço cadastrado')}
+          ${info('Endereço', endCompleto)}
         </section>
-      </div>`;
+      </div>
+
+      <section class="card card-pad" style="margin-top: 20px;">
+        ${titulo('Anotações e Preferências Operacionais', '✎')}
+        <p class="suave" style="font-size: 13.5px; line-height: 1.6; white-space: pre-wrap; padding-top: 5px;">${esc(observacoes)}</p>
+      </section>`;
   }
 
   /* ================= AGENDAMENTO SEMANAL ================= */
