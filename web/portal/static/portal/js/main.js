@@ -1,13 +1,16 @@
 // Módulos focados no escopo atual
-  const modulos = [
-    {id:'inicio', nome:'Início', icone:'⌂'},
-    {id:'clientes', nome:'Clientes', icone:'♧'},
-    {id:'agendamento', nome:'Agendamento', icone:'▦'}
-  ];
+const modulos = [
+  {id:'inicio', nome:'Início', icone:'⌂'},
+  {id:'clientes', nome:'Clientes', icone:'♧'},
+  {id:'agendamento', nome:'Agendamento', icone:'▦'}
+];
+// Adiciona o módulo de Equipe apenas se for um Superuser logado
+if (window.IS_SUPERUSER) {
+  modulos.push({id:'usuarios', nome:'Equipe', icone:'👤'});
+}
 
-  // DADOS DE CLIENTES — Consumidos do PostgreSQL via Django API REST
-  let clientes = [];
-  let formularioNovoClienteAberto = false;
+let usuarios = [];
+let formularioNovoUsuarioAberto = false;
 
   async function carregarClientesDoBackend() {
     try {
@@ -46,6 +49,34 @@
   const elPagina = document.getElementById('pagina');
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const statusChip = s => `<span class="chip ${s === 'Inativo' ? 'chip-vermelho' : 'chip-verde'}">${esc(s)}</span>`;
+  const ocultarDocumento = (doc) => {
+    if (!doc) return '—';
+    
+    // O Administrador vê sempre o documento completo
+    if (window.IS_SUPERUSER) return esc(doc); 
+    
+    const str = String(doc).trim();
+
+    // CPF sem pontuação (11 dígitos): ex 12345678900 -> ***456789**
+    if (str.length === 11) {
+      return `***${str.substring(3, 9)}**`;
+    }
+    // CPF com pontuação (14 caracteres): ex 123.456.789-00 -> ***.456.789-**
+    if (str.length === 14) {
+      return `***${str.substring(3, 12)}**`;
+    }
+    // CNPJ com pontuação (18 caracteres): ex 12.345.678/0001-99 -> **.345.678/0001-**
+    if (str.length === 18) {
+      return `**${str.substring(2, 16)}**`;
+    }
+
+    // Fallback genérico: mascara os 3 primeiros e os 2 últimos
+    if (str.length > 5) {
+      return `***${str.substring(3, str.length - 2)}**`;
+    }
+    
+    return '***';
+  };
 
   function ir(p) {
     paginaAtual = p;
@@ -96,7 +127,16 @@
       </button>`
     ).join('');
 
-    return `${cabecalho('Painel Geral', 'Serralheria Casa das Artes', '<span class="chip chip-verde">Administrador</span>')}
+    // Torna a etiqueta visual dinâmica baseada no nível do usuário
+    const tagNivel = window.IS_SUPERUSER ? 
+      '<span class="chip chip-verde">Administrador</span>' : 
+      '<span class="chip chip-laranja">Operador</span>';
+
+    // Proteção: aguarda as variáveis carregarem para evitar a tela em branco
+    const qtdClientes = (typeof clientes !== 'undefined' && clientes) ? clientes.length : 0;
+    const qtdAgendamentos = (typeof agendamentos !== 'undefined' && agendamentos) ? agendamentos.length : 0;
+
+    return `${cabecalho('Painel Geral', 'Serralheria Casa das Artes', tagNivel)}
       <div class="home-grid">
         <section class="card card-pad">
           ${titulo('Acesso rápido aos módulos', '▦')}
@@ -105,11 +145,24 @@
         <section class="card card-pad">
           ${titulo('Resumo do Sistema', '♧')}
           <div class="mini-indicadores">
-            ${kpi('Clientes Cadastrados', clientes.length, 'Base PostgreSQL')}
-            ${kpi('Agendamentos', agendamentos.length, 'Visitas cadastradas')}
+            ${kpi('Clientes Cadastrados', qtdClientes, 'Base PostgreSQL')}
+            ${kpi('Agendamentos', qtdAgendamentos, 'Visitas cadastradas')}
           </div>
         </section>
       </div>`;
+  }
+
+  function pesquisarGlobal(valor) {
+    if (paginaAtual !== 'clientes' || clienteAtual) {
+      ir('clientes'); // Força a ida para a tela de lista de clientes
+    }
+    pesquisaCliente = valor;
+  
+    // Sincroniza o input da tela de clientes com o valor global
+    const inputTela = document.getElementById('buscaCliente');
+    if (inputTela) inputTela.value = valor;
+  
+    atualizarListaClientes();
   }
 
   // CONTROLE DO PAINEL DE NOVO CLIENTE
@@ -126,7 +179,7 @@
     const linhas = clientes.filter(c => (c.nome + c.id + c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c => 
       `<tr>
         <td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td>
-        <td>${esc(c.cpf || '—')}</td>
+        <td>${ocultarDocumento(c.cpf)}</td>
         <td>${esc(c.contato || '—')}</td>
         <td>${statusChip(c.status)}</td>
         <td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td>
@@ -138,7 +191,10 @@
         <div class="cabecalho" style="margin-bottom: 14px;">
           <div>
             ${titulo('Cadastrar Novo Cliente', '♧')}
-            <p class="suave">Insira as informações do cliente para salvar diretamente no banco de dados.</p>
+            <p class="suave">Insira as informações do cliente para salvar na base da empresa.</p>
+            <p class="suave" style="grid-column: span 6; font-size: 10px; margin-top: 10px; text-align: right;">
+              🔒 Os dados recolhidos destinam-se exclusivamente à prestação de serviços e faturação, conforme a LGPD.
+            </p>
           </div>
           <button class="link" onclick="toggleFormularioNovoCliente()">Fechar ×</button>
         </div>
@@ -187,11 +243,110 @@
     </section>`;
   }
 
+  async function carregarUsuariosDoBackend() {
+  if (!window.IS_SUPERUSER) return;
+  try {
+    const response = await fetch('/api/usuarios/');
+    const result = await response.json();
+    if (result.status === 'success') usuarios = result.data;
+  } catch (err) { console.error("Erro ao carregar usuários:", err); }
+}
+carregarUsuariosDoBackend();
+
+function toggleFormularioNovoUsuario() {
+  formularioNovoUsuarioAberto = !formularioNovoUsuarioAberto;
+  render();
+}
+
+function listarUsuarios() {
+  const linhas = usuarios.map(u => 
+    `<tr>
+      <td><b>${esc(u.username)}</b></td>
+      <td>${esc(u.nome || '—')}</td>
+      <td>${esc(u.email || '—')}</td>
+      <td>${u.is_superuser ? '<span class="chip chip-verde">Administrador</span>' : '<span class="chip chip-laranja">Operador</span>'}</td>
+      <td>${u.data_criacao}</td>
+    </tr>`
+  ).join('');
+
+  const painelFormulario = formularioNovoUsuarioAberto ? `
+    <section class="painel-cadastro">
+      <div class="cabecalho" style="margin-bottom: 14px;">
+        <div>
+          ${titulo('Criar Novo Acesso', '👤')}
+          <p class="suave">Cadastre um novo Operador ou Administrador no sistema.</p>
+        </div>
+        <button class="link" onclick="toggleFormularioNovoUsuario()">Fechar ×</button>
+      </div>
+      <form onsubmit="cadastrarUsuario(event)">
+        <div class="form-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <label style="grid-column: span 1">Login (Username) * <input class="campo-input" id="usuUsername" required placeholder="ex: thiago.silva" /></label>
+          <label style="grid-column: span 1">Nome e Sobrenome * <input class="campo-input" id="usuNome" required placeholder="Thiago Silva" /></label>
+          <label style="grid-column: span 1">E-mail <input class="campo-input" id="usuEmail" type="email" placeholder="thiago@email.com" /></label>
+          <label style="grid-column: span 1">Senha * <input class="campo-input" id="usuSenha" type="password" required placeholder="******" /></label>
+          
+          <label style="grid-column: span 4">Nível de Acesso * 
+            <select class="campo-input" id="usuNivel" required style="margin-top: 6px;">
+              <option value="operador">Operador (Acesso restrito padrão)</option>
+              <option value="admin">Administrador (Acesso total)</option>
+            </select>
+          </label>
+          
+          <div class="form-acoes">
+            <button type="button" class="botao botao-outline" onclick="toggleFormularioNovoUsuario()">Cancelar</button>
+            <button type="submit" class="botao">Criar Usuário</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  ` : '';
+
+  return `${cabecalho('Gestão de Equipe', 'Controle de acessos e permissões do sistema', 
+    `<button class="botao" onclick="toggleFormularioNovoUsuario()">${formularioNovoUsuarioAberto ? 'Fechar formulário' : '+ Novo usuário'}</button>`
+  )}
+  ${painelFormulario}
+  <section class="card card-pad">
+    ${titulo('Usuários do Sistema', '👤')}
+    <div class="tabela-wrap">
+      <table>
+        <thead><tr><th>Username</th><th>Nome</th><th>E-mail</th><th>Permissão</th><th>Criado em</th></tr></thead>
+        <tbody>${linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum usuário encontrado</td></tr>'}</tbody>
+      </table>
+    </div>
+  </section>`;
+}
+
+async function cadastrarUsuario(ev) {
+  ev.preventDefault();
+  const username = document.getElementById('usuUsername').value.trim();
+  const nome = document.getElementById('usuNome').value.trim();
+  const email = document.getElementById('usuEmail').value.trim();
+  const password = document.getElementById('usuSenha').value;
+  const is_superuser = document.getElementById('usuNivel').value === 'admin';
+
+  try {
+    const response = await fetch('/api/usuarios/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+      body: JSON.stringify({ username, nome, email, password, is_superuser })
+    });
+    
+    const result = await response.json();
+    if (response.ok) {
+      formularioNovoUsuarioAberto = false;
+      await carregarUsuariosDoBackend();
+      render();
+    } else {
+      alert('Erro ao cadastrar: ' + (result.message || 'Falha na requisição.'));
+    }
+  } catch (err) { alert('Erro na requisição: ' + err); }
+}
+
   function atualizarListaClientes() {
     const linhas = clientes.filter(c => (c.nome + c.id + c.contato).toLowerCase().includes(pesquisaCliente.toLowerCase())).map(c => 
       `<tr>
         <td><b>${esc(c.nome)}</b><br><small class="suave">#${c.id}</small></td>
-        <td>${esc(c.cpf || '—')}</td>
+        <td>${ocultarDocumento(c.cpf)}</td>
         <td>${esc(c.contato || '—')}</td>
         <td>${statusChip(c.status)}</td>
         <td><button class="link" onclick="abrirCliente('${c.id}')">Abrir ficha →</button></td>
@@ -279,7 +434,7 @@
         <section class="card card-pad">
           ${titulo('Informações básicas', '♧')}
           ${info('Nome completo', esc(c.nome))}
-          ${info('CPF / CNPJ', esc(c.cpf || 'Não informado'))}
+          ${info('CPF / CNPJ', ocultarDocumento(c.cpf))}
           ${info('Telefone / WhatsApp', esc(c.contato || 'Não informado'))}
         </section>
         
@@ -377,10 +532,14 @@
   }
 
   function render() {
-    renderMenu();
-    elPagina.innerHTML = paginaAtual === 'inicio' ? home() :
-                         paginaAtual === 'clientes' ? (clienteAtual ? fichaCliente() : listarClientes()) :
-                         paginaAtual === 'agendamento' ? agenda() : home();
-  }
+  renderMenu();
+  elPagina.innerHTML = paginaAtual === 'inicio' ? home() :
+                       paginaAtual === 'clientes' ? (clienteAtual ? fichaCliente() : listarClientes()) :
+                       paginaAtual === 'agendamento' ? agenda() : 
+                       paginaAtual === 'usuarios' ? listarUsuarios() : home();
+}
 
+// Garante que todas as variáveis foram lidas antes do primeiro desenho
+setTimeout(() => {
   render();
+}, 50);

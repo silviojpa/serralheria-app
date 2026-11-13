@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -69,5 +70,45 @@ def api_clientes(request):
                 observacoes=data.get('observacoes')
             )
             return JsonResponse({'status': 'success', 'id': cliente.id})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+# API de usuario
+@csrf_exempt
+def api_usuarios(request):
+    # Barreira de segurança: apenas Superusers podem listar ou criar acessos
+    if not request.user.is_authenticated or not request.user.is_superuser:
+        return JsonResponse({'status': 'error', 'message': 'Acesso negado.'}, status=403)
+
+    if request.method == 'GET':
+        usuarios = User.objects.all().order_by('-date_joined')
+        data = [{
+            'id': u.id,
+            'username': u.username,
+            'nome': u.first_name,
+            'email': u.email,
+            'is_superuser': u.is_superuser,
+            'data_criacao': u.date_joined.strftime('%d/%m/%Y')
+        } for u in usuarios]
+        return JsonResponse({'status': 'success', 'data': data})
+
+    elif request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            username = data.get('username')
+            password = data.get('password')
+            nome = data.get('nome')
+            email = data.get('email')
+            is_superuser = data.get('is_superuser')
+
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({'status': 'error', 'message': 'Este nome de usuário já está em uso.'}, status=400)
+
+            # O Django separa a criação de utilizadores comuns e administradores
+            if is_superuser:
+                user = User.objects.create_superuser(username=username, email=email, password=password, first_name=nome)
+            else:
+                user = User.objects.create_user(username=username, email=email, password=password, first_name=nome)
+
+            return JsonResponse({'status': 'success', 'id': user.id})
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)

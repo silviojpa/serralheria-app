@@ -20,11 +20,17 @@
       </div>
       <div class="nav-titulo">MENU PRINCIPAL</div>
       <nav id="menu" class="navegacao" aria-label="Navegação principal"></nav>
-      <div class="menu-rodape">● Perfil: proprietário<br>Visão administrativa</div>
+      <div class="menu-rodape">
+        {% if request.user.is_superuser %}
+          ● Perfil: Proprietário<br>Visão administrativa
+        {% else %}
+          ● Perfil: Operador<br>Acesso restrito
+        {% endif %}
+      </div>
     </aside>
     <div class="principal">
       <header class="topo">
-        <div class="busca-global">⌕ &nbsp; Sistema de Gestão • Casa das Artes</div>
+        <input type="text" class="busca-global" id="buscaGlobal" placeholder="⌕ Pesquisar cliente..." onkeyup="pesquisarGlobal(this.value)">
         <div class="perfil">
           <div class="avatar">{{ request.user.first_name|default:request.user.username|slice:":2"|upper }}</div>
           <div>
@@ -43,7 +49,7 @@
       <main class="conteudo" id="pagina"></main>
     </div>
   </div>
-
+<script>window.IS_SUPERUSER = {{ request.user.is_superuser|yesno:"true,false" }};</script>
 <script src="{% static 'portal/js/main.js' %}"></script>
 </body>
 </html>

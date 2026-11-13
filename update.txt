@@ -1,5 +1,12 @@
 IN PROGRESS
-ajustar os dados com a lei LGPD
+Agedamento associado a client
+
+version v0.5
+Added nova aba para usr root criar novos opoeradores
+improved a UI com interação com o user ativo
+separado por pasta os arquivos para melhorar a leitura em camadas, pasta static & tamplete
+created fuction search global client
+Implemantado a lei LGPD no CPF para opoeradores
 
 version v0.3
 Estruturado a tabela de cadastro do cliente
