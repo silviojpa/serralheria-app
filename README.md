@@ -4,23 +4,13 @@ Sistema web completo de gestão operacional e comercial para serralheria, desenv
 
 ---
 
-## 🏗️ Arquitetura e Stack Tecnológica
-
-- **Backend:** Python 3.12+ / Django 4.2+ (App `portal`)
-- **Banco de Dados:** PostgreSQL 15
-- **Containerização:** Docker & Docker Compose (Ambiente 100% conteinerizado - `serralheria_db` e `serralheria_web`)
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+ assíncrono com API Fetch e manipulação dinâmica de DOM)
-- **Autenticação:** Django Authentication System (com controle de sessão via RBAC)
-- **Ambiente de Desenvolvimento:** WSL2 (Windows Subsystem for Linux)
-
----
-
 ## 📁 Estrutura de Diretórios do Projeto
 
 ```text
 serralheria-app/
 ├── docker-compose.yml           # Orquestração do PostgreSQL e do Django
-├── .env                         # Variáveis de ambiente e credenciais do banco
+├── .env                         # Variáveis de ambiente e credenciais do banco (ignorado no git)
+├── .env.template                # Modelo de variáveis de ambiente seguro para novos clones
 ├── .gitignore                   # Ignora cache e dados sensíveis para o git
 ├── README.md                    # Documentação técnica e guia de continuidade
 └── web/                         # Código da aplicação Python/Django
@@ -30,13 +20,18 @@ serralheria-app/
     ├── requirements.txt         # Dependências (Django, psycopg2-binary, etc.)
     ├── venv/                    # Ambiente virtual local (apenas para autocomplete no VS Code)
     ├── core/                    # Configurações globais (settings, urls, wsgi, asgi)
-    │   ├── settings.py          # Conexão com o banco via variáveis de ambiente
+    │   ├── settings.py          # Conexão com o banco, variáveis de ambiente e diretórios estáticos
     │   └── urls.py              # Mapeamento de rotas globais e endpoints da API
     └── portal/                  # App core da Serralheria
         ├── admin.py             # Registro de modelos no Django Admin
         ├── models.py            # Definição das tabelas do banco de dados (Cliente, etc.)
         ├── views.py             # Lógica de negócio, autenticação e rotas JSON (API REST)
         ├── migrations/          # Histórico de schema do banco de dados
+        ├── static/portal/       # Arquivos estáticos da aplicação
+        │   ├── css/
+        │   │   └── style.css    # Estilos globais e da interface SPA
+        │   └── js/
+        │       └── main.js      # Lógica de frontend, renderização e consumo da API
         └── templates/portal/
             ├── index.html       # Interface SPA integrada dinamicamente ao backend
             └── login.html       # Interface de login com formulário e tratamento de acesso
@@ -44,27 +39,40 @@ serralheria-app/
 
 ---
 
-## 📌 Histórico do Projeto e Progresso Atual (v0.3)
+## 📌 Histórico do Projeto e Progresso Atual (v0.5)
 
 ### 1. Infraestrutura & Ambiente
 - [x] Criação do `docker-compose.yml` unificando a web e o banco de dados.
 - [x] Implementação de reinicialização automática (`restart: always`) para os containers.
 - [x] Configuração de variáveis de ambiente seguras via arquivo `.env`.
+- [x] Criação do `.env.template` para facilitar o clone e setup do projeto em novas máquinas.
 - [x] Implementação de `healthcheck` no Docker Compose para sincronia entre banco e aplicação web.
 - [x] Configuração do `Dockerfile` e `.dockerignore` otimizados para Python 3.10-slim.
 
-### 2. Autenticação e Segurança
+### 2. Autenticação, Segurança e Gestão de Equipe
 - [x] Fluxo completo de login protegido e logout via Django Auth.
 - [x] Integração da variável global `request.user` para exibição dinâmica de avatar, nome e cargo no frontend.
-- [x] Implementação da captura e envio automático do token CSRF nas requisições HTTP assíncronas do frontend.
+- [x] Implementação da captura e envio automático do token CSRF nas requisições HTTP assíncronas.
+- [x] **Módulo de Equipe (Nativo SPA):** Criação de painel visual para listagem e cadastro de novos usuários (Administradores e Operadores) sem depender do painel nativo do Django.
+- [x] **Controle de Acesso Dinâmico (RBAC):** Rota `/api/usuarios/` blindada no backend; injeção de `window.IS_SUPERUSER` no frontend para ocultar menus e recursos críticos de Operadores.
 
 ### 3. Módulo de Clientes (Integração Backend + Frontend)
 - [x] Modelagem abrangente da tabela `Cliente` no PostgreSQL (incluindo campos de endereço e anotações).
-- [x] Refatoração da interface SPA (`index.html`) substituindo pop-ups nativos por um painel de formulário estruturado e esteticamente integrado à paleta de cores.
+- [x] Refatoração da interface SPA (`index.html`) substituindo pop-ups nativos por um painel de formulário estruturado e esteticamente integrado.
 - [x] Criação da rota `/api/clientes/` permitindo requisições GET (listagem) e POST (cadastro em JSON).
-- [x] Criação de layout em grelha fluida (grid CSS) para acomodação de morada completa (CEP, Bairro, etc.) e preferências operacionais.
+- [x] Criação de layout em grelha fluida (grid CSS) para acomodação de morada completa.
+- [x] Implementação de **Barra de Busca Global** funcional que redireciona e filtra clientes instantaneamente.
+
+### 4. Arquitetura Frontend e Adequação LGPD
+- [x] **Extração de Estáticos:** Migração do CSS inline e JavaScript do `index.html` para arquivos dedicados (`style.css` e `main.js`), otimizando o cache do navegador e a manutenção.
+- [x] Correção de timing na renderização do JavaScript para evitar tela em branco na inicialização da SPA.
+- [x] **Adequação LGPD (Mascaramento de Dados):** Implementação de função inteligente no frontend que detecta o tamanho do documento (CPF/CNPJ) e oculta os dígitos centrais (ex: `***.456.789-**`) para perfil de Operador, exibindo o dado completo apenas para Administradores. Inclusão de aviso legal no formulário de cadastro.
 
 ---
+
+**Próximos Passos (Foco Futuro):**
+*   **Módulo de Agendamento:** Criação de tabela de agendamentos/visitas e integração com interface de calendário no frontend.
+*   **Módulo de Anexos/Uploads:** Configuração do `MEDIA_ROOT` no Django para permitir armazenamento de arquivos (fotos do local, PDFs de orçamento) vinculados à ficha do cliente.
 
 ## 🚀 Como Executar o Projeto Localmente
 
