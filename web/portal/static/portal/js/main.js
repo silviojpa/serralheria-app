@@ -266,6 +266,9 @@ function listarUsuarios() {
       <td>${esc(u.email || '—')}</td>
       <td>${u.is_superuser ? '<span class="chip chip-verde">Administrador</span>' : '<span class="chip chip-laranja">Operador</span>'}</td>
       <td>${u.data_criacao}</td>
+      <td>
+        <button class="link" onclick="abrirModalSenha(${u.id}, '${u.username}')">🔑 Resetar</button>
+      </td>
     </tr>`
   ).join('');
 
@@ -309,8 +312,17 @@ function listarUsuarios() {
     ${titulo('Usuários do Sistema', '👤')}
     <div class="tabela-wrap">
       <table>
-        <thead><tr><th>Username</th><th>Nome</th><th>E-mail</th><th>Permissão</th><th>Criado em</th></tr></thead>
-        <tbody>${linhas || '<tr><td colspan="5" class="sem-resultado">Nenhum usuário encontrado</td></tr>'}</tbody>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Permissão</th>
+            <th>Criado em</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>${linhas || '<tr><td colspan="6" class="sem-resultado">Nenhum usuário encontrado</td></tr>'}</tbody>
       </table>
     </div>
   </section>`;
@@ -543,3 +555,41 @@ async function cadastrarUsuario(ev) {
 setTimeout(() => {
   render();
 }, 50);
+
+function abrirModalSenha(alvoId = null, username = null) {
+  document.getElementById('modalSenha').style.display = 'flex';
+  document.getElementById('inpNovaSenha').value = '';
+  document.getElementById('inpSenhaAtual').value = '';
+  document.getElementById('inpAlvoId').value = alvoId || '';
+  
+  if (alvoId) {
+    // Modo Camada Absoluta (Admin resetando de alguém)
+    document.getElementById('divSenhaAtual').style.display = 'none';
+    document.getElementById('modalSenhaTitulo').innerText = `Resetar: ${username}`;
+  } else {
+    // Modo Self-Service (O próprio usuário)
+    document.getElementById('divSenhaAtual').style.display = 'block';
+    document.getElementById('modalSenhaTitulo').innerText = 'Minha Senha';
+  }
+}
+
+async function salvarNovaSenha() {
+  const alvo_id = document.getElementById('inpAlvoId').value;
+  const senha_atual = document.getElementById('inpSenhaAtual').value;
+  const nova_senha = document.getElementById('inpNovaSenha').value;
+
+  if (!nova_senha) return alert('Digite a nova senha.');
+
+  try {
+    const res = await fetch('/api/usuarios/senha/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+      body: JSON.stringify({ usuario_id: alvo_id, senha_atual, nova_senha })
+    });
+    const data = await res.json();
+    
+    alert(data.message);
+    if (res.ok) document.getElementById('modalSenha').style.display = 'none';
+    
+  } catch (e) { console.error(e); alert('Erro na requisição.'); }
+}

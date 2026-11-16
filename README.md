@@ -39,7 +39,7 @@ serralheria-app/
 
 ---
 
-## 📌 Histórico do Projeto e Progresso Atual (v0.5)
+## 📌 Histórico do Projeto e Progresso Atual (v0.5.5)
 
 ### 1. Infraestrutura & Ambiente
 - [x] Criação do `docker-compose.yml` unificando a web e o banco de dados.
@@ -67,6 +67,7 @@ serralheria-app/
 - [x] **Extração de Estáticos:** Migração do CSS inline e JavaScript do `index.html` para arquivos dedicados (`style.css` e `main.js`), otimizando o cache do navegador e a manutenção.
 - [x] Correção de timing na renderização do JavaScript para evitar tela em branco na inicialização da SPA.
 - [x] **Adequação LGPD (Mascaramento de Dados):** Implementação de função inteligente no frontend que detecta o tamanho do documento (CPF/CNPJ) e oculta os dígitos centrais (ex: `***.456.789-**`) para perfil de Operador, exibindo o dado completo apenas para Administradores. Inclusão de aviso legal no formulário de cadastro.
+- [x] Adição do reset de senha para admin e oper 
 
 ---
 

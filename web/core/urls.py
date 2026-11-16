@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from portal import views
-from portal.views import api_clientes, api_usuarios
+from portal.views import api_clientes, api_usuarios, mudar_senha
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +28,5 @@ urlpatterns = [
     # Rota API Clientes
     path('api/clientes/', views.api_clientes, name='api_clientes'),
     path('api/usuarios/', views.api_usuarios, name='api_usuarios'),
+    path('api/usuarios/senha/', views.mudar_senha, name='mudar_senha'),
 ]

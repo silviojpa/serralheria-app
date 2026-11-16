@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
 from .models import Cliente
 
 def login_view(request):
@@ -110,5 +112,41 @@ def api_usuarios(request):
                 user = User.objects.create_user(username=username, email=email, password=password, first_name=nome)
 
             return JsonResponse({'status': 'success', 'id': user.id})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+
+# Redefinição de senha e camada de segurança
+@csrf_exempt
+def mudar_senha(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'status': 'error', 'message': 'Acesso negado.'}, status=403)
+        
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            alvo_id = data.get('usuario_id') # Vem preenchido se o Admin estiver resetando
+            nova_senha = data.get('nova_senha')
+            senha_atual = data.get('senha_atual')
+
+            # CENÁRIO 1: O próprio usuário mudando sua senha
+            if not alvo_id or str(alvo_id) == str(request.user.id):
+                if not request.user.check_password(senha_atual):
+                    return JsonResponse({'status': 'error', 'message': 'Senha atual incorreta.'}, status=400)
+                
+                request.user.set_password(nova_senha)
+                request.user.save()
+                update_session_auth_hash(request, request.user) # Mantém a sessão logada
+                return JsonResponse({'status': 'success', 'message': 'Sua senha foi alterada com sucesso.'})
+            
+            # CENÁRIO 2: A Camada Absoluta (Admin resetando a de terceiros)
+            elif request.user.is_superuser:
+                usuario_alvo = User.objects.get(id=alvo_id)
+                usuario_alvo.set_password(nova_senha)
+                usuario_alvo.save()
+                return JsonResponse({'status': 'success', 'message': f'Senha de {usuario_alvo.username} redefinida com sucesso!'})
+            
+            else:
+                return JsonResponse({'status': 'error', 'message': 'Você não tem permissão para alterar a senha de outro usuário.'}, status=403)
+                
         except Exception as e:
             return JsonResponse({'status': 'error', 'message': str(e)}, status=400)

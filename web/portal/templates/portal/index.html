@@ -41,6 +41,7 @@
               {% else %}
                 Operador
               {% endif %}
+              • <a href="#" onclick="abrirModalSenha()" style="color: inherit; text-decoration: none;">Mudar Senha</a> 
               • <a href="{% url 'logout' %}" style="color: var(--vermelho); text-decoration: none; font-weight: 900;">Sair</a>
             </small>
           </div>
@@ -49,6 +50,31 @@
       <main class="conteudo" id="pagina"></main>
     </div>
   </div>
+
+  <!-- Janela Flutuante (Modal) de Senha -->
+  <div id="modalSenha" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:var(--fundo-card); padding:24px; border-radius:12px; width:320px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+      <h3 id="modalSenhaTitulo" style="margin-top:0; color:var(--texto-escuro);">Alterar Senha</h3>
+      
+      <div id="divSenhaAtual" style="margin-bottom: 12px;">
+        <label style="display:block; margin-bottom:4px; font-size:12px; font-weight:600;">Senha Atual</label>
+        <input type="password" id="inpSenhaAtual" class="campo-input" style="width:100%; box-sizing:border-box;">
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display:block; margin-bottom:4px; font-size:12px; font-weight:600;">Nova Senha</label>
+        <input type="password" id="inpNovaSenha" class="campo-input" style="width:100%; box-sizing:border-box;">
+      </div>
+      
+      <input type="hidden" id="inpAlvoId">
+      
+      <div style="display:flex; gap:10px;">
+        <button class="botao" style="flex:1;" onclick="salvarNovaSenha()">Confirmar</button>
+        <button class="botao botao-outline" style="flex:1;" onclick="document.getElementById('modalSenha').style.display='none'">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
 <script>window.IS_SUPERUSER = {{ request.user.is_superuser|yesno:"true,false" }};</script>
 <script src="{% static 'portal/js/main.js' %}"></script>
 </body>
